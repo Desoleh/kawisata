@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PositionsExport;
+use App\Imports\PositionsImport;
 use App\Models\Position;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PositionController extends Controller
 {
@@ -14,7 +17,9 @@ class PositionController extends Controller
      */
     public function index()
     {
-        //
+        $positions = Position::all();
+        // dd($oncycles);
+        return view('positions.index', ['positions' => $positions]);
     }
 
     /**
@@ -81,5 +86,20 @@ class PositionController extends Controller
     public function destroy(Position $position)
     {
         //
+    }
+
+    public function export()
+    {
+        return Excel::download(new PositionsExport , 'users.xlsx');
+
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new PositionsImport(), $request->file('import_file'));
+        // dd($request);
+
+
+        return redirect()->route('employees.index');
     }
 }

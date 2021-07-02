@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mailbox_Flag;
+use App\Models\MailboxFlag;
 use Illuminate\Http\Request;
 
 class MailboxFlagController extends Controller
@@ -41,10 +41,10 @@ class MailboxFlagController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Mailbox_Flag  $mailbox_Flag
+     * @param  \App\Models\MailboxFlag  $mailboxFlag
      * @return \Illuminate\Http\Response
      */
-    public function show(Mailbox_Flag $mailbox_Flag)
+    public function show(MailboxFlag $mailboxFlag)
     {
         //
     }
@@ -52,10 +52,10 @@ class MailboxFlagController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Mailbox_Flag  $mailbox_Flag
+     * @param  \App\Models\MailboxFlag  $mailboxFlag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mailbox_Flag $mailbox_Flag)
+    public function edit(MailboxFlag $mailboxFlag)
     {
         //
     }
@@ -64,10 +64,10 @@ class MailboxFlagController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mailbox_Flag  $mailbox_Flag
+     * @param  \App\Models\MailboxFlag  $mailboxFlag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mailbox_Flag $mailbox_Flag)
+    public function update(Request $request, MailboxFlag $mailboxFlag)
     {
         //
     }
@@ -75,10 +75,10 @@ class MailboxFlagController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Mailbox_Flag  $mailbox_Flag
+     * @param  \App\Models\MailboxFlag  $mailboxFlag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mailbox_Flag $mailbox_Flag)
+    public function destroy(MailboxFlag $mailboxFlag)
     {
         //
     }

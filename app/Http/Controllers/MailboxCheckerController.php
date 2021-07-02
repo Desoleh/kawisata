@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mailbox_checker;
+use App\Models\MailboxChecker;
 use Illuminate\Http\Request;
 
 class MailboxCheckerController extends Controller
@@ -41,10 +41,10 @@ class MailboxCheckerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Mailbox_checker  $mailbox_checker
+     * @param  \App\Models\MailboxChecker  $mailboxChecker
      * @return \Illuminate\Http\Response
      */
-    public function show(Mailbox_checker $mailbox_checker)
+    public function show(MailboxChecker $mailboxChecker)
     {
         //
     }
@@ -52,10 +52,10 @@ class MailboxCheckerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Mailbox_checker  $mailbox_checker
+     * @param  \App\Models\MailboxChecker  $mailboxChecker
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mailbox_checker $mailbox_checker)
+    public function edit(MailboxChecker $mailboxChecker)
     {
         //
     }
@@ -64,10 +64,10 @@ class MailboxCheckerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mailbox_checker  $mailbox_checker
+     * @param  \App\Models\MailboxChecker  $mailboxChecker
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mailbox_checker $mailbox_checker)
+    public function update(Request $request, MailboxChecker $mailboxChecker)
     {
         //
     }
@@ -75,10 +75,10 @@ class MailboxCheckerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Mailbox_checker  $mailbox_checker
+     * @param  \App\Models\MailboxChecker  $mailboxChecker
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mailbox_checker $mailbox_checker)
+    public function destroy(MailboxChecker $mailboxChecker)
     {
         //
     }

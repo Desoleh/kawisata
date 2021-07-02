@@ -44,7 +44,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link  @yield('jabatan')">
+                        <a href="{{ route('jabatan.index') }}" class="nav-link  @yield('jabatan')">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Data Jabatan Pegawai</p>
                         </a>

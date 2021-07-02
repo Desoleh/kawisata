@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMailboxFlagsTable extends Migration
+class AddHierarchyToPositions extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateMailboxFlagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mailbox__flags', function (Blueprint $table) {
-            $table->id();
-            $table->smallInteger('is_unread')->default(1);
-            $table->timestamps();
+        Schema::table('positions', function (Blueprint $table) {
+            $table->tinyInteger('hierarchy');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateMailboxFlagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mailbox__flags');
+        Schema::table('positions', function (Blueprint $table) {
+            //
+        });
     }
 }

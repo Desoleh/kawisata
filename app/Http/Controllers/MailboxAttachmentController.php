@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mailbox_Attachment;
+use App\Models\MailboxAttachment;
 use Illuminate\Http\Request;
 
 class MailboxAttachmentController extends Controller
@@ -41,10 +41,10 @@ class MailboxAttachmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Mailbox_Attachment  $mailbox_Attachment
+     * @param  \App\Models\MailboxAttachment  $mailboxAttachment
      * @return \Illuminate\Http\Response
      */
-    public function show(Mailbox_Attachment $mailbox_Attachment)
+    public function show(MailboxAttachment $mailboxAttachment)
     {
         //
     }
@@ -52,10 +52,10 @@ class MailboxAttachmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Mailbox_Attachment  $mailbox_Attachment
+     * @param  \App\Models\MailboxAttachment  $mailboxAttachment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mailbox_Attachment $mailbox_Attachment)
+    public function edit(MailboxAttachment $mailboxAttachment)
     {
         //
     }
@@ -64,10 +64,10 @@ class MailboxAttachmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mailbox_Attachment  $mailbox_Attachment
+     * @param  \App\Models\MailboxAttachment  $mailboxAttachment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mailbox_Attachment $mailbox_Attachment)
+    public function update(Request $request, MailboxAttachment $mailboxAttachment)
     {
         //
     }
@@ -75,10 +75,10 @@ class MailboxAttachmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Mailbox_Attachment  $mailbox_Attachment
+     * @param  \App\Models\MailboxAttachment  $mailboxAttachment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mailbox_Attachment $mailbox_Attachment)
+    public function destroy(MailboxAttachment $mailboxAttachment)
     {
         //
     }

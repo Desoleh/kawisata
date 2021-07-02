@@ -11,6 +11,7 @@ use App\Http\Controllers\KgbController;
 use App\Http\Controllers\MailboxController;
 use App\Http\Controllers\OncycleController;
 use App\Http\Controllers\OffcycleController;
+use App\Http\Controllers\PositionController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\UserController;
 use App\Models\Oncycle;
@@ -47,6 +48,8 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
     Route::resource('oncycles', OncycleController::class);
     Route::resource('offcycles', OffcycleController::class);
     Route::resource('kgb', KgbController::class);
+    Route::resource('jabatan', PositionController::class);
+
 
     Route::get('export', [EmployeeController::class, 'export'])->name('employee.export');
     Route::post('import', [EmployeeController::class, 'import'])->name('employee.import');
@@ -59,6 +62,8 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
 
     Route::post('kgb/import', [KgbController::class, 'import'])->name('kgb.import');
 
+    Route::get('jabatan/export', [PositionController::class, 'export'])->name('jabatan.export');
+    Route::post('jabatan/import', [PositionController::class, 'import'])->name('jabatan.import');
 
 
 });
@@ -73,6 +78,7 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::get('/search', [SalaryController::class, 'search'])->name('search');
     Route::get('/searchoffcycle', [SalaryController::class, 'searchoffcycle'])->name('searchoffcycle');
     Route::get('/cetakoncycle', [SalaryController::class, 'cetakoncycle'])->name('cetakoncycle');
+
 
     // memo internal
     Route::get('mailbox', [ MailboxController::class, 'index'])->name('mailbox.index');

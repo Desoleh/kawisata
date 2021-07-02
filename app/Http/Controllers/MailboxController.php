@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mailbox;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Concerns\ToArray;
 
 class MailboxController extends Controller
 {
@@ -14,7 +15,12 @@ class MailboxController extends Controller
      */
     public function index()
     {
-        return view('memointernal.index');
+        $mailboxes = Mailbox::all();
+        // $mailboxes = Mailbox::find(1);
+
+        // dump($mailboxes);
+        return view('memointernal.index',compact('mailboxes'));
+
     }
 
     /**

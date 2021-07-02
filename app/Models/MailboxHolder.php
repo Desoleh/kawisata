@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mailbox_Attachment extends Model
+class MailboxHolder extends Model
 {
     use HasFactory;
 }

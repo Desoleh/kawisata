@@ -15,6 +15,7 @@ class CreateMailboxesTable extends Migration
     {
         Schema::create('mailboxes', function (Blueprint $table) {
             $table->id();
+            $table->string('document_id')->unique()->nullable();
             $table->string('perihal',225);
             $table->longText('body');
             $table->smallInteger('is_draft')->default(1);
@@ -25,7 +26,6 @@ class CreateMailboxesTable extends Migration
 
             $table->foreign('approver_id')->references('position_id')->on('positions');
             $table->foreign('drafter_id')->references('position_id')->on('positions');
-
         });
     }
 

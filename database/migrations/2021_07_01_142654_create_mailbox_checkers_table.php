@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMailboxReferencesTable extends Migration
+class CreateMailboxCheckersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateMailboxReferencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('mailbox__references', function (Blueprint $table) {
+        Schema::create('mailbox_checkers', function (Blueprint $table) {
             $table->id();
-            $table->string('mailbox_id');
-            $table->string('referer_id',10);
+            $table->unsignedBigInteger('mailbox_id');
+            $table->string('checker_id',10);
+            $table->integer('sequence')->default(0);
             $table->timestamps();
 
             $table->foreign('mailbox_id')->references('id')->on('mailboxes');
-            $table->foreign('referer_id')->references('position_id')->on('positions');
-        });
+            $table->foreign('checker_id')->references('position_id')->on('positions');        });
     }
 
     /**
@@ -31,6 +31,6 @@ class CreateMailboxReferencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mailbox__references');
+        Schema::dropIfExists('mailbox_checkers');
     }
 }

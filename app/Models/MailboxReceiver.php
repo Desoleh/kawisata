@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mailbox_Reference extends Model
+class MailboxReceiver extends Model
 {
     use HasFactory;
 }

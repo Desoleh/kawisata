@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mailbox_Holder;
+use App\Models\MailboxHolder;
 use Illuminate\Http\Request;
 
 class MailboxHolderController extends Controller
@@ -41,10 +41,10 @@ class MailboxHolderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Mailbox_Holder  $mailbox_Holder
+     * @param  \App\Models\MailboxHolder  $mailboxHolder
      * @return \Illuminate\Http\Response
      */
-    public function show(Mailbox_Holder $mailbox_Holder)
+    public function show(MailboxHolder $mailboxHolder)
     {
         //
     }
@@ -52,10 +52,10 @@ class MailboxHolderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Mailbox_Holder  $mailbox_Holder
+     * @param  \App\Models\MailboxHolder  $mailboxHolder
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mailbox_Holder $mailbox_Holder)
+    public function edit(MailboxHolder $mailboxHolder)
     {
         //
     }
@@ -64,10 +64,10 @@ class MailboxHolderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mailbox_Holder  $mailbox_Holder
+     * @param  \App\Models\MailboxHolder  $mailboxHolder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mailbox_Holder $mailbox_Holder)
+    public function update(Request $request, MailboxHolder $mailboxHolder)
     {
         //
     }
@@ -75,10 +75,10 @@ class MailboxHolderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Mailbox_Holder  $mailbox_Holder
+     * @param  \App\Models\MailboxHolder  $mailboxHolder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mailbox_Holder $mailbox_Holder)
+    public function destroy(MailboxHolder $mailboxHolder)
     {
         //
     }

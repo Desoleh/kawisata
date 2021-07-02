@@ -15,6 +15,20 @@
     <!-- Styles -->
     <link href="{{ asset('adminlte/css/app.css') }}" rel="stylesheet">
 
+    <!-- DataTables -->
+    <link
+      rel="stylesheet"
+      href="{{asset('adminlte/vendor/datatables-bs4/css/dataTables.bootstrap4.min.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{asset('adminlte/vendor/datatables-responsive/css/responsive.bootstrap4.min.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{asset('adminlte/vendor/datatables-buttons/css/buttons.bootstrap4.min.css')}}"
+    />
+
     <style>
         .card-header.disabled{
         background-color: #99caff;

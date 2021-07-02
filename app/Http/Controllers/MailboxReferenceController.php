@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mailbox_Reference;
+use App\Models\MailboxReference;
 use Illuminate\Http\Request;
 
 class MailboxReferenceController extends Controller
@@ -41,10 +41,10 @@ class MailboxReferenceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Mailbox_Reference  $mailbox_Reference
+     * @param  \App\Models\MailboxReference  $mailboxReference
      * @return \Illuminate\Http\Response
      */
-    public function show(Mailbox_Reference $mailbox_Reference)
+    public function show(MailboxReference $mailboxReference)
     {
         //
     }
@@ -52,10 +52,10 @@ class MailboxReferenceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Mailbox_Reference  $mailbox_Reference
+     * @param  \App\Models\MailboxReference  $mailboxReference
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mailbox_Reference $mailbox_Reference)
+    public function edit(MailboxReference $mailboxReference)
     {
         //
     }
@@ -64,10 +64,10 @@ class MailboxReferenceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mailbox_Reference  $mailbox_Reference
+     * @param  \App\Models\MailboxReference  $mailboxReference
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mailbox_Reference $mailbox_Reference)
+    public function update(Request $request, MailboxReference $mailboxReference)
     {
         //
     }
@@ -75,10 +75,10 @@ class MailboxReferenceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Mailbox_Reference  $mailbox_Reference
+     * @param  \App\Models\MailboxReference  $mailboxReference
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mailbox_Reference $mailbox_Reference)
+    public function destroy(MailboxReference $mailboxReference)
     {
         //
     }
