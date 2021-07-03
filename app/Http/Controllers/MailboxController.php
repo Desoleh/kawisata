@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mailbox;
+use App\Models\Position;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Concerns\ToArray;
 
 class MailboxController extends Controller
 {
+    private $parent_name;
     /**
      * Display a listing of the resource.
      *
@@ -16,10 +18,9 @@ class MailboxController extends Controller
     public function index()
     {
         $mailboxes = Mailbox::all();
-        // $mailboxes = Mailbox::find(1);
-
-        // dump($mailboxes);
-        return view('memointernal.index',compact('mailboxes'));
+        $positions = Position::all();
+        // dd($positions, $mailboxes);
+        return view('memointernal.index',compact('mailboxes','positions'));
 
     }
 
@@ -91,6 +92,10 @@ class MailboxController extends Controller
 
         public function compose()
     {
-        return view('memointernal.compose');
+
+        // $mailboxes = Mailbox::all();
+        $positions = Position::orderBy('hierarchy')->get();
+
+        return view('memointernal.compose',compact('positions'));
     }
 }

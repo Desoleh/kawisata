@@ -90,7 +90,7 @@ class PositionController extends Controller
 
     public function export()
     {
-        return Excel::download(new PositionsExport , 'users.xlsx');
+        return Excel::download(new PositionsExport, 'users.xlsx');
 
     }
 

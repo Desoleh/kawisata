@@ -1,3 +1,10 @@
+<?php
+$result = array();
+foreach($positions as $position){
+   $result[$position->parent_name][] = $position;
+}
+ ?>
+
 @extends('layouts.appm')
 
 @section('style')
@@ -129,14 +136,13 @@
                         <div class="col-sm-10">
                             <div class="select2-purple">
                                 <select class="select2" multiple="multiple" data-placeholder="Kepada" style="width: 100%;">
-                                    <optgroup label="Swedish Cars">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    </optgroup>
-                                    <optgroup label="German Cars">
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
-                                    </optgroup>
+                                    @foreach ( $result as $key=>$val )
+                                        <optgroup label="{{ $key }}">
+                                            @foreach ($val as $option )
+                                                <option value="{{ $option->name }}">{{ $option->name }} | {{ $option->holder_id }}</option>
+                                            @endforeach
+                                        {{-- </optgroup> --}}
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

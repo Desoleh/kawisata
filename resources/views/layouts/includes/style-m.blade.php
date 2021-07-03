@@ -36,4 +36,10 @@
         padding-bottom: 0;
         }
 
+        .card-header.inbox{
+        background-color: #d8d8d8;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        }
+
     </style>

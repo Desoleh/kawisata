@@ -14,6 +14,7 @@ class Position extends Model
         'holder_id',
         'parent_id',
         'parent_name',
+        'hierarchy'
     ];
 
     public function mailbox()

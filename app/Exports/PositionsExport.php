@@ -6,7 +6,7 @@ use App\Models\Position;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class OncyclesExport implements FromCollection, WithHeadings
+class PositionsExport implements FromCollection, WithHeadings
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -19,12 +19,13 @@ class OncyclesExport implements FromCollection, WithHeadings
     public function headings():array
     {
     return[
-        'ID POSSI',
+        'ID POSISI',
         'NAMA',
         'GRADE',
         'PEJABAT',
         'ID ATASAN',
         'NAMA ATASAN',
+        'HIRARKI'
     ];
     }
 }

@@ -94,25 +94,13 @@
                 <!-- /.col -->
                 <div class="col-md-9">
                 <div class="card card-primary card-outline">
-                    <div class="card-header">
+                    <div class="card-header inbox">
                     <h3 class="card-title">Memo Internal Masuk</h3>
-
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" placeholder="Search Mail">
-                        <div class="input-group-append">
-                            <div class="btn btn-primary">
-                            <i class="fas fa-search"></i>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    <!-- /.card-tools -->
                     </div>
                     <!-- /.card-header -->
 
-                    <div class="table-responsive mailbox-messages">
-                        <table id="example1"  class="table table-sm table-hover table-striped">
+                    <div class="table-responsive mailbox-messages mt-1 p-2">
+                        <table id="example2"  class="table table-sm  table-hover table-striped">
                             <thead>
                                 <tr>
                                     <td>
@@ -178,6 +166,7 @@
                     responsive: true,
                     lengthChange: false,
                     autoWidth: false,
+
                     // buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
                 })
                 .buttons()
@@ -185,12 +174,13 @@
                 .appendTo("#example1_wrapper .col-md-6:eq(0)");
                 $("#example2").DataTable({
                 paging: true,
-                lengthChange: false,
-                searching: false,
+                lengthChange: true,
+                searching: true,
                 ordering: true,
                 info: true,
                 autoWidth: false,
                 responsive: true,
+                pageline: true,
                 });
             });
     </script>

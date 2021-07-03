@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 
-class OncyclesImport implements ToCollection, WithUpserts, WithStartRow
+class PositionsImport implements ToCollection, WithUpserts, WithStartRow
 {
     public function collection(Collection $rows)
     {
@@ -29,7 +29,7 @@ class OncyclesImport implements ToCollection, WithUpserts, WithStartRow
                     'holder_id'=> $row[3],
                     'parent_id'=> $row[4],
                     'parent_name'=> $row[5],
-
+                    'hierarchy'=> $row[6]
                 ]
             );
 

@@ -82,7 +82,8 @@
                             <th>Pejabat</th>
                             <th>ID Unit</th>
                             <th>Nama Unit</th>
-                            <th>action</th>
+                            <th>Hierarchy</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -93,6 +94,7 @@
                                     <td>{{$position->holder_id}}</td>
                                     <td>{{$position->parent_id}}</td>
                                     <td>{{$position->parent_name}}</td>
+                                    <td>{{$position->hierarchy}}</td>
                                     <td class="text-center">
                                         <form action="{{ route('jabatan.destroy',$position->position_id) }}" method="POST">
 
