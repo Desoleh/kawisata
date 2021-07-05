@@ -52,4 +52,11 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->roles()->where('name', $role)->count() == 1;
     }
+
+        public function position()
+    {
+
+        return $this->hasOne(Position::class, 'holder_id');
+    }
+
 }

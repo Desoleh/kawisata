@@ -128,108 +128,129 @@ foreach($positions as $position){
                 <div class="card card-primary card-outline">
                     <div class="card-header">
                     <h3 class="card-title">Memo Internal</h3>
+                    @include('alert')
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Kepada</label>
-                        <div class="col-sm-10">
-                            <div class="select2-purple">
-                                <select class="select2" multiple="multiple" data-placeholder="Kepada" style="width: 100%;">
-                                    @foreach ( $result as $key=>$val )
-                                        <optgroup label="{{ $key }}">
-                                            @foreach ($val as $option )
-                                                <option value="{{ $option->name }}">{{ $option->name }} | {{ $option->holder_id }}</option>
+                        <form method="post" action="{{ route('mailbox.store') }}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Kepada</label>
+                                <div class="col-sm-10">
+                                    <div class="select2-purple">
+                                        <select class="select2" multiple="multiple" data-placeholder="Kepada" style="width: 100%;" name="receiver_id[]">
+                                            @foreach ( $result as $key=>$val )
+                                                <optgroup label="{{ $key }}">
+                                                    @foreach ($val as $option )
+                                                        <option value="{{ $option->position_id }}">{{ $option->name }} | {{ $option->holder_id }}</option>
+                                                    @endforeach
+                                                {{-- </optgroup> --}}
                                             @endforeach
-                                        {{-- </optgroup> --}}
-                                    @endforeach
-                                </select>
+                                        </select>
+                                            @error('receiver_id')
+                                                <div class="mt-2 text-danger">{{ $message }}</div>
+                                            @enderror
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Tembusan</label>
-                        <div class="col-sm-10">
-                            <div class="select2-purple">
-                                <select class="select2" multiple="multiple" data-placeholder="Tembusan" style="width: 100%;">
-                                    <optgroup label="Swedish Cars">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    </optgroup>
-                                    <optgroup label="German Cars">
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
-                                    </optgroup>
-                                </select>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Tembusan</label>
+                                <div class="col-sm-10">
+                                    <div class="select2-purple">
+                                        <select class="select2" multiple="multiple" data-placeholder="Kepada" style="width: 100%;">
+                                            @foreach ( $result as $key=>$val )
+                                                <optgroup label="{{ $key }}">
+                                                    @foreach ($val as $option )
+                                                        <option value="{{ $option->position_id }}">{{ $option->name }} | {{ $option->holder_id }}</option>
+                                                    @endforeach
+                                                </optgroup>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Penandatangan</label>
-                        <div class="col-sm-10">
-                            <div class="select2-purple">
-                                <select class="select2" multiple="multiple" data-placeholder="Penandatangan/Pengirim" style="width: 100%;">
-                                    <optgroup label="Swedish Cars">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    </optgroup>
-                                    <optgroup label="German Cars">
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
-                                    </optgroup>
-                                </select>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Penandatangan</label>
+                                <div class="col-sm-10">
+                                    <div>
+                                        <select class="form-control" data-placeholder="Penandatangan" style="width: 100%;" name="approver_id">
+                                            @foreach ( $result as $key=>$val )
+                                                <optgroup label="{{ $key }}">
+                                                    @foreach ($val as $option )
+                                                        <option style="display:none" value=""> -- penandatangan -- </option>
+                                                        <option value="{{ $option->position_id }}">{{ $option->name }} | {{ $option->holder_id }}</option>
+                                                    @endforeach
+                                                </optgroup>
+                                            @endforeach
+                                        </select>
+                                            @error('approver_id')
+                                                <div class="mt-2 text-danger">{{ $message }}</div>
+                                            @enderror
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Pemeriksa</label>
-                        <div class="col-sm-10">
-                            <div class="select2-purple">
-                                <select class="select2" multiple="multiple" data-placeholder="Pemeriksa" style="width: 100%;">
-                                    <optgroup label="Swedish Cars">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    </optgroup>
-                                    <optgroup label="German Cars">
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
-                                    </optgroup>
-                                </select>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Pemeriksa</label>
+                                <div class="col-sm-10">
+                                    <div class="select2-purple">
+                                        <select class="select2" multiple="multiple" data-placeholder="Kepada" style="width: 100%;">
+                                            @foreach ( $result as $key=>$val )
+                                                <optgroup label="{{ $key }}">
+                                                    @foreach ($val as $option )
+                                                        <option value="{{ $option->position_id }}">{{ $option->name }} | {{ $option->holder_id }}</option>
+                                                    @endforeach
+                                                </optgroup>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Perihal</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputPassword3" placeholder="Perihal">
-                        </div>
-                    </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Perihal</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="perihal" placeholder="Perihal">
+                                            @error('perihal')
+                                                <div class="mt-2 text-danger">{{ $message }}</div>
+                                            @enderror
+                                </div>
+                            </div>
 
-                    <div class="form-group">
-                        <textarea id="summernote" class="form-control" style="height: 300px">
-                            {{-- TEXT AREA --}}
-                        </textarea>
-                    </div>
-                    <div class="form-group">
-                        <div class="btn btn-default btn-file">
-                        <i class="fas fa-paperclip"></i> Attachment
-                        <input type="file" name="attachment">
-                        </div>
-                        <p class="help-block">Max. 5MB</p>
-                    </div>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                    <div class="float-right">
-                        <button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Draft</button>
-                        <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Send</button>
-                    </div>
-                    <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Discard</button>
-                    </div>
+                            <div class="form-group">
+                                <textarea id="summernote" class="form-control" style="height: 300px" name="body">
+                                    {{-- TEXT AREA --}}
+                                </textarea>
+                                            @error('body')
+                                                <div class="mt-2 text-danger">{{ $message }}</div>
+                                            @enderror
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="btn btn-default btn-file">
+                                <i class="fas fa-paperclip"></i> Attachment
+                                <input type="file" name="attachment">
+                                </div>
+                                <p class="help-block">Max. 5MB</p>
+                            </div>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                            <div class="float-right">
+                                <button type="submit" name="submit" value="2" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button>
+                                <button type="submit" name="submit" value="1" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send</button>
+{{--
+                                <button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Draft</button>
+                                <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Send</button> --}}
+                            </div>
+                            <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Discard</button>
+                            </div>
+                        </form>
                     <!-- /.card-footer -->
                 </div>
                 <!-- /.card -->
@@ -379,4 +400,5 @@ foreach($positions as $position){
         $('#myModal').modal('hide');
     });
     </script>
+
 @endsection

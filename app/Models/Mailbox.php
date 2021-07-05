@@ -29,12 +29,17 @@ class Mailbox extends Model
 
     public function positions()
     {
-        return $this->hasMany(Position::class, 'approver_id','position_id');
+        return $this->belongsTo(Position::class, 'approver_id','position_id');
     }
 
     public function receivers()
     {
         return $this->hasMany(MailboxReceiver::class);
+    }
+
+    public function tmpreceivers()
+    {
+        return $this->hasMany(MailboxTmpReceiver::class);
     }
 
 

@@ -5,7 +5,7 @@
 
 @endsection
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid small">
         <!-- Content Wrapper. Contains page content -->
         <div class="container-fluid">
 
@@ -122,9 +122,9 @@
                                         <label for="check1"></label>
                                     </div>
                                     </td>
-                                    <td class="mailbox-date">{{ $mailbox->updated_at }}</td>
+                                    <td class="mailbox-date" width="17%">{{ $mailbox->updated_at }}</td>
                                     <td class="mailbox-subject">{{ $mailbox->perihal }}</td>
-                                    <td class="mailbox-name"><a href="#">{{ $mailbox->positions->name }}</a></td>
+                                    <td class="mailbox-name"  width="20%"><a href="#">{{ $mailbox->positions->name }}</a></td>
                                     {{-- <td class="mailbox-attachment">{{ $mailbox->mailbox_attachments->attachment }}</td> --}}
                                 </tr>
                                 @empty

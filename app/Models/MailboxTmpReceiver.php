@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MailboxReceiver extends Model
+class MailboxTmpReceiver extends Model
 {
     use HasFactory;
         protected $fillable =[
@@ -24,6 +24,4 @@ class MailboxReceiver extends Model
     {
         return $this->belongsTo(Position::class, 'receiver_id');
     }
-
-
 }

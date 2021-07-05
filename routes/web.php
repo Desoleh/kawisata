@@ -83,6 +83,7 @@ Route::prefix('user')->middleware('auth')->group(function () {
     // memo internal
     Route::get('mailbox', [ MailboxController::class, 'index'])->name('mailbox.index');
     Route::get('compose', [ MailboxController::class, 'compose'])->name('mailbox.compose');
+    Route::post('store', [ MailboxController::class, 'store'])->name('mailbox.store');
 
 
 });
