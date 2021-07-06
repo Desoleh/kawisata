@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMailboxTembusansTable extends Migration
+class CreateMailboxCopiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateMailboxTembusansTable extends Migration
      */
     public function up()
     {
-        Schema::create('mailbox_tembusans', function (Blueprint $table) {
+        Schema::create('mailbox_copies', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('mailbox_id');
+            $table->string('copy_id',10);
             $table->timestamps();
+
+            $table->foreign('mailbox_id')->references('id')->on('mailboxes');
+            $table->foreign('copy_id')->references('position_id')->on('positions');
         });
     }
 
@@ -26,6 +31,6 @@ class CreateMailboxTembusansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mailbox_tembusans');
+        Schema::dropIfExists('mailbox_copies');
     }
 }

@@ -1,72 +1,45 @@
-@section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col md-3">
-            <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-                <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-                <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-                <span class="fs-5 fw-semibold">Collapsible</span>
-                </a>
-                <ul class="list-unstyled ps-0">
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                    Home
-                    </button>
-                    <div class="collapse show" id="home-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">Overview</a></li>
-                        <li><a href="#" class="link-dark rounded">Updates</a></li>
-                        <li><a href="#" class="link-dark rounded">Reports</a></li>
-                    </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                    Dashboard
-                    </button>
-                    <div class="collapse" id="dashboard-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">Overview</a></li>
-                        <li><a href="#" class="link-dark rounded">Weekly</a></li>
-                        <li><a href="#" class="link-dark rounded">Monthly</a></li>
-                        <li><a href="#" class="link-dark rounded">Annually</a></li>
-                    </ul>
-                    </div>
-                </li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                    Orders
-                    </button>
-                    <div class="collapse" id="orders-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">New</a></li>
-                        <li><a href="#" class="link-dark rounded">Processed</a></li>
-                        <li><a href="#" class="link-dark rounded">Shipped</a></li>
-                        <li><a href="#" class="link-dark rounded">Returned</a></li>
-                    </ul>
-                    </div>
-                </li>
-                <li class="border-top my-3"></li>
-                <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                    Account
-                    </button>
-                    <div class="collapse" id="account-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-dark rounded">New...</a></li>
-                        <li><a href="#" class="link-dark rounded">Profile</a></li>
-                        <li><a href="#" class="link-dark rounded">Settings</a></li>
-                        <li><a href="#" class="link-dark rounded">Sign out</a></li>
-                    </ul>
-                    </div>
-                </li>
-                </ul>
+<div class="border-end bg-white" id="sidebar-wrapper">
+    <div class="list-group list-group-flush">
+        <div class="accordion" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button {{ ($headmenu === "Data Pegawai"  ? '' : 'collapsed' ) }}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Data Pegawai
+                </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse {{ ($headmenu === "Data Pegawai"  ? '' : 'collapse' ) }}" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <a class="list-group-item list-group-item-action  p-2 pl-4 {{ ($title === "Profil Pegawai"  ? 'bg-primary' : '' ) }} " href="/user/profile">Info Data Pribadi</a>
+                    <a class="list-group-item list-group-item-action  p-2 pl-4" href="#!">Info Rekan Kerja</a>
+                    <a class="list-group-item list-group-item-action  p-2 pl-4 {{ ($title === "Penghasilan"  ? 'bg-primary' : '' ) }} " href="/user/salary">Slip Gaji</a>
+                    <a class="list-group-item list-group-item-action  p-2 pl-4" href="#!">Info Ulang tahun</a>
+
+                </div>
             </div>
-        </div>
-        <div class="col md-9">
-            @yield('profile')
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                <button class="accordion-button {{ ($headmenu === "ess"  ? '' : 'collapsed' ) }}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Employee Self Service (ESS)
+                </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse {{ ($headmenu === "ess"  ? '' : 'collapse' ) }}" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                    <a class="list-group-item list-group-item-action  p-2 pl-4" href="/user/profile">Pelaporan Data Pegawai</a>
+                    <a class="list-group-item list-group-item-action  p-2 pl-4" href="#!">Pengajuan Cuti</a>
+                    <a class="list-group-item list-group-item-action  p-2 pl-4" href="#!">Pengajuan Dinas</a>
+                    <a class="list-group-item list-group-item-action  p-2 pl-4" href="#!">Info Ulang tahun</a>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                <button class="accordion-button {{ ($headmenu === "Struktur Organisasi"  ? '' : 'collapsed' ) }}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Struktur Organisasi
+                </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse {{ ($headmenu === "Struktur Organisasi"  ? '' : 'collapse' ) }}" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <a class="list-group-item list-group-item-action  p-2 pl-4" href="{{ route('struktur') }}">Struktur Organisasi</a>
+                    <a class="list-group-item list-group-item-action  p-2 pl-4" href="#!">Struktur Jabatan</a>
+                    <a class="list-group-item list-group-item-action  p-2 pl-4" href="#!">Job Profil</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-@endsection

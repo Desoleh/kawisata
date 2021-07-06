@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Memo Internal') }}</title>
+    <title>{{ config($title) }}</title>
 
     {{-- @include('includes.script-top')
 

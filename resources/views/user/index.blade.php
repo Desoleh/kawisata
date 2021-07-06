@@ -2,15 +2,15 @@
 
 @push('after-style')
     <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('landingpages/landingpages.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('landingpages/landingpages.css')}}"> --}}
     <link rel="stylesheet" href="{{asset('landingpages/features.css')}}">
 
 @endpush
 
 
-@section('title', 'Home')
+@section('title', $title)
 
-      {{-- @include('layouts.includes.navbar') --}}
+
 
 @section('content')
     {{-- svg --}}
@@ -76,44 +76,56 @@
         <!-- Jumbotron -->
   <h1 class="visually-hidden">E-Office KA Pariwisata</h1>
 
-  <div class="container px-4 py-5" id="featured-3">
-    <h2 class="pb-2 border-bottom">E-Office KA Pariwisata</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-      <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
-        </div>
-        <h2>Profil pegawai</h2>
-        <p>Profil Jabatan, Data Pribadi, Dokumen Pribadi</p>
-        <a href="/user/profile" class="icon-link">
-          detail
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-        </a>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
-        </div>
-        <h2>Penghasilan</h2>
-        <p>Penghasilan bulanan pegawai</p>
-        <a href="user/salary" class="icon-link">
-          detail
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-        </a>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
-        </div>
-        <h2>Peraturan Perusahaan</h2>
-        <p>Peraturan Perusahan, Peraturan Direksi, Instruksi Direksi, dll</p>
-        <a href="user/penghasilan" class="icon-link">
-          detail
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-        </a>
-      </div>
+<div class="container px-4 py-1" id="featured-3">
+<h2 class="pb-2 border-bottom">E-Office KA Pariwisata</h2>
+<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
+    <div class="feature col">
+    <div class="feature-icon bg-primary bg-gradient">
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
     </div>
-  </div>
+    <h2>Profil pegawai</h2>
+    <p>Profil Jabatan, Data Pribadi, Dokumen Pribadi</p>
+    <a href="/user/profile" class="icon-link">
+        detail
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+    </a>
+    </div>
+    <div class="feature col">
+    <div class="feature-icon bg-primary bg-gradient">
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
+    </div>
+    <h2>Penghasilan</h2>
+    <p>Penghasilan bulanan pegawai</p>
+    <a href="user/salary" class="icon-link">
+        detail
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+    </a>
+    </div>
+    <div class="feature col">
+    <div class="feature-icon bg-primary bg-gradient">
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
+    </div>
+    <h2>Peraturan Perusahaan</h2>
+    <p>Peraturan Perusahan, Peraturan Direksi, Instruksi Direksi, dll</p>
+    <a href="user/penghasilan" class="icon-link">
+        detail
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+    </a>
+    </div>
+    <div class="feature col">
+    <div class="feature-icon bg-primary bg-gradient">
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"/></svg>
+    </div>
+    <h2>Memo Internal</h2>
+    <p>Memo Internal</p>
+    <a href="user/mailbox" class="icon-link">
+        detail
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+    </a>
+    </div>
+
+</div>
+</div>
         <!-- /Jumbotron -->
 
 @endsection

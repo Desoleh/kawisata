@@ -20,7 +20,8 @@ class UserController extends Controller
             $nip = Auth::user()->nip;
             $documents = Document::where('nip', $nip)->first();
             $employees = Employee::where('nip', $nip)->first();
-            return view('user.index', ['employees' => $employees,'documents'=>$documents]);
+            $title = 'Beranda';
+            return view('user.index', compact(['employees','documents', 'title']));
         } else {
             return redirect('/');
         }
@@ -32,8 +33,11 @@ class UserController extends Controller
         $nip = Auth::user()->nip;
         $documents = Document::where('nip', $nip)->latest()->first();
         $employee = Employee::where('nip', $nip)->first();
+        
+        $headmenu = 'Data Pegawai';
+        $title = 'Profil Pegawai';
         // dd($documents);
-        return view('user.profile', compact(['judulhalaman','nip','employee','documents']));
+        return view('user.profile', compact(['judulhalaman','nip','employee','documents', 'title', 'headmenu' ]));
     }
 
     public function simpanphoto(Request $request){

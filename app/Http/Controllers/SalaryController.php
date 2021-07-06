@@ -51,9 +51,11 @@ class SalaryController extends Controller
                     total_pajak +
                     tunj_kurang_bayar'));
 
+        $headmenu = 'Data Pegawai';
+        $title = 'Penghasilan';
 
 
-            return view('user.salary', compact(['oncycles', 'offcycles','employee', 'total','document']));
+            return view('user.salary', compact(['oncycles', 'offcycles','employee', 'total','document','title','headmenu']));
     }
 
     /**
@@ -208,11 +210,11 @@ class SalaryController extends Controller
                     return $pdf->download('pdfview.pdf');
 
                 }
-
-            // dd($total);
+            $headmenu = 'Data Pegawai';
+            $title = 'Penghasilan';
 
             return view('user.salaryoncycles', compact([
-                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle'
+                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu'
                 ]));
     }
 
@@ -387,11 +389,11 @@ class SalaryController extends Controller
                     return $pdf->download('pdfview.pdf');
 
                 }
-
-            // dd($total);
+            $headmenu = 'Data Pegawai';
+            $title = 'Penghasilan';
 
             return view('user.salaryoffcycle', compact([
-                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle'
+                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu'
                 ]));
     }
 }

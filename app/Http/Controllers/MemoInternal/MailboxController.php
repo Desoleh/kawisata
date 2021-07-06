@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\MemoInternal;
 
+use App\Http\Controllers\Controller;
 use App\Models\Mailbox;
 use App\Models\MailboxFlag;
 use App\Models\MailboxReceiver;
@@ -24,8 +25,8 @@ class MailboxController extends Controller
     {
         $mailboxes = Mailbox::all();
         $positions = Position::all();
-        // dd($positions, $mailboxes);
-        return view('memointernal.index',compact('mailboxes','positions'));
+        $title = 'Memo Internal';
+        return view('memointernal.index',compact('mailboxes','positions','title'));
 
     }
 
@@ -55,7 +56,6 @@ class MailboxController extends Controller
         ]);
 
         $data = $request->all();
-        // dd($data);
 
         $nip = Auth::user()->nip;
         $positions = Position::where('holder_id',$nip)->first();
@@ -76,8 +76,9 @@ class MailboxController extends Controller
                 );
                 // dd($data2);
                     MailboxTmpReceiver::create($data2);
-
+            }
         return back()->with('success','Memo tersimpan');
+
 
     }
 
@@ -131,8 +132,9 @@ class MailboxController extends Controller
 
         // $mailboxes = Mailbox::all();
         $positions = Position::orderBy('hierarchy')->get();
+        $title = 'Memo Internal';
 
-        return view('memointernal.compose',compact('positions'));
+        return view('memointernal.compose',compact('positions', 'title'));
     }
 
     private function save($submit, $receiver_ids, $mailbox)
@@ -153,7 +155,7 @@ class MailboxController extends Controller
             // $mailbox_user_folder->user_id = $mailbox->sender_id;
 
             // if click "Draft" button save into "Drafts" folder
-            if($submit == 2) {
+            // if($submit == 2) {
             //     $mailbox_user_folder->folder_id = MailboxFolder::where("title", "Drafts")->first()->id;
             // } else {
             //     $mailbox_user_folder->folder_id = MailboxFolder::where("title", "Sent")->first()->id;
@@ -231,6 +233,6 @@ class MailboxController extends Controller
                     $mailbox_receiver->save();
                 }
             }
-        }
     }
 }
+

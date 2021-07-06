@@ -13,132 +13,58 @@
             <section class="content">
             <div class="row">
                 <div class="col-md-3">
-                <a href="{{ route('mailbox.compose') }}" class="btn btn-primary btn-block mb-3">Buat Memo Internal</a>
+                    <a href="{{ route('mailbox.compose') }}" class="btn btn-primary btn-block mb-3">Buat Memo Internal</a>
 
-                <div class="card">
-                    <div class="card-header disabled">
-                    <h3 class="card-title">Kotak Masuk</h3>
-
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                    </div>
-                    <div class="card-body p-0">
-                    <ul class="nav nav-pills flex-column">
-                        <li class="nav-item active">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-inbox"></i> Memo Internal Masuk
-                            <span class="badge bg-primary float-right">12</span>
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-envelope"></i> Disposisi Masuk
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-file-alt"></i> Drafts
-                        </a>
-                        </li>
-                    </ul>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card kotak masuk -->
-                <div class="card">
-                    <div class="card-header disabled ">
-                    <h3 class="card-title ">Kotak Keluar</h3>
-
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                    </div>
-                    <div class="card-body p-0">
-                    <ul class="nav nav-pills flex-column">
-                        <li class="nav-item active">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-inbox"></i> Memo Internal Keluar
-                            <span class="badge bg-primary float-right">12</span>
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-envelope"></i> Disposisi Terkirim
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-file-alt"></i> Status Memo Internal
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-file-alt"></i> Memo Internal Perlu Diproses
-                        </a>
-                        </li>
-
-                    </ul>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card kotak keluar -->
-                    <!-- /.card-body -->
-
-                <!-- /.card -->
+                    @include('layouts.includes.sidebarm')
                 </div>
                 <!-- /.col -->
                 <div class="col-md-9">
-                <div class="card card-primary card-outline">
-                    <div class="card-header inbox">
-                    <h3 class="card-title">Memo Internal Masuk</h3>
-                    </div>
-                    <!-- /.card-header -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-header inbox">
+                        <h3 class="card-title">Memo Internal Masuk</h3>
+                        </div>
+                        <!-- /.card-header -->
 
-                    <div class="table-responsive mailbox-messages mt-1 p-2">
-                        <table id="example2"  class="table table-sm  table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <td>
-                                        <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
-                                        </button>
-                                    </td>
-                                    <td>Tanggal</td>
-                                    <td>Perihal</td>
-                                    <td>Dari</td>
-                                    {{-- <td>Attachment</td> --}}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($mailboxes as $mailbox )
-                                <tr>
-                                    <td>
-                                    <div class="icheck-primary">
-                                        <input type="checkbox" value="" id="check1">
-                                        <label for="check1"></label>
-                                    </div>
-                                    </td>
-                                    <td class="mailbox-date" width="17%">{{ $mailbox->updated_at }}</td>
-                                    <td class="mailbox-subject">{{ $mailbox->perihal }}</td>
-                                    <td class="mailbox-name"  width="20%"><a href="#">{{ $mailbox->positions->name }}</a></td>
-                                    {{-- <td class="mailbox-attachment">{{ $mailbox->mailbox_attachments->attachment }}</td> --}}
-                                </tr>
-                                @empty
-                                    belum ada Memo Internal masuk
-                                @endforelse
-                            </tbody>
-                        </table>
-                        <!-- /.table -->
-                    </div>
-                    <!-- /.mail-box-messages -->
-                    </div>
-                    <!-- /.card-body -->
+                        <div class="table-responsive mailbox-messages mt-1 p-2">
+                            <table id="example2"  class="table table-sm  table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
+                                            </button>
+                                        </td>
+                                        <td>Tanggal</td>
+                                        <td>Perihal</td>
+                                        <td>Dari</td>
+                                        {{-- <td>Attachment</td> --}}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($mailboxes as $mailbox )
+                                    <tr>
+                                        <td>
+                                        <div class="icheck-primary">
+                                            <input type="checkbox" value="" id="check1">
+                                            <label for="check1"></label>
+                                        </div>
+                                        </td>
+                                        <td class="mailbox-date" width="17%">{{ $mailbox->updated_at }}</td>
+                                        <td class="mailbox-subject">{{ $mailbox->perihal }}</td>
+                                        <td class="mailbox-name"  width="20%"><a href="#">{{ $mailbox->positions->name }}</a></td>
+                                        {{-- <td class="mailbox-attachment">{{ $mailbox->mailbox_attachments->attachment }}</td> --}}
+                                    </tr>
+                                    @empty
+                                        belum ada Memo Internal masuk
+                                    @endforelse
+                                </tbody>
+                            </table>
+                            <!-- /.table -->
+                        </div>
+                        <!-- /.mail-box-messages -->
+                        </div>
+                        <!-- /.card-body -->
 
-                </div>
+                    </div>
                 <!-- /.card -->
                 </div>
                 <!-- /.col -->

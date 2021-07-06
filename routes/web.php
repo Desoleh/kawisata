@@ -8,11 +8,12 @@ use App\Http\Controllers\Admin;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\KgbController;
-use App\Http\Controllers\MailboxController;
+use App\Http\Controllers\MemoInternal\MailboxController;
 use App\Http\Controllers\OncycleController;
 use App\Http\Controllers\OffcycleController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\StrukturController;
 use App\Http\Controllers\UserController;
 use App\Models\Oncycle;
 
@@ -70,9 +71,10 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
 
 Route::prefix('user')->middleware('auth')->group(function () {
     Route::get('/', [UserController::class, 'index']);
-    Route::get('profile', [UserController::class, 'show']);
+    Route::get('profile', [UserController::class, 'show'])->name('user.profile');
     Route::post('profile/simpanphoto', [UserController::class, 'simpanphoto'])->name('simpanphoto');
     Route::get('salary', [SalaryController::class, 'index']);
+    Route::get('struktur', [StrukturController::class, 'index'])->name('struktur');
 
     // salary
     Route::get('/search', [SalaryController::class, 'search'])->name('search');

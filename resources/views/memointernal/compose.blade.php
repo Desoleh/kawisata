@@ -38,7 +38,7 @@ foreach($positions as $position){
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid small">
         <!-- Content Wrapper. Contains page content -->
         <div class="container-fluid">
 
@@ -47,81 +47,8 @@ foreach($positions as $position){
                 <div class="col-md-3">
                 <a href="{{ route('mailbox.index') }}" class="btn btn-primary btn-block mb-3">Memo Internal Masuk</a>
 
-                <div class="card">
-                    <div class="card-header disabled">
-                    <h3 class="card-title">Kotak Masuk</h3>
+                @include('layouts.includes.sidebarm')
 
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                    </div>
-                    <div class="card-body p-0">
-                    <ul class="nav nav-pills flex-column">
-                        <li class="nav-item active">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-inbox"></i> Memo Internal Masuk
-                            <span class="badge bg-primary float-right">12</span>
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-envelope"></i> Disposisi Masuk
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-file-alt"></i> Drafts
-                        </a>
-                        </li>
-                    </ul>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card kotak masuk -->
-                <div class="card">
-                    <div class="card-header disabled ">
-                    <h3 class="card-title ">Kotak Keluar</h3>
-
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                    </div>
-                    <div class="card-body p-0">
-                    <ul class="nav nav-pills flex-column">
-                        <li class="nav-item active">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-inbox"></i> Memo Internal Keluar
-                            <span class="badge bg-primary float-right">12</span>
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-envelope"></i> Disposisi Terkirim
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-file-alt"></i> Status Memo Internal
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-file-alt"></i> Memo Internal Perlu Diproses
-                        </a>
-                        </li>
-
-                    </ul>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card kotak keluar -->
-                    <!-- /.card-body -->
-
-                <!-- /.card -->
                 </div>
                 <!-- compose -->
                 <div class="col-md-9">
@@ -180,7 +107,7 @@ foreach($positions as $position){
                                             @foreach ( $result as $key=>$val )
                                                 <optgroup label="{{ $key }}">
                                                     @foreach ($val as $option )
-                                                        <option style="display:none" value=""> -- penandatangan -- </option>
+                                                        <option style="display:none" value> -- penandatangan -- </option>
                                                         <option value="{{ $option->position_id }}">{{ $option->name }} | {{ $option->holder_id }}</option>
                                                     @endforeach
                                                 </optgroup>

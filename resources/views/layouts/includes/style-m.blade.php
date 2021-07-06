@@ -32,7 +32,8 @@
     <style>
         .card-header.disabled{
         background-color: #99caff;
-        margin-bottom: 0;
+        margin-bottom: 1;
+        margin-top: 0;
         padding-bottom: 0;
         }
 
