@@ -22,9 +22,15 @@ class Position extends Model
         return $this->hasOne(Mailbox::class, 'approver_id');
     }
 
+
     public function user()
     {
         return $this->belongsTo(User::class, 'nip');
+    }
+
+    public function employee()
+    {
+        return $this->hasOne(Employee::class, 'nip');
     }
 
 }

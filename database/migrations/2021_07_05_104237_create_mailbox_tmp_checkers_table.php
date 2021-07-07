@@ -15,7 +15,7 @@ class CreateMailboxTmpCheckersTable extends Migration
     {
         Schema::create('mailbox_tmp_checkers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mailbox_id');
+            $table->string('mailbox_id',36);
             $table->string('checker_id',10);
             $table->integer('sequence')->default(0);
             $table->timestamps();

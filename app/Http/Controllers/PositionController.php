@@ -100,6 +100,6 @@ class PositionController extends Controller
         // dd($request);
 
 
-        return redirect()->route('employees.index');
+        return redirect()->route('positions.index');
     }
 }

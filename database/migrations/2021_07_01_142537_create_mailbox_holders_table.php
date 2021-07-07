@@ -15,7 +15,7 @@ class CreateMailboxHoldersTable extends Migration
     {
         Schema::create('mailbox_holders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mailbox_id');
+            $table->string('mailbox_id',36);
             $table->string('holder_id',10);
             $table->timestamps();
 

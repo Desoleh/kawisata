@@ -15,7 +15,7 @@ class CreateMailboxFlagsTable extends Migration
     {
         Schema::create('mailbox_flags', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mailbox_id');
+            $table->string('mailbox_id',36);
             $table->string('holder_id',10);
             $table->smallInteger('is_unread')->default(1);
             $table->timestamps();

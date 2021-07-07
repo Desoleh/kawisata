@@ -8,9 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class Mailbox extends Model
 {
+
+
+    public $incrementing = false;
+
     use HasFactory;
 
+
     protected $fillable =[
+        'id',
         'document_id',
         'perihal',
         'body',
@@ -40,6 +46,26 @@ class Mailbox extends Model
     public function tmpreceivers()
     {
         return $this->hasMany(MailboxTmpReceiver::class);
+    }
+
+    public function checkers()
+    {
+        return $this->hasMany(MailboxChecker::class);
+    }
+
+    public function tmpcheckers()
+    {
+        return $this->hasMany(MailboxTmpChecker::class);
+    }
+
+    public function copiers()
+    {
+        return $this->hasMany(MailboxCopy::class);
+    }
+
+    public function tmpcopiers()
+    {
+        return $this->hasMany(MailboxCopy::class);
     }
 
 

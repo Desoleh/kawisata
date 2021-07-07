@@ -39,20 +39,21 @@ class EmployeesImport implements ToCollection, WithUpserts, WithStartRow
                     'nama'          => $row[1],
                     'gelar'         => $row[2],
                     'tempat_lahir'  => $row[3],
-                    'tanggal_lahir' => $row[4],
+                    'tanggal_lahir'   =>  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[4])->format('Y-m-d'),
                     'umur_thn'      => $row[5],
                     'umur_bln'      => $row[6],
-                    'tmt_kerja'     => $row[7],
+                    'tmt_kerja'   =>  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[7])->format('Y-m-d'),
                     'mk_tahun'      => $row[8],
                     'mk_bulan'      => $row[9],
-                    'tmt_organik'   => $row[10],
+                    'tmt_organik'   =>  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[10])->format('Y-m-d'),
                     'gol_ruang'     => $row[11],
-                    'tmt_pangkat'   => $row[12],
+                    'tmt_pangkat'   =>  \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row[12])->format('Y-m-d'),
                     'mk_pkt_th'     => $row[13],
                     'mk_pkt_bl'     => $row[14],
                     'jenis_pangkat' => $row[15],
                     'mkg_thn'       => $row[16],
                     'mkg_bln'       => $row[17],
+
 
                 ]
             );

@@ -15,7 +15,7 @@ class CreateMailboxCopiesTable extends Migration
     {
         Schema::create('mailbox_copies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mailbox_id');
+            $table->string('mailbox_id',36);
             $table->string('copy_id',10);
             $table->timestamps();
 

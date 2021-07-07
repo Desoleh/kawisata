@@ -3,15 +3,21 @@
 namespace App\Http\Controllers\MemoInternal;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use App\Models\Mailbox;
+use App\Models\MailboxAttachment;
 use App\Models\MailboxFlag;
 use App\Models\MailboxReceiver;
+use App\Models\MailboxTmpChecker;
+use App\Models\MailboxTmpCopy;
 use App\Models\MailboxTmpReceiver;
 use App\Models\Position;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\ToArray;
+use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
 
 class MailboxController extends Controller
 {
@@ -56,32 +62,74 @@ class MailboxController extends Controller
         ]);
 
         $data = $request->all();
-
+        // dd($data);
         $nip = Auth::user()->nip;
         $positions = Position::where('holder_id',$nip)->first();
         $drafter_id =$positions->position_id;
 
         $mailbox=new Mailbox();
+        $mailbox->id=Uuid::uuid4()->getHex();
         $mailbox->body=$data['body'];
         $mailbox->perihal=$data['perihal'];
         $mailbox->approver_id=$data['approver_id'];
-        $mailbox->draft_created_at=Carbon::now();
         $mailbox->drafter_id=$drafter_id;
         $mailbox->save();
 
-            foreach ($data ['receiver_id'] as $item => $value) {
-                $data2 = array(
-                    'mailbox_id'    =>  $mailbox->id,
-                    'receiver_id'   =>  $data['receiver_id'][$item],
-                );
-                // dd($data2);
-                    MailboxTmpReceiver::create($data2);
-            }
+        $receiver_ids = $request->receiver_id;
+        foreach ($receiver_ids as $receiver_id) {
+        $mailbox_receiver = new MailboxTmpReceiver();
+        $mailbox_receiver->mailbox_id = $mailbox->id;
+        $mailbox_receiver->receiver_id = $receiver_id;
+        $mailbox_receiver->save();
+        }
+        $checker_ids = $request->checker_id;
+        foreach ($checker_ids as $checker_id) {
+        $mailbox_checker = new MailboxTmpChecker();
+        $mailbox_checker->mailbox_id = $mailbox->id;
+        $mailbox_checker->checker_id = $checker_id;
+        $mailbox_checker->save();
+        DB::table("mailbox_tmp_checkers")->where('mailbox_id',  $mailbox->id)->increment('sequence');
+        }
+        $copy_ids = $request->copy_id;
+        foreach ($copy_ids as $copy_id) {
+        $mailbox_copy = new MailboxTmpCopy();
+        $mailbox_copy->mailbox_id = $mailbox->id;
+        $mailbox_copy->copy_id = $copy_id;
+        $mailbox_copy->save();
+        }
+
+
+
+
         return back()->with('success','Memo tersimpan');
 
 
     }
 
+    public function attachment(Request $request)
+    {
+               $this->validate($request, [
+                'filenames' => 'required',
+                'filenames.*' => 'required'
+        ]);
+
+        $files = [];
+        if($request->hasfile('filenames'))
+         {
+            foreach($request->file('filenames') as $file)
+            {
+                $name = time().rand(1,100).'.'.$file->extension();
+                $file->move(public_path('files'), $name);
+                $files[] = $name;
+            }
+         }
+
+         $file= new MailboxAttachment();
+         $file->filenames = $files;
+         $file->save();
+
+         $file->storeAs('files', $name);
+    }
     /**
      * Display the specified resource.
      *
@@ -131,7 +179,15 @@ class MailboxController extends Controller
     {
 
         // $mailboxes = Mailbox::all();
-        $positions = Position::orderBy('hierarchy')->get();
+        // $positions = Position::orderBy('hierarchy')->get();
+        // $employees = Employee::all();
+
+        $positions =  DB::table('positions')
+                ->join('employees', 'positions.holder_id', '=', 'employees.nip')
+                ->select('positions.*', 'employees.nama')
+                ->orderBy('hierarchy')
+                ->get();
+        // dd($positions);
         $title = 'Memo Internal';
 
         return view('memointernal.compose',compact('positions', 'title'));

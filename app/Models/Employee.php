@@ -11,7 +11,10 @@ class Employee extends Model
     protected $primaryKey = "nip";
     protected $guarded = [];
 
-    // public function setDateAttribute( $value ) {
-    // $this->attributes['date'] = (new Carbon($value))->format('d/m/y');
+        public function position()
+    {
+
+        return $this->belongsTo(Position::class, 'holder_id');
+    }
 
 }

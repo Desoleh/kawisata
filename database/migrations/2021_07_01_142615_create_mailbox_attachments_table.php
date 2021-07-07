@@ -15,7 +15,7 @@ class CreateMailboxAttachmentsTable extends Migration
     {
         Schema::create('mailbox_attachments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mailbox_id');
+            $table->string('mailbox_id',36);
             $table->string('attachment');
             $table->timestamps();
 

@@ -14,12 +14,11 @@ class CreateMailboxesTable extends Migration
     public function up()
     {
         Schema::create('mailboxes', function (Blueprint $table) {
-            $table->id();
+            $table->string('id',36)->primary()->unique();
             $table->string('document_id')->unique()->nullable();
             $table->string('perihal',225);
             $table->longText('body');
-            $table->smallInteger('is_draft')->default(1);
-            $table->dateTime('draft_created_at');
+            $table->dateTime('date_approved_at')->nullable();
             $table->string('approver_id',10);
             $table->string('drafter_id',10);
             $table->timestamps();

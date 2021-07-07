@@ -19,4 +19,9 @@ class MailboxAttachment extends Model
     {
         return $this->belongsTo(Mailbox::class,'id');
     }
+
+    public function setFilenamesAttribute($value)
+    {
+        $this->attributes['filenames'] = json_encode($value);
+    }
 }

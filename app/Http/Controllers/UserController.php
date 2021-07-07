@@ -16,15 +16,13 @@ class UserController extends Controller
 
     public function index()
     {
-        if (request()->user()->hasRole('user')) {
+
             $nip = Auth::user()->nip;
             $documents = Document::where('nip', $nip)->first();
             $employees = Employee::where('nip', $nip)->first();
             $title = 'Beranda';
             return view('user.index', compact(['employees','documents', 'title']));
-        } else {
-            return redirect('/');
-        }
+
     }
 
     public function show()
@@ -33,7 +31,7 @@ class UserController extends Controller
         $nip = Auth::user()->nip;
         $documents = Document::where('nip', $nip)->latest()->first();
         $employee = Employee::where('nip', $nip)->first();
-        
+
         $headmenu = 'Data Pegawai';
         $title = 'Profil Pegawai';
         // dd($documents);

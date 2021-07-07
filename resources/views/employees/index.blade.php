@@ -60,7 +60,7 @@
                     {{-- export-import --}}
                     <div class="col-sm-4">
                         <a href="{{ route('employee.export') }}" class="btn btn-primary mt-2">export to xlsx</a>
-                                    
+
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#exampleModal">
                             Import Data
@@ -108,7 +108,7 @@
                     {{-- </div> --}}
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example1" class="table table-bordered table-striped small">
                         <thead>
                             <tr>
                                 <th>NIP</th>
@@ -139,15 +139,15 @@
                                         <td>{{$employee->nama}}</td>
                                         <td>{{$employee->gelar}}</td>
                                         <td>{{$employee->tempat_lahir}}</td>
-                                        <td>{{$employee->tanggal_lahir}}</td>
+                                        <td>{{date('d-m-Y', strtotime($employee->tanggal_lahir))}}</td>
                                         <td>{{$employee->umur_thn}}</td>
                                         <td>{{$employee->umur_bln}}</td>
-                                        <td>{{$employee->tmt_kerja}}</td>
+                                        <td>{{date('d-m-Y', strtotime($employee->tmt_kerja))}}</td>
                                         <td>{{$employee->mk_tahun}}</td>
                                         <td>{{$employee->mk_bulan}}</td>
-                                        <td>{{$employee->tmt_organik}}</td>
+                                        <td>{{date('d-m-Y', strtotime($employee->tmt_organik))}}</td>
                                         <td>{{$employee->gol_ruang}}</td>
-                                        <td>{{$employee->tmt_pangkat}}</td>
+                                        <td>{{date('d-m-Y', strtotime($employee->tmt_pangkat))}}</td>
                                         <td>{{$employee->mk_pkt_th}}</td>
                                         <td>{{$employee->mk_pkt_bl}}</td>
                                         <td>{{$employee->jenis_pangkat}}</td>

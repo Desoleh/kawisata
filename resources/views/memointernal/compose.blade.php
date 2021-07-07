@@ -1,7 +1,7 @@
 <?php
 $result = array();
 foreach($positions as $position){
-   $result[$position->parent_name][] = $position;
+    $result[$position->parent_name][] = $position;
 }
  ?>
 
@@ -65,11 +65,13 @@ foreach($positions as $position){
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Kepada</label>
                                 <div class="col-sm-10">
                                     <div class="select2-purple">
-                                        <select class="select2" multiple="multiple" data-placeholder="Kepada" style="width: 100%;" name="receiver_id[]">
+                                        <?php $selected_receivers = old('receiver_id') ?>
+                                        <select class="select2bs4 small" multiple="multiple" data-placeholder="Kepada" style="width: 100%;" name="receiver_id[]">
                                             @foreach ( $result as $key=>$val )
                                                 <optgroup label="{{ $key }}">
                                                     @foreach ($val as $option )
-                                                        <option value="{{ $option->position_id }}">{{ $option->name }} | {{ $option->holder_id }}</option>
+                                                        {{-- <option value="{{ $option->position_id }}" >{{ $option->name }} | {{ $option->holder_id }}</option> --}}
+                                                        <option value="{{ $option->position_id }}" {{ $selected_receivers!=null && in_array($option->position_id, $selected_receivers)?"selected":"" }}>{{ $option->name }} | {{ $option->nama }} </option>
                                                     @endforeach
                                                 {{-- </optgroup> --}}
                                             @endforeach
@@ -85,11 +87,14 @@ foreach($positions as $position){
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Tembusan</label>
                                 <div class="col-sm-10">
                                     <div class="select2-purple">
-                                        <select class="select2" multiple="multiple" data-placeholder="Kepada" style="width: 100%;">
+                                        <?php $selected_copiers = old('copy_id') ?>
+                                        <select class="select2 small" multiple="multiple" data-placeholder="Tembusan" style="width: 100%;" name="copy_id[]">
                                             @foreach ( $result as $key=>$val )
                                                 <optgroup label="{{ $key }}">
                                                     @foreach ($val as $option )
-                                                        <option value="{{ $option->position_id }}">{{ $option->name }} | {{ $option->holder_id }}</option>
+                                                        {{-- <option value="{{ $option->position_id }}" >{{ $option->name }} | {{ $option->holder_id }}</option> --}}
+                                                        <option value="{{ $option->position_id }}" {{ $selected_copiers!=null && in_array($option->position_id, $selected_copiers)?"selected":"" }}>{{ $option->name }} | {{ $option->nama }}</option>
+
                                                     @endforeach
                                                 </optgroup>
                                             @endforeach
@@ -103,12 +108,13 @@ foreach($positions as $position){
                                 <label class="col-sm-2 col-form-label">Penandatangan</label>
                                 <div class="col-sm-10">
                                     <div>
-                                        <select class="form-control" data-placeholder="Penandatangan" style="width: 100%;" name="approver_id">
+                                        <?php $selected_approvers = old('Approver_id') ?>
+                                        <select class="form-control form-control-sm" data-placeholder="Penandatangan" style="width: 100%;" name="approver_id">
                                             @foreach ( $result as $key=>$val )
                                                 <optgroup label="{{ $key }}">
                                                     @foreach ($val as $option )
                                                         <option style="display:none" value> -- penandatangan -- </option>
-                                                        <option value="{{ $option->position_id }}">{{ $option->name }} | {{ $option->holder_id }}</option>
+                                                        <option value=" {{ $option->position_id }}" >{{ $option->name }} | {{ $option->nama }}</option>
                                                     @endforeach
                                                 </optgroup>
                                             @endforeach
@@ -120,15 +126,18 @@ foreach($positions as $position){
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+
+                            <div class="form-group form-group-sm row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Pemeriksa</label>
                                 <div class="col-sm-10">
                                     <div class="select2-purple">
-                                        <select class="select2" multiple="multiple" data-placeholder="Kepada" style="width: 100%;">
+                                        <?php $selected_checkers = old('checker_id') ?>
+                                        <select class="select2 small" multiple="multiple" data-placeholder="Pemeriksa" style="width: 100%;" name="checker_id[]">
                                             @foreach ( $result as $key=>$val )
                                                 <optgroup label="{{ $key }}">
                                                     @foreach ($val as $option )
-                                                        <option value="{{ $option->position_id }}">{{ $option->name }} | {{ $option->holder_id }}</option>
+                                                        {{-- <option value="{{ $option->position_id }}" >{{ $option->name }} | {{ $option->holder_id }}</option> --}}
+                                                        <option value="{{ $option->position_id }}" {{ $selected_checkers!=null && in_array($option->position_id, $selected_checkers)?"selected":"" }}>{{ $option->name }} | {{ $option->nama }}</option>
                                                     @endforeach
                                                 </optgroup>
                                             @endforeach
@@ -140,7 +149,7 @@ foreach($positions as $position){
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Perihal</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="perihal" placeholder="Perihal">
+                                    <input type="text" class="form-control form-control-sm" name="perihal" placeholder="Perihal" value="{{ old("perihal")!=null?old("perihal"):"" }}">
                                             @error('perihal')
                                                 <div class="mt-2 text-danger">{{ $message }}</div>
                                             @enderror
@@ -148,7 +157,8 @@ foreach($positions as $position){
                             </div>
 
                             <div class="form-group">
-                                <textarea id="summernote" class="form-control" style="height: 300px" name="body">
+                                <textarea id="summernote" class="form-control" style="height: 300px" name="body" value="{{ old("body")!=null?old("body"):"" }}">
+                                    {{Request::old('body')}}
                                     {{-- TEXT AREA --}}
                                 </textarea>
                                             @error('body')
@@ -160,11 +170,12 @@ foreach($positions as $position){
 
                             <div class="form-group">
                                 <div class="btn btn-default btn-file">
-                                <i class="fas fa-paperclip"></i> Attachment
-                                <input type="file" name="attachment">
+                                    <i class="fa fa-paperclip"></i> Attachments
+                                    <input type="file" name="attachments[]" multiple>
                                 </div>
-                                <p class="help-block">Max. 5MB</p>
+                                <p class="help-block">Max. {{ (int)(ini_get('upload_max_filesize')) }}M</p>
                             </div>
+
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">

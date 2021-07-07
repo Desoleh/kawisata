@@ -60,12 +60,12 @@
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                         @if (Auth::user()->roles == 'USER')
-                            <a href="{{ url('/user') }}" class="btn btn-primary btn-lg px-4 gap-3">Home</a>
+                            <a href="{{ url('user') }}" class="btn btn-primary btn-lg px-4 gap-3">Home</a>
                         @elseif (Auth::user()->roles == 'ADMIN')
-                            <a href="{{ url('/admin') }}" class="btn btn-primary btn-lg px-4 gap-3">Home</a>
-                            
+                            <a href="{{ url('admin') }}" class="btn btn-primary btn-lg px-4 gap-3">Home</a>
+
                         @endif
-                        
+
                     @else
                         <a href="{{ route('login') }}" class="btn btn-primary btn-lg px-4 gap-3">Log in</a>
 
