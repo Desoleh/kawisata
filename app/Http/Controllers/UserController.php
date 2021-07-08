@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DashboardEmployee;
 use App\Models\Document;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -17,11 +18,10 @@ class UserController extends Controller
     public function index()
     {
 
-            $nip = Auth::user()->nip;
-            $documents = Document::where('nip', $nip)->first();
-            $employees = Employee::where('nip', $nip)->first();
+            $data1 = DashboardEmployee::where('jenis',1)->orderby('urutan')->get();
+            $data2 = DashboardEmployee::where('jenis',2)->orderby('urutan')->get();
             $title = 'Beranda';
-            return view('user.index', compact(['employees','documents', 'title']));
+            return view('user.index', compact(['data1','data2', 'title']));
 
     }
 

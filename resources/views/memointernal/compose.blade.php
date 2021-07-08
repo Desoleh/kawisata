@@ -55,7 +55,13 @@ foreach($positions as $position){
                 <div class="card card-primary card-outline">
                     <div class="card-header">
                     <h3 class="card-title">Memo Internal</h3>
-                    @include('alert')
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success">
+                                <p>{{ $message }}</p>
+                            </div>
+                        @endif
+
+                    {{-- @include('alert') --}}
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -73,7 +79,7 @@ foreach($positions as $position){
                                                         {{-- <option value="{{ $option->position_id }}" >{{ $option->name }} | {{ $option->holder_id }}</option> --}}
                                                         <option value="{{ $option->position_id }}" {{ $selected_receivers!=null && in_array($option->position_id, $selected_receivers)?"selected":"" }}>{{ $option->name }} | {{ $option->nama }} </option>
                                                     @endforeach
-                                                {{-- </optgroup> --}}
+                                                </optgroup>
                                             @endforeach
                                         </select>
                                             @error('receiver_id')
@@ -168,13 +174,52 @@ foreach($positions as $position){
                             </div>
 
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <div class="btn btn-default btn-file">
                                     <i class="fa fa-paperclip"></i> Attachments
                                     <input type="file" name="attachments[]" multiple>
                                 </div>
                                 <p class="help-block">Max. {{ (int)(ini_get('upload_max_filesize')) }}M</p>
+                            </div> --}}
+
+                            <div class="container lst">
+
+                                @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <strong>Sorry!</strong> There were more problems with your HTML input.<br><br>
+                                    <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+
+                                {{-- @if(session('success'))
+                                <div class="alert alert-success">
+                                {{ session('success') }}
+                                </div>
+                                @endif --}}
+
+                                <h5 class="well">Lampiran</h5>
+
+                                    <div class="input-group hdtuto control-group lst increment small" >
+                                    <input type="file" name="filenames[]" class="myfrm form-control">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-success" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
+                                    </div>
+                                    </div>
+                                    <div class="clone hide">
+                                    <div class="hdtuto control-group lst input-group" style="margin-top:10px">
+                                        <input type="file" name="filenames[]" class="myfrm form-control">
+                                        <div class="input-group-btn">
+                                        <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
+                                        </div>
+                                    </div>
+                                    </div>
                             </div>
+
+
 
                             </div>
                             <!-- /.card-body -->
@@ -325,6 +370,16 @@ foreach($positions as $position){
         theme: 'bootstrap4'
         })
 
+        $("select").on("select2:select", function (evt) {
+        var element = evt.params.data.element;
+        var $element = $(element);
+
+        $element.detach();
+        $(this).append($element);
+        $(this).trigger("change");
+        });
+
+
 
     })
         //Bootstrap Duallistbox
@@ -339,4 +394,15 @@ foreach($positions as $position){
     });
     </script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".btn-success").click(function(){
+          var lsthmtl = $(".clone").html();
+          $(".increment").after(lsthmtl);
+      });
+      $("body").on("click",".btn-danger",function(){
+          $(this).parents(".hdtuto").remove();
+      });
+    });
+</script>
 @endsection

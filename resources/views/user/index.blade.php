@@ -77,54 +77,37 @@
   <h1 class="visually-hidden">E-Office KA Pariwisata</h1>
 
 <div class="container px-4 py-1" id="featured-3">
-<h2 class="pb-2 border-bottom">E-Office KA Pariwisata</h2>
-<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
-    <div class="feature col">
-    <div class="feature-icon bg-primary bg-gradient">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
-    </div>
-    <h2>Profil pegawai</h2>
-    <p>Profil Jabatan, Data Pribadi, Dokumen Pribadi</p>
-    <a href="/user/profile" class="icon-link">
-        detail
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-    </a>
-    </div>
-    <div class="feature col">
-    <div class="feature-icon bg-primary bg-gradient">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
-    </div>
-    <h2>Penghasilan</h2>
-    <p>Penghasilan bulanan pegawai</p>
-    <a href="user/salary" class="icon-link">
-        detail
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-    </a>
-    </div>
-    <div class="feature col">
-    <div class="feature-icon bg-primary bg-gradient">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
-    </div>
-    <h2>Peraturan Perusahaan</h2>
-    <p>Peraturan Perusahan, Peraturan Direksi, Instruksi Direksi, dll</p>
-    <a href="user/penghasilan" class="icon-link">
-        detail
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-    </a>
-    </div>
-    <div class="feature col">
-    <div class="feature-icon bg-primary bg-gradient">
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"/></svg>
-    </div>
-    <h2>Memo Internal</h2>
-    <p>Memo Internal</p>
-    <a href="user/mailbox" class="icon-link">
-        detail
-        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
-    </a>
+    <div class="row ">
+        @foreach ($data1 as $data )
+        <div class="col">
+            <div class="card mt-3">
+            <div class="card-header text-dark bg-primary">
+                <h5  class=" text-center mb-0">{{ $data->kedudukan }}</h5>
+            </div>
+            <div class="card-body">
+                <h1  class=" text-center m-0">{{ $data->jumlah }}</h1>
+            </div>
+            </div>
+        </div>
+        @endforeach
     </div>
 
-</div>
+    <div class="row">
+        @foreach ($data2 as $data )
+        <div class="col-md-2 d-flex ">
+            <div class="card flex-fill">
+            <div class="card-header text-dark bg-warning mb-3">
+                <h6 class=" text-center fw-normal mb-0">{{ $data->kedudukan }}</h6>
+            </div>
+            <div class="card-body m-0 p-0">
+                <h1 class=" text-center m-0">{{ $data->jumlah }}</h1>
+            </div>
+            </div>
+        </div>
+        @endforeach
+
+    </div>
+
 </div>
         <!-- /Jumbotron -->
 

@@ -17,7 +17,7 @@ class MailboxAttachment extends Model
 
     public function mailboxes()
     {
-        return $this->belongsTo(Mailbox::class,'id');
+        return $this->belongsTo(Mailbox::class,'mailbox_id');
     }
 
     public function setFilenamesAttribute($value)

@@ -71,7 +71,7 @@ class Mailbox extends Model
 
     public function mailbox_attachments()
     {
-        return $this->hasMany(MailboxAttachment::class, 'mailbox_id', 'id');
+        return $this->hasMany(MailboxAttachment::class);
     }
 
     public function mailbox_flags()

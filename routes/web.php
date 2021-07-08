@@ -31,9 +31,13 @@ use App\Models\Oncycle;
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
+Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['auth', 'verified']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['auth', 'verified']);
+
 // Route::resource('employees', EmployeeController::class)->middleware(['auth', 'verified']);
 
 // Route::prefix('admin')->group(function () {

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg sticky-top flex-md-nowrap p-0 navbar-light bg-light ml-5">
+<nav class="navbar navbar-expand-lg sticky-top flex-md-nowrap p-0 navbar-dark bg-purple ml-5">
       <a class="navbar-brand" href="/">
                   <img src="{{asset('images/logo.png')}}" alt="" height=60">
   </a>
@@ -33,7 +33,7 @@
                                 </a>
 
                             </li>
-                            <a class="nav-link active text-white btn btn-primary" href="{{ route('logout') }}"
+                            <a class=" text-black btn btn-warning" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}

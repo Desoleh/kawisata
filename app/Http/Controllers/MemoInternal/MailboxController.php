@@ -59,6 +59,7 @@ class MailboxController extends Controller
             'receiver_id' => 'required',
             'approver_id' => 'required',
             'body' => 'required',
+            'attachment' => 'file|max:5000',
         ]);
 
         $data = $request->all();
@@ -98,8 +99,23 @@ class MailboxController extends Controller
         $mailbox_copy->save();
         }
 
-
-
+        if ($request->hasfile('filenames')) {
+            $files = [];
+            foreach ($request->file('filenames') as $file) {
+                if ($file->isValid()) {
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = round(microtime(true) * 1000).'.'.$extension;
+                    $file->move(public_path('images'), $filename);
+                    $files[] = [
+                        'attachment' => $filename,
+                        'mailbox_id' => $mailbox->id,
+                    ];
+                }
+            }
+            MailboxAttachment::insert($files);
+        }else{
+            echo'Gagal';
+        }        //  $file->storeAs('files', $name);
 
         return back()->with('success','Memo tersimpan');
 
@@ -108,27 +124,12 @@ class MailboxController extends Controller
 
     public function attachment(Request $request)
     {
-               $this->validate($request, [
-                'filenames' => 'required',
-                'filenames.*' => 'required'
-        ]);
+        //        $this->validate($request, [
+        //         'filenames' => 'required',
+        //         'filenames.*' => 'required'
+        // ]);
 
-        $files = [];
-        if($request->hasfile('filenames'))
-         {
-            foreach($request->file('filenames') as $file)
-            {
-                $name = time().rand(1,100).'.'.$file->extension();
-                $file->move(public_path('files'), $name);
-                $files[] = $name;
-            }
-         }
 
-         $file= new MailboxAttachment();
-         $file->filenames = $files;
-         $file->save();
-
-         $file->storeAs('files', $name);
     }
     /**
      * Display the specified resource.
