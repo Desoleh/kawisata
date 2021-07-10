@@ -79,7 +79,7 @@
     </svg>
 
       @include('layouts.includes.navbar')
-        <div class="d-flex position-relative overflow-hidden" id="wrapper">
+        <div class="d-flex " id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
                 @yield('sidebar')
@@ -87,7 +87,7 @@
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
-                    @yield('togglemenu')
+
                 <!-- Page content-->
                 <div class="container-fluid">
                     @yield('content')

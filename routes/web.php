@@ -90,6 +90,8 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::get('mailbox', [ MailboxController::class, 'index'])->name('mailbox.index');
     Route::get('compose', [ MailboxController::class, 'compose'])->name('mailbox.compose');
     Route::post('store', [ MailboxController::class, 'store'])->name('mailbox.store');
+    Route::get('edit', [ MailboxController::class, 'edit'])->name('mailbox.edit');
+
 
 
 });

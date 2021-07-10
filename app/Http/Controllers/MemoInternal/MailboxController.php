@@ -150,7 +150,17 @@ class MailboxController extends Controller
      */
     public function edit(Mailbox $mailbox)
     {
-        //
+        $holderid = Auth::user()->nip;
+        $ownapprover = Position::where('holder_id', $holderid)->first();
+        $positions =  DB::table('positions')
+                ->join('employees', 'positions.holder_id', '=', 'employees.nip')
+                ->select('positions.*', 'employees.nama')
+                ->orderBy('hierarchy')
+                ->get();
+        // dd($positions);
+        $title = 'Memo Internal';
+
+        return view('memointernal.edit',compact('positions', 'title', 'ownapprover'));
     }
 
     /**
@@ -182,7 +192,8 @@ class MailboxController extends Controller
         // $mailboxes = Mailbox::all();
         // $positions = Position::orderBy('hierarchy')->get();
         // $employees = Employee::all();
-
+        $holderid = Auth::user()->nip;
+        $ownapprover = Position::where('holder_id', $holderid)->first();
         $positions =  DB::table('positions')
                 ->join('employees', 'positions.holder_id', '=', 'employees.nip')
                 ->select('positions.*', 'employees.nama')
@@ -191,7 +202,7 @@ class MailboxController extends Controller
         // dd($positions);
         $title = 'Memo Internal';
 
-        return view('memointernal.compose',compact('positions', 'title'));
+        return view('memointernal.compose',compact('positions', 'title', 'ownapprover'));
     }
 
     private function save($submit, $receiver_ids, $mailbox)

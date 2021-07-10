@@ -4,5 +4,6 @@
 
         <link rel="stylesheet" href="{{asset('adminlte/css/adminlte.min.css')}}">
         <link rel="stylesheet" href="{{asset('adminlte/css/userprofile.css')}}">
+        <link href="{{asset('adminlte/styles.css')}}" rel="stylesheet">
 
 

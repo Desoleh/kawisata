@@ -76,10 +76,10 @@
         <!-- Jumbotron -->
   <h1 class="visually-hidden">E-Office KA Pariwisata</h1>
 
-<div class="container px-4 py-1" id="featured-3">
+<div class="container" id="featured-3">
     <div class="row ">
         @foreach ($data1 as $data )
-        <div class="col">
+        <div class=" col-md justify-content-center ">
             <div class="card mt-3">
             <div class="card-header text-dark bg-primary">
                 <h5  class=" text-center mb-0">{{ $data->kedudukan }}</h5>
