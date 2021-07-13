@@ -1,7 +1,10 @@
+
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('adminlte/js/demo.js')}}"></script>
 <!-- jQuery -->
 <script src="{{ asset('adminlte/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('adminlte/jQuery.print.min.js')}}"></script>
+<script src="{{asset('adminlte/print.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('adminlte/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
@@ -30,3 +33,6 @@
     <script src="{{asset('adminlte/vendor/datatables-buttons/js/buttons.html5.min.js')}}"></script>
     <script src="{{asset('adminlte/vendor/datatables-buttons/js/buttons.print.min.js')}}"></script>
     <script src="{{asset('adminlte/vendor/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
+
+    

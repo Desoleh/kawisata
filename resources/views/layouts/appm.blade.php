@@ -26,7 +26,6 @@
     </div>
 
     @yield('script')
-    {{-- @include('includes.script-bottom')
-    @stack('after-script') --}}
+    @stack('after-script')
 </body>
 </html>

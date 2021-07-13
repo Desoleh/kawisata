@@ -12,6 +12,7 @@ use App\Http\Controllers\MemoInternal\MailboxController;
 use App\Http\Controllers\OncycleController;
 use App\Http\Controllers\OffcycleController;
 use App\Http\Controllers\PositionController;
+use App\Http\Controllers\PrintController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\StrukturController;
 use App\Http\Controllers\UserController;
@@ -74,10 +75,10 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
 });
 
 Route::prefix('user')->middleware('auth')->group(function () {
-    Route::get('/', [UserController::class, 'index']);
+    Route::get('/', [UserController::class, 'index'])->name('user.home');
     Route::get('profile', [UserController::class, 'show'])->name('user.profile');
     Route::post('profile/simpanphoto', [UserController::class, 'simpanphoto'])->name('simpanphoto');
-    Route::get('salary', [SalaryController::class, 'index']);
+    Route::get('salary', [SalaryController::class, 'index'])->name('user.salary');
     Route::get('struktur', [StrukturController::class, 'index'])->name('struktur');
 
     // salary
@@ -92,8 +93,10 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::post('store', [ MailboxController::class, 'store'])->name('mailbox.store');
     Route::get('edit', [ MailboxController::class, 'edit'])->name('mailbox.edit');
 
+    Route::get('/students',[PrintController::class, 'index']);
+    Route::get('/prnpriview',[PrintController::class, 'prnpriview']);
 
-
+    Route::post('/print', function() { return view('user.cetak4'); });
 });
 
 

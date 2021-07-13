@@ -44,3 +44,9 @@
         }
 
     </style>
+
+<link rel="stylesheet" href="{{ asset('bootstrap/4.6.0/css/bootstrap.min.css') }}">
+
+<script type="text/javascript" src="{{ asset('bootstrap/4.6.0/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('adminlte/vendor/jquery/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('adminlte/jquery.printPage.js') }}"></script>

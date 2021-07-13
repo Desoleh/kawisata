@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BulanGaji;
 use App\Models\Document;
 use App\Models\Employee;
 use App\Models\Offcycle;
 use App\Models\Oncycle;
-use Barryvdh\DomPDF\Facade as PDF;
+use niklasravnsborg\LaravelPdf\Facades\Pdf as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Dompdf\Dompdf;
 
 class SalaryController extends Controller
 {
@@ -32,6 +32,7 @@ class SalaryController extends Controller
 
             $oncycles = Oncycle::where('nip', $nip)->latest()->get();
             $offcycles = Offcycle::where('nip', $nip)->latest()->get();
+            $bulangajis = BulanGaji::all();
 // dd($document);
             $total = DB::table('oncycles')
                 ->where([
@@ -52,10 +53,10 @@ class SalaryController extends Controller
                     tunj_kurang_bayar'));
 
         $headmenu = 'Data Pegawai';
-        $title = 'Penghasilan';
+        $title = 'Upah Pokok dan Tunjangan Tetap';
 
 
-            return view('user.salary', compact(['oncycles', 'offcycles','employee', 'total','document','title','headmenu']));
+            return view('user.salary', compact(['oncycles', 'offcycles','employee', 'total','document','title','headmenu', 'bulangajis']));
     }
 
     /**
@@ -126,12 +127,15 @@ class SalaryController extends Controller
 
     public function search(Request $request)
     {
+            $submit = $request->submit;
+            // dd($keyword, $submit);
             $nip = Auth::user()->nip;
             $employee = Employee::where('nip', $nip)->first();
             $document = Document::where('nip', $nip)->latest()->first();
             $keyword = $request->search;
             $oncycles = Oncycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->get();
             $offcycles = Offcycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->get();
+            $bulangajis = BulanGaji::all();
 
             $total = DB::table('oncycles')
                 ->where([
@@ -200,22 +204,24 @@ class SalaryController extends Controller
                 ->sum(DB::raw('IFNULL(admin_bank,0) + IFNULL(potongan_lain,0) + IFNULL(penalty,0)'
                     ));
 
-
-
-            if($request->has('download'))
-                {
-                    $pdf = PDF::loadView('user.cetakoncycle',compact('oncycles','total'));
-                    // dd($pdf);
-                    // return $pdf->stream();
-                    return $pdf->download('pdfview.pdf');
-
-                }
             $headmenu = 'Data Pegawai';
-            $title = 'Penghasilan';
+            $title = 'Upah Pokok dan Tunjangan Tetap';
+                // dd($oncycles);
 
+        if($submit == 1) {
             return view('user.salaryoncycles', compact([
-                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu'
+                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu', 'bulangajis'
                 ]));
+        }elseif($submit == 2) {
+            $pdf = PDF::loadView('user.cetakoncycle',compact([
+                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu', 'bulangajis'
+                ]));
+            return $pdf->stream('my.pdf',array('Attachment'=>0));
+        }elseif($submit == 3) {
+            return view('user.cetak1',compact([
+                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu', 'bulangajis'
+                ]));
+        }
     }
 
         public function cetakoncycle(Request $request)
@@ -223,7 +229,8 @@ class SalaryController extends Controller
             $nip = Auth::user()->nip;
             $employee = Employee::where('nip', $nip)->first();
             $document = Document::where('nip', $nip)->latest()->first();
-            $keyword = $request->search;
+            $keyword = $request->get('search');
+            // dd($keyword);
             $oncycles = Oncycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->get();
             $offcycles = Offcycle::where('bulan', 'like', "%" . $keyword . "%")->get();
 
@@ -296,12 +303,12 @@ class SalaryController extends Controller
                     penalty
                     '));
 
-
-
+                // dd($oncycles);
 
             $pdf = PDF::loadView('user.cetakoncycle',compact(
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle'));
-    	return $pdf->stream();
+                // return $pdf->download('pdf_file.pdf');
+    	        return $pdf->stream();
     }
 
         public function searchoffcycle(Request $request)
@@ -390,7 +397,7 @@ class SalaryController extends Controller
 
                 }
             $headmenu = 'Data Pegawai';
-            $title = 'Penghasilan';
+            $title = 'Tunjangan Tidak Tetap';
 
             return view('user.salaryoffcycle', compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu'

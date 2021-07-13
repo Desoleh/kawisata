@@ -5,67 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
 
+    <link rel="stylesheet" href="{{ asset('bootstrap/3.3/bootstrap.min.css') }}">
+        <style>
+            * {
+            box-sizing: border-box;
+            }
+            /**
+                Set the margins of the page to 0, so the footer and the header
+                can be of the full height and width !
+             **/
+            @page {
+                margin: 4cm 0cm;
+            }
 
+            /** Define now the real margins of every page in the PDF **/
+            body {
+                margin-top: 2cm;
+                margin-left: 2cm;
+                margin-right: 2cm;
+                margin-bottom: 2cm;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12px;
+            }
 
-        img {
-        width: 100%;
-        height: auto;
+            /** Define the header rules **/
+            header {
+                position: fixed;
+                top: -3.5cm;
+                left: 16cm;
+                right: 0cm;
+                height: 92px;
+            }
 
-        }
+            /** Define the footer rules **/
+            footer {
+                position: fixed;
+                bottom: -2cm;
+                left: 1cm;
+                right: 0cm;
+                /* height: 2cm; */
+                width: 100%;
+            }
 
-        .container {
-            margin-top: 80px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 12px;
+            .container {
+                margin-top: 2cm;
+                margin-left: 2cm;
+                margin-right: 2cm;
+                margin-bottom: 2cm;
+            }
 
-        }
+            .container table {
+            } 
+            
+            th {
+                padding: 7px;
+                background-color: #a5a5a5;
+            }
+            tr, td {
+                padding: 5px;
+            }
 
-        table, td, th {
-        border: 0.5px solid rgb(95, 95, 95);
-        }
+            tr:nth-child(even) {background-color: #f2f2f2;}
 
-        table {
-        width: 100%;
-        border-collapse: collapse;
-        }
+        </style>
+    </head>
+    <body>
+        <!-- Define header and footer blocks before your content -->
+        <header>
+            <img src="{{ asset('images/logo1.png') }}" width="auto" height="92px"/>
+        </header>
 
-        .container .topright {
-        position: fixed;  ;
-        top: 0px;
-        left: 67%;
-        width: auto;
-        }
+        <footer>
+            <img src="{{ asset('images/kopsurat.png') }}"/>
+        </footer>
 
-        .container .fixbottom {
-        position: absolute;  ;
-        top: 930px;
-        width: 100%;
-        left: 0 !important;
-        bottom: 10px;
-        height: auto;
-        }
-
-    </style>
-</head>
-<body>
-    <?php
-    $nama = $employee->nama;
-    $nip = $employee->nip;
-        $img = $document->photo;
- ?>
-
-<div class="container">
-    <div style="text-align: center;">
-        <img class="topright" src="{{public_path('images/logo.png')}}" style="height: 95px">
-        <img class="fixbottom" src="{{public_path('images/kopsurat.png')}}" style="width: 793px">
-        <h3> <strong>  Slip Penghasilan</strong></h3>
-    </div>
-
-
-
-</div>
-
-</body>
+        <!-- Wrap the content of your PDF inside a main tag -->
+        <div class="container">
+            <h5 style="text-align: center; "> <strong>  Slip Penghasilan</strong></h5>
+            <br>
+            <table class="table table-bordered success" >
+                <thead>
+                    <tr>
+                            <th colspan="3" class="table-active" style="width:70%">
+                                @forelse ($oncycles as $oncycle)
+                                Upah Pokok Tunjangan Tetap : {{$oncycle->bulan}}
+                                @empty
+                                Upah Pokok Tunjangan Tetap :
+                                @endforelse
+                            </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @forelse ($oncycles as $oncycle )
+                            <tr ><td>Nama</td><td>{{$oncycle->nama}}</td> <td rowspan="7"></td>1</tr>
+                            <tr><td>NIPP / NIP</td><td>{{$oncycle->nip}}</td></tr>
+                            <tr><td>Jabatan</td><td>{{$oncycle->nama_jabatan}}</td></tr>
+                            <tr><td>Bank</td><td>{{$oncycle->bank_gaji}}</td></tr>
+                            <tr><td>No. Rekening</td><td>{{$oncycle->no_rekening}}</td></tr>
+                            <tr class=" fw-bolder fs-6">
+                                <td colspan="2" class="total table-primary text-center">Take Home Pay</td>
+                            </tr>
+                            <tr class=" fw-bolder fs-6">
+                                    <td colspan="2" class="total table-primary text-center" > Rp.
+                                    {{number_format($oncycle->netpay, 0, ',', '.')}}
+                                    </td>
+                            </tr>
+                        @empty
+                            <p>Data Kosong</p>
+                        @endforelse
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
 </html>
+
