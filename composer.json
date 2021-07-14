@@ -17,7 +17,8 @@
         "laravel/ui": "^3.3",
         "maatwebsite/excel": "^3.1",
         "niklasravnsborg/laravel-pdf": "^4.1",
-        "rap2hpoutre/fast-excel": "^3.0"
+        "rap2hpoutre/fast-excel": "^3.0",
+        "simplesoftwareio/simple-qrcode": "~4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

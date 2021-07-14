@@ -7,10 +7,14 @@ use App\Models\Document;
 use App\Models\Employee;
 use App\Models\Offcycle;
 use App\Models\Oncycle;
+use App\Models\SalarySlip;
+use Carbon\Carbon;
 use niklasravnsborg\LaravelPdf\Facades\Pdf as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class SalaryController extends Controller
 {
@@ -128,7 +132,6 @@ class SalaryController extends Controller
     public function search(Request $request)
     {
             $submit = $request->submit;
-            // dd($keyword, $submit);
             $nip = Auth::user()->nip;
             $employee = Employee::where('nip', $nip)->first();
             $document = Document::where('nip', $nip)->latest()->first();
@@ -206,21 +209,60 @@ class SalaryController extends Controller
 
             $headmenu = 'Data Pegawai';
             $title = 'Upah Pokok dan Tunjangan Tetap';
-                // dd($oncycles);
+            $uuid =  (string)Uuid::uuid4();
+            $today = Carbon::now()->locale('id_ID');
 
         if($submit == 1) {
             return view('user.salaryoncycles', compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu', 'bulangajis'
                 ]));
         }elseif($submit == 2) {
+            $this->validate($request, [
+            'search' => 'required',
+            ]);
+
+            $salaryslip = SalarySlip::where(['type' => 'oncycle', 'nip' => $nip, 'monthyear'=> $request->search])->first();
+            if ($salaryslip === null){
+                $uuid = (string)Uuid::uuid4();
+                $salaryslip = new SalarySlip();
+                $salaryslip->type = 'oncycle';
+                $salaryslip->nip = $nip;
+                $salaryslip->monthyear = $request->search;
+                $salaryslip->uuid = $uuid;
+                $salaryslip->filename = $nip . '-oncycle-' .  $request->search . '.pdf';
+                $salaryslip->save();
+
+                QrCode::size(100)
+            ->format('svg')
+            ->generate('kawisata.test' . '/salary/' . $uuid . '/download' , public_path('qrcode/'. $nip . '-oncycle-' .  $request->search . '.svg'));
+            $pathToFile = storage_path('app/salary/'. $nip . '-oncycle-' .  $request->search . '.pdf');
             $pdf = PDF::loadView('user.cetakoncycle',compact([
-                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu', 'bulangajis'
+                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle', 'title', 
+                'headmenu', 'bulangajis', 'salaryslip', 'nip', 'today'
                 ]));
-            return $pdf->stream('my.pdf',array('Attachment'=>0));
-        }elseif($submit == 3) {
-            return view('user.cetak1',compact([
-                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu', 'bulangajis'
-                ]));
+            $pdf->save($pathToFile);
+            return $pdf->download($salaryslip->filename);
+            }
+            else{
+                return response()->Download(storage_path('app/salary/'. $salaryslip->filename));
+            }
+            // $salaryslips = SalarySlip::firstOrCreate(
+            //     ['type' => 'oncycle', 'nip' => $nip, 'monthyear'=> $request->search],
+            //     ['type' => 'oncycle', 'nip' => $nip, 'monthyear'=> $request->search, 'uuid'=> (string)Uuid::uuid4() , 'filename'=> $nip . '-oncycle-' .  $request->search . '.pdf']
+            // );
+            // $salaryslips = SalarySlip::where('nip',$nip)->first();
+            // $pathToFile = storage_path('app/salary/'. $nip . '-oncycle-' .  $request->search . '.pdf');
+            // QrCode::size(100)
+            // ->format('svg')
+            // ->generate('kawisata.test' . '/salary/' . $salaryslips->uuid . '/download' , public_path('qrcode/'. $nip . '-oncycle-' .  $request->search . '.svg'));
+            // $pdf = PDF::loadView('user.cetakoncycle',compact([
+            //     'oncycles','offcycles', 'total', 'totalpotongan', 'employee','document','totaloffcyclecc121','totalpotonganoffcycle', 'title', 
+            //     'headmenu', 'bulangajis', 'salaryslips', 'nip', 'today'
+            //     ]));
+            // $pdf->save($pathToFile);
+            // return $pdf->stream();
+            
+            // return back();
         }
     }
 

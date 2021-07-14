@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class SalarySlip extends Model
 {
-    use HasFactory;
+    protected $primaryKey = 'uuid';
+    protected $fillable = [
+        'type',
+        'uuid',
+        'filename',
+        'nip',
+        'monthyear'
+    ];
 }

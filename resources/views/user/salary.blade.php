@@ -49,7 +49,7 @@
                                                 <form class="form " method="get" action="{{ route('search') }}">
                                                         <div class="form-group">
                                                             <select type="text" name="search"  class="custom-select w-auto" id="search" placeholder="Masukkan keyword">
-                                                                <option selected>Pilih bulan</option>
+                                                                <option selected value="">Pilih bulan</option>
                                                                 @foreach ($bulangajis as $bulangaji)
                                                                     <option value="{{ $bulangaji->bulangaji }}" {{ request()->get("search") == $bulangaji->bulangaji  ? "selected" : "" }}>{{$bulangaji->bulangaji }}</option>
                                                                 @endforeach
@@ -59,6 +59,9 @@
                                                             <button name="submit"  type="submit" value="2" class="btn btn-primary ">Cetak</button>
                                                             <button name="submit"  type="submit" value="3" class="btn btn-primary" id="print">Print</button>
                                                             </button>
+                                            @error('search')
+                                                <div class="mt-2 text-danger">{{ $message }}</div>
+                                            @enderror
                                                         </div>
                                                 </form>
                                         </div>
@@ -75,7 +78,7 @@
                                                 <form class="form " method="get" action="{{ route('searchoffcycle') }}">
                                                         <div class="form-group">
                                                             <select type="text" name="search"  class="custom-select w-auto" id="search" placeholder="Masukkan keyword">
-                                                                <option selected>Pilih bulan</option>
+                                                                <option selected value="">Pilih bulan</option>
                                                                 <option value="Januari 2021">Januari 2021</option>
                                                                 <option value="Februari 2021">Februari 2021</option>
                                                                 <option value="Maret 2021">Maret 2021</option>

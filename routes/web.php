@@ -14,6 +14,7 @@ use App\Http\Controllers\OffcycleController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\SalarySlipController;
 use App\Http\Controllers\StrukturController;
 use App\Http\Controllers\UserController;
 use App\Models\Oncycle;
@@ -98,6 +99,8 @@ Route::prefix('user')->middleware('auth')->group(function () {
 
     Route::post('/print', function() { return view('user.cetak4'); });
 });
+
+    Route::get('salary/{uuid}/download', [SalarySlipController::class, 'download'])->name('salary.download');
 
 
 Route::get('/file-upload',  [DocumentController::class,'upload']);
