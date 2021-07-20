@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\Admin\LoginController;
@@ -56,6 +57,7 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
     Route::resource('offcycles', OffcycleController::class);
     Route::resource('kgb', KgbController::class);
     Route::resource('jabatan', PositionController::class);
+    Route::resource('accounts', AccountController::class);
 
 
     Route::get('export', [EmployeeController::class, 'export'])->name('employee.export');
@@ -71,6 +73,8 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
 
     Route::get('jabatan/export', [PositionController::class, 'export'])->name('jabatan.export');
     Route::post('jabatan/import', [PositionController::class, 'import'])->name('jabatan.import');
+
+    Route::post('account/import', [AccountController::class, 'import'])->name('account.import');
 
 
 });

@@ -60,6 +60,14 @@
                         <i class="far fa-circle nav-icon"></i>
                         <p>Dokumen Pegawai</p>
                         </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('accounts.index') }}" class="nav-link @yield('dokumen')">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Akun dan Alamat</p>
+                        </a>
+                    </li>
+                    
                 </ul>
             </li>
             {{-- penghaslan pegawai --}}

@@ -5,3 +5,4 @@
     <link rel="stylesheet" href="{{ asset('adminlte/vendor/summernote/summernote.css')}}">
     <link rel="stylesheet" href="{{ asset('adminlte/summernote-list-styles-bs4.css')}}">
     <link rel="stylesheet" href="{{ asset('adminlte/vendor/bootstrap4-duallistbox/bootstrap-duallistbox.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">

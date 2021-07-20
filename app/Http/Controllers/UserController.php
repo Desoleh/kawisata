@@ -20,8 +20,14 @@ class UserController extends Controller
 
             $data1 = DashboardEmployee::where('jenis',1)->orderby('urutan')->get();
             $data2 = DashboardEmployee::where('jenis',2)->orderby('urutan')->get();
+            $kantorpusat    = DashboardEmployee::where('kedudukan','Kantor Pusat')->first();
+            $perbantuan     = DashboardEmployee::where('kedudukan','Perbantuan')->first();
+            $mandiri        = DashboardEmployee::where('kedudukan','Mandiri')->first();
+            $pkwt     = DashboardEmployee::where('kedudukan','PKWT')->first();
+            $frontliner     = DashboardEmployee::where('kedudukan','Frontliner')->first();
             $title = 'Beranda';
-            return view('user.index', compact(['data1','data2', 'title']));
+            return view('user.index', compact(['data1','data2', 'kantorpusat',
+            'perbantuan', 'mandiri', 'pkwt', 'frontliner',  'title']));
 
     }
 

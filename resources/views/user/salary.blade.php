@@ -4,11 +4,7 @@
 @section('title', $title)
 
 @section('content')
-<?php
-    $nama = $employee->nama;
-    $nip = $employee->nip;
-    $img = $document->photo;
- ?>
+
 
 <div class="container-fluid">
     <!-- Content Header (Page header) -->
@@ -55,13 +51,12 @@
                                                                 @endforeach
                                                             </select>
 
-                                                            <button name="submit"  type="submit" value="1" class="btn btn-primary ">Cari</button>
-                                                            <button name="submit"  type="submit" value="2" class="btn btn-primary ">Cetak</button>
-                                                            <button name="submit"  type="submit" value="3" class="btn btn-primary" id="print">Print</button>
+                                                            <button name="submit"  type="submit" value="1" class="btn btn-primary ">Lihat</button>
+                                                            <button name="submit"  type="submit" value="2" class="btn btn-primary ">Download</button>
                                                             </button>
-                                            @error('search')
-                                                <div class="mt-2 text-danger">{{ $message }}</div>
-                                            @enderror
+                                                    @error('search')
+                                                        <div class="mt-2 text-danger">{{ $message }}</div>
+                                                    @enderror
                                                         </div>
                                                 </form>
                                         </div>
@@ -79,54 +74,21 @@
                                                         <div class="form-group">
                                                             <select type="text" name="search"  class="custom-select w-auto" id="search" placeholder="Masukkan keyword">
                                                                 <option selected value="">Pilih bulan</option>
-                                                                <option value="Januari 2021">Januari 2021</option>
-                                                                <option value="Februari 2021">Februari 2021</option>
-                                                                <option value="Maret 2021">Maret 2021</option>
-                                                                <option value="April 2021">April 2021</option>
-                                                                <option value="Mei 2021">Mei 2021</option>
+                                                                @foreach ($bulangajis as $bulangaji)
+                                                                    <option value="{{ $bulangaji->bulangaji }}" {{ request()->get("search") == $bulangaji->bulangaji  ? "selected" : "" }}>{{$bulangaji->bulangaji }}</option>
+                                                                @endforeach
                                                             </select>
-                                                            <button type="submit" class="btn btn-primary ">Cari</button>
+
+                                                            <button name="submit"  type="submit" value="1" class="btn btn-primary ">Lihat</button>
+                                                            <button name="submit"  type="submit" value="2" class="btn btn-primary ">Download</button>
+                                                            </button>
+                                                    @error('search')
+                                                        <div class="mt-2 text-danger">{{ $message }}</div>
+                                                    @enderror
                                                         </div>
                                                 </form>
                                         </div>
-                                        <div class="col-md-2 ">
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            Download Slip Gaji
-                                            </button>
 
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Download Slip Gaji</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                        <form class="form " method="get" action="{{ route('cetakoncycle') }}">
-                                                            <div class="modal-body">
-                                                                <div class="form-group">
-                                                                    <select type="text" name="search"  class="custom-select w-35" id="search" placeholder="Masukkan keyword">
-                                                                        <option selected>Pilih bulan</option>
-                                                                        <option value="Januari 2021">Januari 2021</option>
-                                                                        <option value="Februari 2021">Februari 2021</option>
-                                                                        <option value="Maret 2021">Maret 2021</option>
-                                                                        <option value="April 2021">April 2021</option>
-                                                                        <option value="Mei 2021">Mei 2021</option>
-                                                                    </select>
-                                                                </div>
-                                                                    {{-- <input type="submit" value="Upload" class="btn btn-primary"> --}}
-
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                <button type="submit" value="Upload" class="btn btn-primary" formtarget="_blank">Download</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     
                                     @yield('offcycle')
@@ -137,52 +99,7 @@
                             <!-- /.tab-pane -->
 
                             <div class="tab-pane" id="settings">
-                            <form class="form-horizontal">
-                                <div class="form-group row">
-                                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputName" placeholder="Name">
-                                </div>
-                                </div>
-                                <div class="form-group row">
-                                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                </div>
-                                </div>
-                                <div class="form-group row">
-                                <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputName2" placeholder="Name">
-                                </div>
-                                </div>
-                                <div class="form-group row">
-                                <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                                </div>
-                                </div>
-                                <div class="form-group row">
-                                <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                </div>
-                                </div>
-                                <div class="form-group row">
-                                <div class="offset-sm-2 col-sm-10">
-                                    <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                    </label>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="form-group row">
-                                <div class="offset-sm-2 col-sm-10">
-                                    <button type="submit" class="btn btn-danger">Submit</button>
-                                </div>
-                                </div>
-                            </form>
+                            <p>Non Upah</p>
                             </div>
                             <!-- /.tab-pane -->
                         </div>

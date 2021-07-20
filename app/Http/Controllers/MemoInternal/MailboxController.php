@@ -105,7 +105,7 @@ class MailboxController extends Controller
                 if ($file->isValid()) {
                     $extension = $file->getClientOriginalExtension();
                     $filename = round(microtime(true) * 1000).'.'.$extension;
-                    $file->move(public_path('images'), $filename);
+                    $file->move(public_path('attachment'), $filename);
                     $files[] = [
                         'attachment' => $filename,
                         'mailbox_id' => $mailbox->id,

@@ -87,20 +87,15 @@ foreach($positions as $position){
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Penandatangan</label>
                                 <div class="col-sm-10">
-                                    <div class="form-check">
+                                    {{-- <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="1" id="same" name="ownapprover" onchange= "ownApprover()"/>
                                         <label class="form-check-label" for="defaultCheck1">
                                             saya sendiri
                                         </label>
                                         <input type = "hidden" name = "billName" id = "loginApprover" value="{{ $ownapprover->position_id }}">
-                                    </div>
-                                    {{-- <div>
-                                        <input type="checkbox" id="same" name="same" onchange= "ownApprover()"/>
-                                        <label for = "same" >saya sendiri</label>
                                     </div> --}}
                                     <div class="select2-purple">
                                         <?php $selected_approvers = old('approver_id') ?>
-			{{-- <input type = "text" name = "billName" id = "approver_id"><br/> --}}
                                         <select class="select2bs4 small"  data-placeholder="Penandatangan" style="width: 100%;" name="approver_id" id="approver_id">
                                             @foreach ( $result as $key=>$val )
                                                 <optgroup label="{{ $key }}">
@@ -110,7 +105,7 @@ foreach($positions as $position){
                                                     @endforeach
                                                 </optgroup>
                                             @endforeach
-                                                        <input type="button" value="CHANGE" onclick="ownApprover()" />
+                                                        {{-- <input type="button" value="CHANGE" onclick="ownApprover()" /> --}}
                                         </select>
                                             @error('approver_id')
                                                 <div class="mt-2 text-danger">{{ $message }}</div>
@@ -190,20 +185,21 @@ foreach($positions as $position){
 
                                 <h5 class="well">Lampiran</h5>
 
-                                    <div class="input-group hdtuto control-group lst increment small" >
-                                    <input type="file" name="filenames[]" class="myfrm form-control">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-success" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>Add</button>
-                                    </div>
-                                    </div>
-                                    <div class="clone hide">
-                                    <div class="hdtuto control-group lst input-group" style="margin-top:10px">
-                                        <input type="file" name="filenames[]" class="myfrm form-control">
-                                        <div class="input-group-btn">
-                                        <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
-                                        </div>
-                                    </div>
-                                    </div>
+        <div class="input-group control-group increment" >
+          <input type="file" name="filenames[]" class="form-control">
+          <div class="input-group-btn">
+            <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+          </div>
+        </div>
+        <div class="clone hide">
+          <div class="control-group input-group" style="margin-top:10px">
+            <input type="file" name="filenames[]" class="form-control">
+            <div class="input-group-btn">
+              <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+            </div>
+          </div>
+        </div>
+
                             </div>
 
 
@@ -394,15 +390,20 @@ foreach($positions as $position){
     </script>
 
 <script type="text/javascript">
+
     $(document).ready(function() {
+
       $(".btn-success").click(function(){
-          var lsthmtl = $(".clone").html();
-          $(".increment").after(lsthmtl);
+          var html = $(".clone").html();
+          $(".increment").after(html);
       });
+
       $("body").on("click",".btn-danger",function(){
-          $(this).parents(".hdtuto").remove();
+          $(this).parents(".control-group").remove();
       });
+
     });
+
 </script>
 
 <script>
