@@ -15,11 +15,11 @@ class CreateMailboxReceiversTable extends Migration
     {
         Schema::create('mailbox_receivers', function (Blueprint $table) {
             $table->id();
-            $table->string("mailbox_id",36);
+            $table->unsignedBigInteger('mailbox_id');
             $table->string('receiver_id',10);
             $table->timestamps();
 
-            $table->foreign('mailbox_id')->references('id')->on('mailboxes');
+            $table->foreign('mailbox_id')->references('id')->on('mailboxes')->onDelete('cascade');
             $table->foreign('receiver_id')->references('position_id')->on('positions');
         });
     }

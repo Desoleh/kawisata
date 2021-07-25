@@ -21,6 +21,7 @@ class CreatePositionsTable extends Migration
             $table->string('holder_id',10);
             $table->string('parent_id',10);
             $table->string('parent_name');
+            $table->tinyInteger('hierarchy');
             $table->timestamps();
 
             $table->foreign('holder_id')->references('nip')->on('employees');

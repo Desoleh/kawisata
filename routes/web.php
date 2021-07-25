@@ -31,25 +31,14 @@ use App\Models\Oncycle;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-// Auth::routes(['verify' => true]);
+Route::get('/', function () {return view('welcome');});
+
+// verifikasi email registrasi
+Auth::routes(['verify' => true]);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['auth', 'verified']);
-
-// Route::resource('employees', EmployeeController::class)->middleware(['auth', 'verified']);
-
-// Route::prefix('admin')->group(function () {
-//     Route::get('/', [Admin\Auth\LoginController::class, 'loginForm']);
-//     Route::get('/login', [Admin\Auth\LoginController::class, 'loginForm'])->name('admin.login');
-//     Route::post('/login', [Admin\Auth\LoginController::class, 'login'])->name('admin.login');
-//     Route::get('/home', [Admin\HomeController::class, 'index'])->name('admin.home');
-//     Route::get('/logout', [Admin\Auth\LoginController::class, 'logout'])->name('admin.logout');
-// });
 Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
     Route::get('/', [AdminController::class, 'index']);
     Route::resource('employees', EmployeeController::class);
@@ -68,6 +57,7 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
 
     Route::get('offcycle/export', [OffcycleController::class, 'export'])->name('offcycle.export');
     Route::post('offcycle/import', [OffcycleController::class, 'import'])->name('offcycle.import');
+    Route::get('offcycle/cetakoffcycle', [OffcycleController::class, 'cetakoffcycle'])->name('offcycle.cetakoffcycle');
 
     Route::post('kgb/import', [KgbController::class, 'import'])->name('kgb.import');
 
@@ -98,10 +88,10 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::post('store', [ MailboxController::class, 'store'])->name('mailbox.store');
     Route::get('edit', [ MailboxController::class, 'edit'])->name('mailbox.edit');
 
-    Route::get('/students',[PrintController::class, 'index']);
-    Route::get('/prnpriview',[PrintController::class, 'prnpriview']);
+    // Route::get('/students',[PrintController::class, 'index']);
+    // Route::get('/prnpriview',[PrintController::class, 'prnpriview']);
 
-    Route::post('/print', function() { return view('user.cetak4'); });
+    // Route::post('/print', function() { return view('user.cetak4'); });
 });
 
     Route::get('salary/{uuid}/download', [SalarySlipController::class, 'download'])->name('salary.download');

@@ -74,50 +74,57 @@ class MailboxController extends Controller
         $mailbox->approver_id=$data['approver_id'];
         $mailbox->drafter_id=$drafter_id;
         $mailbox->save();
-        // dd($mailbox->id);
+        // dd($mailbox);
 
-        $receiver_ids = $request->receiver_id;
-        foreach ($receiver_ids as $receiver_id) {
-        $mailboxtmpreceivers = new MailboxTmpReceiver();
-        $mailboxtmpreceivers->mailbox_id = $mailbox->id;
-        $mailboxtmpreceivers->receiver_id = $receiver_id;
-        $mailboxtmpreceivers->save();
+            foreach ($data ['receiver_id'] as $item => $value) {
+                $data2 = array(
+                    'mailbox_id'    =>  $mailbox->id,
+                    'receiver_id'   =>  $data['receiver_id'][$item],
+                );
+                // dd($data2);
+                    MailboxTmpReceiver::create($data2);
+            }
+
+        // $receiver_ids = $request->receiver_id;
+        // foreach ($receiver_ids as $receiver_id) {
+        // $mailbox_receiver = new MailboxTmpReceiver();
+        // $mailbox_receiver->mailbox_id = $mailbox->id;
+        // $mailbox_receiver->receiver_id = $receiver_id;
+        // $mailbox_receiver->save();
+        // }
+        $checker_ids = $request->checker_id;
+        foreach ($checker_ids as $checker_id) {
+        $mailbox_checker = new MailboxTmpChecker();
+        $mailbox_checker->mailbox_id = $mailbox->id;
+        $mailbox_checker->checker_id = $checker_id;
+        $mailbox_checker->save();
+        DB::table("mailbox_tmp_checkers")->where('mailbox_id',  $mailbox->id)->increment('sequence');
+        }
+        $copy_ids = $request->copy_id;
+        foreach ($copy_ids as $copy_id) {
+        $mailbox_copy = new MailboxTmpCopy();
+        $mailbox_copy->mailbox_id = $mailbox->id;
+        $mailbox_copy->copy_id = $copy_id;
+        $mailbox_copy->save();
         }
 
-        // $checker_ids = $request->checker_id;
-        // foreach ($checker_ids as $checker_id) {
-        // $mailbox_checker = new MailboxTmpChecker();
-        // $mailbox_checker->mailbox_id = $mailbox->id;
-        // $mailbox_checker->checker_id = $checker_id;
-        // $mailbox_checker->save();
-        // DB::table("mailbox_tmp_checkers")->where('mailbox_id',  $mailbox->id)->increment('sequence');
-        // }
-        // $copy_ids = $request->copy_id;
-        // foreach ($copy_ids as $copy_id) {
-        // $mailbox_copy = new MailboxTmpCopy();
-        // $mailbox_copy->mailbox_id = $mailbox->id;
-        // $mailbox_copy->copy_id = $copy_id;
-        // $mailbox_copy->save();
-        // }
-
-        // if ($request->hasfile('filenames')) {
-        //     $files = [];
-        //     foreach ($request->file('filenames') as $file) {
-        //         if ($file->isValid()) {
-        //             $extension = $file->getClientOriginalExtension();
-        //             $filename = round(microtime(true) * 1000).'.'.$extension;
-        //             $file->move(public_path('attachment'), $filename);
-        //             $files[] = [
-        //                 'attachment' => $filename,
-        //                 'mailbox_id' => $mailbox->id,
-        //             ];
-        //         }
-        //     }
-        //     MailboxAttachment::insert($files);
-        // }
-        // else{
-        //     echo'Gagal';
-        // }        //  $file->storeAs('files', $name);
+        if ($request->hasfile('filenames')) {
+            $files = [];
+            foreach ($request->file('filenames') as $file) {
+                if ($file->isValid()) {
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = round(microtime(true) * 1000).'.'.$extension;
+                    $file->move(public_path('attachment'), $filename);
+                    $files[] = [
+                        'attachment' => $filename,
+                        'mailbox_id' => $mailbox->id,
+                    ];
+                }
+            }
+            MailboxAttachment::insert($files);
+        }else{
+            echo'Gagal';
+        }        //  $file->storeAs('files', $name);
 
         return back()->with('success','Memo tersimpan');
 

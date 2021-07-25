@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMailboxHoldersTable extends Migration
+class CreateMailboxFlagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateMailboxHoldersTable extends Migration
      */
     public function up()
     {
-        Schema::create('mailbox_holders', function (Blueprint $table) {
+        Schema::create('mailbox_flags', function (Blueprint $table) {
             $table->id();
-            $table->string('mailbox_id',36);
+            $table->unsignedBigInteger("mailbox_id");
             $table->string('holder_id',10);
+            $table->tinyInteger('is_unread')->default(1);
             $table->timestamps();
 
             $table->foreign('mailbox_id')->references('id')->on('mailboxes');
@@ -31,6 +32,6 @@ class CreateMailboxHoldersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mailbox_holders');
+        Schema::dropIfExists('mailbox_flags');
     }
 }

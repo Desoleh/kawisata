@@ -14,7 +14,8 @@ class CreateMailboxesTable extends Migration
     public function up()
     {
         Schema::create('mailboxes', function (Blueprint $table) {
-            $table->string('id',36)->primary()->unique();
+            $table->id();
+            $table->uuid('uuid');
             $table->string('document_id')->unique()->nullable();
             $table->string('perihal',225);
             $table->longText('body');

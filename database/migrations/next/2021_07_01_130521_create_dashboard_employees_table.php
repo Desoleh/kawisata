@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMailboxCopiesTable extends Migration
+class CreateDashboardEmployeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateMailboxCopiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('mailbox_copies', function (Blueprint $table) {
+        Schema::create('dashboard_employees', function (Blueprint $table) {
             $table->id();
-            $table->string('mailbox_id',36);
-            $table->string('copy_id',10);
+            $table->string('kedudukan');
+            $table->integer('jumlah');
+            $table->integer('urutan');
+            $table->integer('jenis');
             $table->timestamps();
-
-            $table->foreign('mailbox_id')->references('id')->on('mailboxes');
-            $table->foreign('copy_id')->references('position_id')->on('positions');
         });
     }
 
@@ -31,6 +30,6 @@ class CreateMailboxCopiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mailbox_copies');
+        Schema::dropIfExists('dashboard_employees');
     }
 }

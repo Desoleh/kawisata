@@ -10,13 +10,12 @@ class Mailbox extends Model
 {
 
 
-    public $incrementing = false;
 
     use HasFactory;
 
 
     protected $fillable =[
-        'id',
+        'uuid',
         'document_id',
         'perihal',
         'body',
@@ -43,9 +42,9 @@ class Mailbox extends Model
         return $this->hasMany(MailboxReceiver::class);
     }
 
-    public function tmpreceivers()
+    public function mailboxtmpreceivers()
     {
-        return $this->hasMany(MailboxTmpReceiver::class);
+        return $this->hasMany(MailboxTmpReceiver::class, 'mailbox_id','receiver_id');
     }
 
     public function checkers()

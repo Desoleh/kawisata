@@ -1,8 +1,3 @@
-<?php
-    // $nama = $employee->nama;
-    // $nip = $employee->nip;
-    // $img = $document->photo;
- ?>
 @extends('user.salary')
 
 @section('oncycle')

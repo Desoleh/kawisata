@@ -20,8 +20,8 @@ class MailboxTmpReceiver extends Model
         return $this->belongsTo(Mailbox::class, 'mailbox_id');
     }
 
-        public function receiver()
-    {
-        return $this->belongsTo(Position::class, 'receiver_id');
-    }
+    //     public function receiver()
+    // {
+    //     return $this->belongsTo(Position::class, 'receiver_id');
+    // }
 }
