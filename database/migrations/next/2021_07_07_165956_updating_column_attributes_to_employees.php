@@ -15,7 +15,7 @@ class UpdatingColumnAttributesToEmployees extends Migration
     {
         Schema::table('employees', function (Blueprint $table) {
             $table->string('nama',70)->nullable()->change();
-            $table->string('gelar',5)->nullable()->change();
+            $table->string('gelar',15)->nullable()->change();
             $table->string('tempat_lahir',70)->nullable()->change();
             $table->integer('umur_thn')->nullable()->change();
             $table->integer('umur_bln')->nullable()->change();

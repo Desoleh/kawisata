@@ -47,7 +47,7 @@
   <h1 class="visually-hidden">e-office KA Pariwisata</h1>
 
   <div class="px-4 py-5 my-5 text-center">
-    <img class="d-block mx-auto " src="{{asset('images/logo.png')}}" alt="" height="82">
+    <img class="d-block mx-auto " src="{{asset('images/logo1.png')}}" alt="" height="82">
     <h1 class="display-5 fw-bold">E-Office</h1>
         <div class="col-lg-8 mx-auto">
       <p class="lead1 ">Visi</p>

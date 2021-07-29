@@ -40,7 +40,7 @@
 
         <main class="form-signin">
             <form method="POST" action="{{ route('login') }}">
-                <img class="mb-4" src="{{asset('images/logo.png')}}" alt=""  height="75">
+                <img class="mb-4" src="{{asset('images/logo1.png')}}" alt=""  height="75">
                 <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
                 @csrf
