@@ -56,8 +56,8 @@
             }
 
             .container table {
-            } 
-            
+            }
+
             .container table th {
                 padding: 7px;
                 background-color: #d1d1d1;
@@ -132,7 +132,7 @@
                 padding: 2px;
                 border-bottom: 0px solid rgb(134, 134, 134);
                 border-collapse: collapse;
-                
+
             }
 
 
@@ -148,7 +148,7 @@
     </head>
     <body>
 
-        <?php 
+        <?php
         $nip = $salaryslip->nip;
         $monthyear = $salaryslip->monthyear;
         // dd($uuid);
@@ -184,7 +184,7 @@
                             <table class="table4">
                                 <tbody>
                                     @forelse ($oncycles as $oncycle )
-                                        <tr><td id="1" style="width:35%;">Nama</td><td>{{$oncycle->nama}}</td> 
+                                        <tr><td id="1" style="width:35%;">Nama</td><td>{{$oncycle->nama}}</td>
                                         </tr>
                                         <tr><td id="1" style="width:35%;">NIPP / NIP</td><td>{{$oncycle->nip}}</td></tr>
                                         <tr><td id="1" style="width:35%;">Jabatan</td><td>{{$oncycle->nama_jabatan}}</td></tr>
@@ -204,7 +204,9 @@
                                             <th id="head1" colspan="2" class="text-center table-active ">Take Home Pay</th>
                                         </tr>
                                         @empty
-                                        <p>Data Kosong</p>
+                                        <tr>
+                                            <th colspan="2" style="width:70%">Data kosong</th>
+                                        </tr>
                                     @endforelse
                                         <tr>
                                         @forelse ($offcycles as $offcycle )
@@ -224,7 +226,9 @@
                                             @endif
 
                                             @empty
-                                            <p>Data Kosong</p>
+                                            <tr>
+                                                <th colspan="2" style="width:70%">Data kosong</th>
+                                            </tr>
                                             @endforelse
                                         </tr>
 
@@ -311,8 +315,10 @@
                                     @endif
 
                                     @empty
-                                    <p>Data Kosong</p>
-                                @endforelse
+                                    <tr>
+                                        <th colspan="2" style="width:70%">Data kosong</th>
+                                    </tr>
+                                    @endforelse
 
 
                             </tbody>
@@ -340,7 +346,9 @@
                                     @endif
 
                                 @empty
-                                    data kosong
+                                <tr>
+                                    <th colspan="2" style="width:70%">Data kosong</th>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>
@@ -370,7 +378,9 @@
                                     </tr>
                                 @endif
                             @empty
-                                data kosong
+                                <tr>
+                                    <th colspan="2" style="width:70%">Data kosong</th>
+                                </tr>
                             @endforelse
                         </table>
                     </td>
@@ -388,7 +398,9 @@
                                         </tr>
 
                             @empty
-                                data kosong
+                                <tr>
+                                    <th colspan="2" style="width:70%">Data kosong</th>
+                                </tr>
                             @endforelse
                         </table>
                     </td>
@@ -413,7 +425,7 @@
                     </tr>
                     <tr>
                         <td style="width: 5px;">
-                                
+
                         </td>
                     </tr>
                 </table>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use App\Models\DashboardEmployee;
 use App\Models\Document;
 use App\Models\Employee;
@@ -37,11 +38,12 @@ class UserController extends Controller
         $nip = Auth::user()->nip;
         $documents = Document::where('nip', $nip)->latest()->first();
         $employee = Employee::where('nip', $nip)->first();
+        $account = Account::where('nip', $nip)->first();
 
         $headmenu = 'Data Pegawai';
         $title = 'Profil Pegawai';
         // dd($documents);
-        return view('user.profile', compact(['judulhalaman','nip','employee','documents', 'title', 'headmenu' ]));
+        return view('user.profile', compact(['judulhalaman','nip','employee','documents', 'title', 'headmenu', 'account' ]));
     }
 
     public function simpanphoto(Request $request){

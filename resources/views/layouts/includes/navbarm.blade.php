@@ -21,7 +21,7 @@
                 </div>
             </li>
         <a class="nav-link" href="/user/peraturan">Peraturan Perusahaan</a>
-        {{-- <a class="nav-link {{ ($title === "Memo Internal"  ? 'active' : '' ) }} " href="{{ route('mailbox.index') }}">Memo Internal</a> --}}
+        <a class="nav-link {{ ($title === "Memo Internal"  ? 'active' : '' ) }} " href="{{ route('mailbox.index') }}">Memo Internal</a>
         </div>
             <ul class="navbar-nav ml-auto mr-4">
                             @guest

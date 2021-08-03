@@ -7,10 +7,11 @@ use App\Imports\OffcyclesImport;
 use App\Models\BulanGaji;
 use App\Models\Offcycle;
 use App\Models\Oncycle;
+use App\Models\SalarySlip;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-
+use Ramsey\Uuid\Uuid;
 
 class OffcycleController extends Controller
 {
@@ -35,8 +36,6 @@ class OffcycleController extends Controller
     public function import(Request $request)
     {
         Excel::import(new OffcyclesImport(), $request->file('import_file'));
-        // dd($request);
-
 
         return redirect()->route('offcycles.index');
     }

@@ -29,10 +29,6 @@
                             <table id="example2"  class="table table-sm  table-hover table-striped">
                                 <thead>
                                     <tr>
-                                        <td>
-                                            <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
-                                            </button>
-                                        </td>
                                         <td>Tanggal</td>
                                         <td>Perihal</td>
                                         <td>Dari</td>
@@ -42,12 +38,6 @@
                                 <tbody>
                                     @forelse ($mailboxes as $mailbox )
                                     <tr>
-                                        <td>
-                                        <div class="icheck-primary">
-                                            <input type="checkbox" value="" id="check1">
-                                            <label for="check1"></label>
-                                        </div>
-                                        </td>
                                         <td class="mailbox-date" width="17%">{{ $mailbox->updated_at }}</td>
                                         <td class="mailbox-subject">{{ $mailbox->perihal }}</td>
                                         <td class="mailbox-name"  width="20%"><a href="#">{{ $mailbox->positions->name }}</a></td>
@@ -91,9 +81,9 @@
                 .DataTable({
                     responsive: true,
                     lengthChange: false,
-                    autoWidth: false,
+                    autoWidth: true,
 
-                    // buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+                    buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
                 })
                 .buttons()
                 .container()
@@ -104,7 +94,7 @@
                 searching: true,
                 ordering: true,
                 info: true,
-                autoWidth: false,
+                autoWidth: true,
                 responsive: true,
                 pageline: true,
                 });

@@ -4,12 +4,14 @@ namespace App\Imports;
 
 use App\Models\Oncycle;
 use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
 
-class OncyclesImport implements ToCollection, WithUpserts, WithStartRow
+class OncyclesImport implements ToCollection, WithUpserts, WithStartRow, SkipsEmptyRows, WithCalculatedFormulas
 {
     public function collection(Collection $rows)
     {
@@ -21,7 +23,7 @@ class OncyclesImport implements ToCollection, WithUpserts, WithStartRow
 
             Oncycle::updateOrCreate(
                 [
-                    'idoncycle'=> $row[38],
+                    'idoncycle'=> $row[41].$row[1],
                 ],
                 [
 
@@ -60,9 +62,9 @@ class OncyclesImport implements ToCollection, WithUpserts, WithStartRow
                     'pot_kelebihan_bayar'=> $row[32],
                     'total_pajak'=> $row[33],
                     'bruto'=> $row[34],
-                    'admin_oncycle'=> $row[35],
-                    'netpay'=> $row[36],
-                    'bulan'=> $row[37],
+                    'admin_oncycle'=> $row[39],
+                    'netpay'=> $row[40],
+                    'bulan'=> $row[41],
 
 
                 ]

@@ -8,6 +8,7 @@ use App\Models\Oncycle;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class OncycleController extends Controller
@@ -32,4 +33,26 @@ class OncycleController extends Controller
 
         return redirect()->route('oncycles.index');
     }
+
+    public function destroy(Oncycle $oncycle)
+    {
+        /// melakukan hapus data berdasarkan parameter yang dikirimkan
+        $oncycle->delete();
+
+        return redirect()->route('oncycles.index')
+                        ->with('success','User deleted successfully');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteAll(Request $request)
+    {
+        $ids = $request->ids;
+        Oncycle::whereIn('id',explode(",",$ids))->delete();
+        return response()->json(['success'=>"Products Deleted successfully."]);
+
+	}
 }

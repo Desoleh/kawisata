@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{asset('adminlte/vendor/fontawesome-free/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('adminlte/css/adminlte.min.css')}}">
+    <link rel="icon" sizes="180x180" href="{{ asset('images/favicon/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
+
     @stack('after-style')
 
 </head>

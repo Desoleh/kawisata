@@ -6,7 +6,10 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.83.1">
-    <title>Heroes · Bootstrap v5.0</title>
+    <link rel="icon" sizes="180x180" href="{{ asset('images/favicon/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
+    <title>eoffice KA Pariwisata</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/heroes/">
 

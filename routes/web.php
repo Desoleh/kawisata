@@ -54,6 +54,8 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
 
     Route::get('oncycle/export', [OncycleController::class, 'export'])->name('oncycle.export');
     Route::post('oncycle/import', [OncycleController::class, 'import'])->name('oncycle.import');
+    Route::delete('oncycle/{id}', [OncycleController::class, 'destroy'])->name('oncycle.destroy');
+    Route::delete('oncycledeleteall', [OncycleController::class, 'deleteAll'])->name('oncycle.deleteAll');
 
     Route::get('offcycle/export', [OffcycleController::class, 'export'])->name('offcycle.export');
     Route::post('offcycle/import', [OffcycleController::class, 'import'])->name('offcycle.import');
