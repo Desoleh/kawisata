@@ -6,6 +6,7 @@ use App\Models\Account;
 use App\Models\DashboardEmployee;
 use App\Models\Document;
 use App\Models\Employee;
+use App\Models\Position;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,11 +40,11 @@ class UserController extends Controller
         $documents = Document::where('nip', $nip)->latest()->first();
         $employee = Employee::where('nip', $nip)->first();
         $account = Account::where('nip', $nip)->first();
-
+        $position = Position::where('holder_id', $nip)->first();
         $headmenu = 'Data Pegawai';
         $title = 'Profil Pegawai';
-        // dd($documents);
-        return view('user.profile', compact(['judulhalaman','nip','employee','documents', 'title', 'headmenu', 'account' ]));
+
+        return view('user.profile', compact(['judulhalaman','nip','employee','documents', 'title', 'headmenu', 'account', 'position' ]));
     }
 
     public function simpanphoto(Request $request){

@@ -47,12 +47,12 @@
                                                             <select type="text" name="search"  class="custom-select w-auto" id="search" placeholder="Masukkan keyword">
                                                                 <option selected value="">Pilih bulan</option>
                                                                 @foreach ($bulangajis as $bulangaji)
-                                                                    <option value="{{ $bulangaji->bulangaji }}" {{ request()->get("search") == $bulangaji->bulangaji  ? "selected" : "" }}>{{$bulangaji->bulangaji }}</option>
+                                                                    <option value="{{ $bulangaji->bulan }}" {{ request()->get("search") == $bulangaji->bulan  ? "selected" : "" }}>{{$bulangaji->bulan }}</option>
                                                                 @endforeach
                                                             </select>
 
                                                             <button name="submit"  type="submit" value="1" class="btn btn-primary ">Lihat</button>
-                                                            <button name="submit"  type="submit" value="2" class="btn btn-primary ">Download</button>
+                                                            <button name="submit"  type="submit" value="2" class="btn btn-primary ">Download Oncycle</button>
                                                             </button>
                                                     @error('search')
                                                         <div class="mt-2 text-danger">{{ $message }}</div>
@@ -62,7 +62,7 @@
                                         </div>
                                     </div>
                                     @yield('oncycle')
-                                    
+
                                 </div>
                             </div>
                             <!-- /.tab-pane -->
@@ -75,12 +75,12 @@
                                                             <select type="text" name="search"  class="custom-select w-auto" id="search" placeholder="Masukkan keyword">
                                                                 <option selected value="">Pilih bulan</option>
                                                                 @foreach ($bulangajis as $bulangaji)
-                                                                    <option value="{{ $bulangaji->bulangaji }}" {{ request()->get("search") == $bulangaji->bulangaji  ? "selected" : "" }}>{{$bulangaji->bulangaji }}</option>
+                                                                    <option value="{{ $bulangaji->bulan }}" {{ request()->get("search") == $bulangaji->bulan  ? "selected" : "" }}>{{$bulangaji->bulan }}</option>
                                                                 @endforeach
                                                             </select>
 
                                                             <button name="submit"  type="submit" value="1" class="btn btn-primary ">Lihat</button>
-                                                            <button name="submit"  type="submit" value="2" class="btn btn-primary ">Download</button>
+                                                            <button name="submit"  type="submit" value="2" class="btn btn-primary ">Download Offcycle</button>
                                                             </button>
                                                     @error('search')
                                                         <div class="mt-2 text-danger">{{ $message }}</div>
@@ -90,9 +90,9 @@
                                         </div>
 
                                     </div>
-                                    
+
                                     @yield('offcycle')
-                                    
+
                                 </div>
 
                             </div>

@@ -1,7 +1,6 @@
 <?php
     $nama = $employee->nama;
     $nip = $employee->nip;
-    $img = $documents->photo;
  ?>
 
 @extends('layouts.app')
@@ -34,8 +33,8 @@
                 <div class="card">
                 <div class="card-body">
                         <div class="text-center mb-2">
-                                @isset($img)
-                                <img src="{{ url('/userphoto/'.$img) }}" class="img-thumbnail" alt="...">
+                                @isset($documents->photo)
+                                <img src="{{ url('/userphoto/'.$documents->photo) }}" class="img-thumbnail" alt="...">
                                 @else
                                 <img src="{{ asset('images/nophotos.png') }}" class="img-thumbnail" alt="...">
                                 @endisset
@@ -85,8 +84,8 @@
                         <div class="card-header p-2">
                         <ul class="nav nav-pills">
                             <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Personal Data</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Data Jabatan</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Lain-lain</a></li>
                         </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
@@ -118,6 +117,14 @@
                                             <td>{{ \Carbon\Carbon::parse($employee->tmt_kerja)->isoFormat('DD MMMM YYYY')}}</td>
                                         </tr>
 
+                                        @isset($employee->gol_ruang)
+                                        <tr>
+                                            <td>Golongan Ruang</td>
+                                            <td>{{ $employee->gol_ruang}}</td>
+                                        </tr>
+                                        @else
+                                        @endisset
+
                                         @isset($employee->tmt_pangkat)
                                         <tr>
                                             <td>Tmt Pangkat</td>
@@ -125,10 +132,8 @@
                                         </tr>
                                         @else
                                         @endisset
-                                        <tr>
-                                            <td>Golongan Ruang</td>
-                                            <td>{{ $employee->gol_ruang}}</td>
-                                        </tr>
+
+
                                     </tbody>
                                 </table>
                             </div>
@@ -137,35 +142,23 @@
                                     <table class="table border-bottom border-black table-sm">
                                         <tbody>
                                             <tr>
-                                                <td>Nama</td>
-                                                <td>{{$employee->nama}}</td>
+                                                <td>Nama Jabatan</td>
+                                                <td>{{$position->name}}</td>
                                             </tr>
                                             <tr>
-                                                <td>NIPP/NIP</td>
-                                                <td>{{$nip}}</td>
+                                                <td>ID Jabatan</td>
+                                                <td>{{$position->position_id}}</td>
                                             </tr>
-                                            @if (empty($employee->gelar))
+                                            @if (empty($position->grade))
                                             @else
                                             <tr>
-                                                <td>Gelar</td>
-                                                <td>{{$employee->gelar}}</td>
+                                                <td>Grade/Class Jabatan</td>
+                                                <td>{{$position->grade}}</td>
                                             </tr>
                                             @endif
                                             <tr>
-                                                <td>Jenis Kelamin</td>
-                                                <td>proses</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tempat, Tgl Lahir</td>
-                                                <td>{{$employee->tempat_lahir}}, {{$employee->tanggal_lahir}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tgl Masuk Kerja</td>
-                                                <td>{{$employee->tmt_kerja}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>TMT Pangkat</td>
-                                                <td>{{$employee->tmt_pangkat}}</td>
+                                                <td>Unit</td>
+                                                <td>{{ $position->parent_name }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -174,52 +167,29 @@
                             <!-- /.tab-pane -->
 
                             <div class="tab-pane" id="settings">
-                            <form class="form-horizontal">
-                                <div class="form-group row">
-                                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputName" placeholder="Name">
-                                </div>
-                                </div>
-                                <div class="form-group row">
-                                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                </div>
-                                </div>
-                                <div class="form-group row">
-                                <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputName2" placeholder="Name">
-                                </div>
-                                </div>
-                                <div class="form-group row">
-                                <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                                </div>
-                                </div>
-                                <div class="form-group row">
-                                <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                </div>
-                                </div>
-                                <div class="form-group row">
-                                <div class="offset-sm-2 col-sm-10">
-                                    <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                    </label>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="form-group row">
-                                <div class="offset-sm-2 col-sm-10">
-                                    <button type="submit" class="btn btn-danger">Submit</button>
-                                </div>
-                                </div>
-                            </form>
+                                <table class="table border-bottom border-black table-sm">
+                                    <tbody>
+                                        <tr>
+                                            <td>NIK</td>
+                                            <td>{{ $account->ktp }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NPWP</td>
+                                            <td>{{ $account->npwp }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>No. BPJS</td>
+                                            <td>{{ $account->jamsostek }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alamat</td>
+                                            <td>{{ $account->alamat1 }}
+                                                <br> {{ $account->alamat2 }}
+                                                <br> {{ $account->District }}, {{ $account->City }}, {{ $account->Postal }} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
                             </div>
                             <!-- /.tab-pane -->
                         </div>

@@ -36,7 +36,9 @@ class SalaryController extends Controller
 
             $oncycles = Oncycle::where('nip', $nip)->latest()->get();
             $offcycles = Offcycle::where('nip', $nip)->latest()->get();
-            $bulangajis = BulanGaji::all();
+            // $bulangajis = BulanGaji::all();
+            $bulangajis = DB::table('oncycles')->select('bulan')->groupBy('bulan')->get();
+            // dd($bulangajis);
 // dd($document);
             $total = DB::table('oncycles')
                 ->where([
@@ -143,7 +145,7 @@ class SalaryController extends Controller
             $keyword = $request->search;
             $oncycles = Oncycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->get();
             $offcycles = Offcycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->get();
-            $bulangajis = BulanGaji::all();
+            $bulangajis = Oncycle::select('bulan')->distinct()->get();
 
             $total = DB::table('oncycles')
                 ->where([
@@ -242,14 +244,22 @@ class SalaryController extends Controller
             ->generate('kawisata.test' . '/salary/' . $uuid . '/download' , public_path('qrcode/'. $nip . '-oncycle-' .  $request->search . '.svg'));
             $pathToFile = storage_path('app/salary/'. $nip . '-oncycle-' .  $request->search . '.pdf');
             $pdf = PDF::loadView('user.cetakoncycle',compact([
-                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title', 
+                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
                 'headmenu', 'bulangajis', 'salaryslip', 'nip', 'today'
                 ]));
             $pdf->save($pathToFile);
             return $pdf->download($salaryslip->filename);
             }
             else{
-                return response()->Download(storage_path('app/salary/'. $salaryslip->filename));
+            $pathToFile = storage_path('app/salary/'. $nip . '-oncycle-' .  $request->search . '.pdf');
+
+            $pdf = PDF::loadView('user.cetakoncycle',compact([
+                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
+                'headmenu', 'bulangajis', 'salaryslip', 'nip', 'today'
+                ]));
+            $pdf->save($pathToFile);
+            return $pdf->download($salaryslip->filename);
+                // return response()->Download(storage_path('app/salary/'. $salaryslip->filename));
             }
         }
     }
@@ -367,108 +377,23 @@ class SalaryController extends Controller
             ->generate('kawisata.test' . '/salary/' . $uuid . '/download' , public_path('qrcode/'. $nip . '-oncycle-' .  $request->search . '.svg'));
             $pathToFile = storage_path('app/salary/'. $nip . '-offcycle-' .  $request->search . '.pdf');
             $pdf = PDF::loadView('user.cetakoffcycle',compact([
-                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title', 
+                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
                 'headmenu', 'bulangajis', 'salaryslip', 'nip', 'today'
                 ]));
             $pdf->save($pathToFile);
             return $pdf->download($salaryslip->filename);
             }
             else{
-                return response()->Download(storage_path('app/salary/'. $salaryslip->filename));
+            $pathToFile = storage_path('app/salary/'. $nip . '-offcycle-' .  $request->search . '.pdf');
+            $pdf = PDF::loadView('user.cetakoffcycle',compact([
+                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
+                'headmenu', 'bulangajis', 'salaryslip', 'nip', 'today'
+                ]));
+            $pdf->save($pathToFile);
+            return $pdf->download($salaryslip->filename);
+                // return response()->Download(storage_path('app/salary/'. $salaryslip->filename));
             }
         }
     }
 
-        public function searchoffcycle1(Request $request)
-    {
-            $nip = Auth::user()->nip;
-            $employee = Employee::where('nip', $nip)->first();
-            $document = Document::where('nip', $nip)->latest()->first();
-            $keyword = $request->search;
-            $oncycles = Oncycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->first();
-            $offcycles = Offcycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->first();
-
-            $total = DB::table('oncycles')
-                ->where([
-                ['bulan', 'like', "%" . $keyword . "%"],
-                ['nip', '=' , $nip]])
-                ->sum(DB::raw('IFNULL(upah_pokok,0)  +
-                    IFNULL(honorarium_pkwt,0)  +
-                    IFNULL(tunj_perumahan,0)  +
-                    IFNULL(tunj_adm_bank,0)  +
-                    IFNULL(jht_bpjs_iur_persh_3_7,0)  +
-                    IFNULL(jp_bpjs_iur_persh_2,0)  +
-                    IFNULL(jkk_bpjs_iur_persh_1_27,0)  +
-                    IFNULL(jk_bpjs_iur_persh_0_3,0)  +
-                    IFNULL(jht_jwasraya_iur_persh_12_5,0)  +
-                    IFNULL(jpk_bpjs_mand_iur_persh,0)  +
-                    IFNULL(jpk_bpjs_iur_persh_4,0)  +
-                    IFNULL(jpk_pensiunan_iur_persh_2,0)  +
-                    IFNULL(total_pajak,0)  +
-                    IFNULL(tunj_kurang_bayar,0)'));
-
-            $totaloffcyclecc121 = DB::table('offcycles')
-                ->where([
-                ['bulan', 'like', "%" . $keyword . "%"],
-                ['nip', '=' , $nip]])
-                ->sum(DB::raw('IFNULL(tunjangan_transport,0) +
-                    IFNULL(tunjangan_komunikasi,0) +
-                    IFNULL(tunjangan_jabatan,0) +
-                    IFNULL(tunjangan_keahlian,0) +
-                    IFNULL(prestasi,0) +
-                    IFNULL(shift_allowance,0) +
-                    IFNULL(best_performance,0) +
-                    IFNULL(lembur,0)'
-                    ));
-
-            $totalpotongan = DB::table('oncycles')
-                ->where([
-                ['bulan', 'like', "%" . $keyword . "%"],
-                ['nip', '=' , $nip]])
-                ->sum(DB::raw('IFNULL(jht_jwasraya_iur_persh_12_5,0) +
-                    IFNULL(jht_jwasraya_iur_pekerja_4_75,0) +
-                    IFNULL(jht_bpjs_iur_persh_3_7,0) +
-                    IFNULL(jht_bpjs_iur_pekerja_2,0) +
-                    IFNULL(jp_bpjs_iur_persh_2,0) +
-                    IFNULL(jp_bpjs_iur_pekerja_1,0) +
-                    IFNULL(jk_bpjs_iur_persh_0_3,0) +
-                    IFNULL(jpk_bpjs_mand_iur_persh,0) +
-                    IFNULL(jpk_bpjs_mand_iur_pekerja,0) +
-                    IFNULL(jpk_bpjs_iur_persh_4,0) +
-                    IFNULL(jpk_bpjs_iur_pekerja_1,0) +
-                    IFNULL(jpk_pensiunan_iur_persh_2,0) +
-                    IFNULL(jpk_pensiunan_iur_pekerja_2,0) +
-                    IFNULL(jpk_uk_iur_pekerja_1,0) +
-                    IFNULL(tht_taspen_iur_pekerja_3_25,0) +
-                    IFNULL(iur_spka,0) +
-                    IFNULL(pot_sewa_rumah_dinas,0) +
-                    IFNULL(simpanan_baitul_ridho,0) +
-                    IFNULL(cicilan_baitul_ridho,0) +
-                    IFNULL(total_pajak,0) +
-                    IFNULL(admin_oncycle,0) +
-                    IFNULL(pot_lain,0)'));
-
-            $totalpotonganoffcycle = DB::table('offcycles')
-                ->where([
-                ['bulan', 'like', "%" . $keyword . "%"],
-                ['nip', '=' , $nip]])
-                ->sum(DB::raw('IFNULL(admin_bank,0) + IFNULL(potongan_lain,0) + IFNULL(penalty,0)'
-                    ));
-
-
-            if($request->has('download'))
-                {
-                    $pdf = PDF::loadView('user.cetakoncycle',compact('oncycles','total'));
-                    // dd($pdf);
-                    // return $pdf->stream();
-                    return $pdf->download('pdfview.pdf');
-
-                }
-            $headmenu = 'Data Pegawai';
-            $title = 'Tunjangan Tidak Tetap';
-
-            return view('user.salaryoffcycle', compact([
-                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu'
-                ]));
-    }
 }
