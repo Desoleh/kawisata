@@ -71,7 +71,7 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
 
 });
 
-Route::prefix('user')->middleware('auth')->group(function () {
+Route::prefix('user')->middleware(['auth','verified'])->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('user.home');
     Route::get('profile', [UserController::class, 'show'])->name('user.profile');
     Route::post('profile/simpanphoto', [UserController::class, 'simpanphoto'])->name('simpanphoto');

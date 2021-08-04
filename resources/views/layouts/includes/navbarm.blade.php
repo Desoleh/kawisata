@@ -7,9 +7,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <div class="navbar-nav">
-        <a class="nav-link" href="/user">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link  {{ ($title === "Beranda"  ? 'active' : '' ) }}" href="/user">Home <span class="sr-only">(current)</span></a>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle  {{ ($title === "Profil Pegawai"  ? 'active' : '' ) }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Profil Pegawai
                 </a>
                 <div class="dropdown-menu bg-purple" aria-labelledby="navbarDropdown">
