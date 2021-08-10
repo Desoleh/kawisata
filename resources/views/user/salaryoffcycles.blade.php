@@ -147,10 +147,6 @@
             </div>
             <table class="card-body mb-0 table border border-black table-sm">
                 <tbody>
-                    <tr>
-                        <th colspan="2" class="table-active" style="width:70%">Potongan</th>
-                    </tr>
-
                     @if($offcycles->potongan_lain == 0)
                     @else
                         <tr><td>Potongan Lain</td><td style="text-align:right">{{number_format($offcycles->potongan_lain, 0, ',', '.')}}</td></tr>
@@ -164,10 +160,10 @@
             </table>
             <table class="card-footer border table table-borderless">
                 <tr class=" fw-bolder">
-                        <td >Total</td>
-                        <td style="text-align:right"  >
-                        {{number_format($totalpotonganoffcycle, 0, ',', '.')}}
-                        </td>
+                    <td >Total</td>
+                    <td style="text-align:right"  >
+                    {{number_format($totalpotonganoffcycle, 0, ',', '.')}}
+                    </td>
                 </tr>
             </table>
         </div>

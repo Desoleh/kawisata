@@ -196,16 +196,10 @@ class SalaryController extends Controller
             ->format('svg')
             ->generate('kawisata.test' . '/salary/' . $uuid1 . '/download' , public_path('qrcode/'. $nip . '-oncycle-' .  $request->search . '.svg'));
 
-            // return view('user.cetakoncycle2',compact([
-            //     'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
-            //     'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today'
-            //     ]));
-            $pathToFile = storage_path('app/salary/'. $nip . '-oncycle-' .  $request->search . '.pdf');
-            $pdf = PDF::loadView('user.cetakoncycle',compact([
+            return view('user.cetakoncycle3',compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
-                'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today'
+                'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today', 'keyword'
                 ]));
-            return $pdf->stream();
 
             }
         }
@@ -325,13 +319,19 @@ class SalaryController extends Controller
                 QrCode::size(100)
             ->format('svg')
             ->generate('kawisata.test' . '/salary/' . $uuid . '/download' , public_path('qrcode/'. $nip . '-oncycle-' .  $request->search . '.svg'));
-            $pathToFile = storage_path('app/salary/'. $nip . '-offcycle-' .  $request->search . '.pdf');
-            $pdf = PDF::loadView('user.cetakoffcycle',compact([
+
+            return view('user.cetakoffcycle3',compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
-                'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today'
+                'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today', 'keyword'
                 ]));
-            $pdf->save($pathToFile);
-            return $pdf->download($salaryslip->filename);
+
+            // $pathToFile = storage_path('app/salary/'. $nip . '-offcycle-' .  $request->search . '.pdf');
+            // $pdf = PDF::loadView('user.cetakoffcycle',compact([
+            //     'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
+            //     'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today'
+            //     ]));
+            // $pdf->save($pathToFile);
+            // return $pdf->download($salaryslip->filename);
             }
             else{
             $salaryslip1 = DB::table('salary_slips')->select('uuid')->where(['type' => 'offcycle', 'nip' => $nip, 'monthyear'=> $request->search])->first();
@@ -340,14 +340,18 @@ class SalaryController extends Controller
             ->format('svg')
             ->generate('kawisata.test' . '/salary/' . $uuid1 . '/download' , public_path('qrcode/'. $nip . '-oncycle-' .  $request->search . '.svg'));
 
-            $pathToFile = storage_path('app/salary/'. $nip . '-offcycle-' .  $request->search . '.pdf');
-            $pdf = PDF::loadView('user.cetakoffcycle',compact([
+            return view('user.cetakoffcycle3',compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
-                'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today'
+                'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today', 'keyword'
                 ]));
-            $pdf->save($pathToFile);
-            return $pdf->download($salaryslip->filename);
-                // return response()->Download(storage_path('app/salary/'. $salaryslip->filename));
+            // $pathToFile = storage_path('app/salary/'. $nip . '-offcycle-' .  $request->search . '.pdf');
+            // $pdf = PDF::loadView('user.cetakoffcycle',compact([
+            //     'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
+            //     'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today', 'keyword'
+            //     ]));
+            // $pdf->save($pathToFile);
+            // return $pdf->download($salaryslip->filename);
+            // return response()->Download(storage_path('app/salary/'. $salaryslip->filename));
             }
         }
     }

@@ -26,7 +26,7 @@
         </div>
                 <main>
                     <div class="container" id="memo-page">
-                        <table class="table table-borderless">
+                        <table class="table table-borderless small">
                             <tr>
                                 <td style="text-align:right;" colspan="2">
                                     <img src="{{ asset('images/logo1.png') }}" width="auto" height="92px"/>
@@ -174,7 +174,7 @@
                             oleh VP Corporate Communication | IRFAN SOBARI | NIPP/NIP 11790011 pada 3 Agustus 2021, 23:41
                         </div>
                         </div>
-                    </main>
+                </main>
 
             {{-- <table  class="table1" >
                 <thead>

@@ -1,0 +1,82 @@
+@media (max-width: 992px) {
+    #slip-page {
+        font-size: 12px;
+    }
+
+    .fs-5 {
+        font-size: 16px !important;
+    }
+    .fs-6 {
+        font-size: 14px !important;
+    }
+}
+
+@media print {
+    @page {
+        size: 210mm 297mm;
+        margin: 20mm 20mm 15mm 20mm;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .content-header {
+        display: none;
+    }
+
+    #label {
+        display: none;
+    }
+
+    .navbar-brand {
+        display: none;
+    }
+
+    #tombol {
+        display: none;
+    }
+
+    main {
+        min-height: unset;
+        margin-top: -15px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .page-footer,
+    .page-footer-space {
+        height: 40px;
+    }
+
+    .page-footer {
+        position: fixed;
+        bottom: 0;
+        width: 100px;
+        border-top: 0.5px solid rgb(116, 116, 116); /*for demo*/
+        padding-right: 1px;
+        margin-right: 5px;
+    }
+
+    tfoot {
+        display: table-footer-group;
+    }
+
+    .card-header {
+        padding: 0.5rem 1rem;
+        margin-bottom: 0;
+        background-color: rgb(129, 129, 129);
+    }
+
+    .qrcode {
+        height: 75px !important;
+    }
+
+    /* .border {
+        border: 0.1px solid rgb(155, 155, 155) !important;
+    } */
+
+    .border #borderlis {
+        border: none !important;
+    }
+}

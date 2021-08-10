@@ -29,17 +29,17 @@
                 <div class="tabset">
                     <!-- Tab 1 -->
                         <input type="radio" name="tabset" id="tab1" aria-controls="marzen" {{ ($title === "Upah Pokok dan Tunjangan Tetap"  ? 'checked' : '' ) }}>
-                        <label for="tab1">Upah Pokok & Tunjangan Tetap</label>
+                        <label id="label" for="tab1">Upah Pokok & Tunjangan Tetap</label>
                         <!-- Tab 2 -->
                         <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier" {{ ($title === "Tunjangan Tidak Tetap"  ? 'checked' : '' ) }}>
-                        <label for="tab2">Tunjangan Tidak Tetap</label>
+                        <label id="label" for="tab2">Tunjangan Tidak Tetap</label>
                         <!-- Tab 3 -->
                         <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
-                        <label for="tab3">Non Upah</label>
+                        <label id="label" for="tab3">Non Upah</label>
 
                         <div class="tab-panels">
                             <section id="marzen" class="tab-panel">
-                                <div class="card-header">
+                                <div class="card-header border"  id="tombol">
                                     <form class="row" method="get" action="{{ route('search') }}">
                                         <div class="col-auto">
                                             <select type="text" name="search"  class="form-select w-auto" id="search" placeholder="Masukkan keyword">
@@ -56,16 +56,19 @@
                                             <button name="submit"  type="submit" value="1" class="btn btn-primary ">Lihat</button>
                                         </div>
                                         <div class="col-auto">
-                                        <button name="submit"  type="submit" value="2" class="btn btn-primary ">Cetak</button>
+                                        <button name="submit"  type="submit" value="2" class="btn btn-primary ">Slip Penghasilan</button>
+                                        </div>
+                                        <div class="col-auto">
+                                        <button name="submit"  type="submit" value="2" class="btn btn-primary " onClick="window.print()">Cetak</button>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="card-body small">
+                                <div class="card-body small" id="borderlis">
                                     @yield('oncycle')
                                 </div>
                             </section>
                             <section id="rauchbier" class="tab-panel">
-                                <div class="card-header">
+                                <div class="card-header border" id="tombol">
                                     <form class="row" method="get" action="{{ route('searchoffcycle') }}">
                                         <div class="col-auto">
                                             <select type="text" name="search"  class="form-select w-auto" id="search" placeholder="Masukkan keyword">
@@ -82,7 +85,10 @@
                                             <button name="submit"  type="submit" value="1" class="btn btn-primary ">Lihat</button>
                                         </div>
                                         <div class="col-auto">
-                                        <button name="submit"  type="submit" value="2" class="btn btn-primary ">Cetak</button>
+                                        <button name="submit"  type="submit" value="2" class="btn btn-primary ">Slip Penghasilan</button>
+                                        </div>
+                                        <div class="col-auto">
+                                        <button type="button" class="btn btn-primary " onClick="window.print()">Cetak</button>
                                         </div>
                                     </form>
                                 </div>
