@@ -8,6 +8,8 @@
 
     {{-- <link href="{{asset('bootstrap/5.0/css/bootstrap.min.css')}}" rel="stylesheet"> --}}
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/cetak.css')}}">
+
 
     {{-- <link rel="stylesheet" href="{{ asset('css/cetak.css')}}"> --}}
     </head>

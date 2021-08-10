@@ -34,101 +34,34 @@ class SalaryController extends Controller
             $employee = Employee::where('nip', $nip)->first();
             $document = Document::where('nip', $nip)->latest()->first();
 
-            $oncycles = Oncycle::where('nip', $nip)->latest()->get();
-            $offcycles = Offcycle::where('nip', $nip)->latest()->get();
-            // $bulangajis = BulanGaji::all();
-            $bulangajis = DB::table('oncycles')->select('bulan')->groupBy('bulan')->get();
-            // dd($bulangajis);
-// dd($document);
-            $total = DB::table('oncycles')
-                ->where([
-                ['nip', '=' , $nip]])
-                ->sum(DB::raw('upah_pokok +
-                    honorarium_pkwt +
-                    tunj_perumahan +
-                    tunj_adm_bank +
-                    jht_bpjs_iur_persh_3_7 +
-                    jp_bpjs_iur_persh_2 +
-                    jkk_bpjs_iur_persh_1_27 +
-                    jk_bpjs_iur_persh_0_3 +
-                    jht_jwasraya_iur_persh_12_5 +
-                    jpk_bpjs_mand_iur_persh +
-                    jpk_bpjs_iur_persh_4 +
-                    jpk_pensiunan_iur_persh_2 +
-                    total_pajak +
-                    tunj_kurang_bayar'));
+            // $oncycles = Oncycle::where('nip', $nip)->latest()->get();
+            // $offcycles = Offcycle::where('nip', $nip)->latest()->get();
+            $bulanoncycles = Oncycle::select('bulan')->distinct()->get();
+            $bulanoffcycles = Offcycle::select('bulan')->distinct()->get();
+
+            // $total = DB::table('oncycles')
+            //     ->where([
+            //     ['nip', '=' , $nip]])
+            //     ->sum(DB::raw('upah_pokok +
+            //         honorarium_pkwt +
+            //         tunj_perumahan +
+            //         tunj_adm_bank +
+            //         jht_bpjs_iur_persh_3_7 +
+            //         jp_bpjs_iur_persh_2 +
+            //         jkk_bpjs_iur_persh_1_27 +
+            //         jk_bpjs_iur_persh_0_3 +
+            //         jht_jwasraya_iur_persh_12_5 +
+            //         jpk_bpjs_mand_iur_persh +
+            //         jpk_bpjs_iur_persh_4 +
+            //         jpk_pensiunan_iur_persh_2 +
+            //         total_pajak +
+            //         tunj_kurang_bayar'));
 
         $headmenu = 'Data Pegawai';
         $title = 'Upah Pokok dan Tunjangan Tetap';
 
 
-            return view('user.salary', compact(['oncycles', 'offcycles','employee', 'total','title','headmenu', 'bulangajis']));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\oncycle  $oncycle
-     * @return \Illuminate\Http\Response
-     */
-    public function show(oncycle $oncycle)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\oncycle  $oncycle
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(oncycle $oncycle)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\oncycle  $oncycle
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, oncycle $oncycle)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\oncycle  $oncycle
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(oncycle $oncycle)
-    {
-        //
+            return view('user.salary', compact(['employee','title','headmenu',  'bulanoffcycles','bulanoncycles']));
     }
 
     public function search(Request $request)
@@ -144,7 +77,8 @@ class SalaryController extends Controller
             $keyword = $request->search;
             $oncycles = Oncycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->first();
             $offcycles = Offcycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->first();
-            $bulangajis = Oncycle::select('bulan')->distinct()->get();
+            $bulanoncycles = Oncycle::select('bulan')->distinct()->get();
+            $bulanoffcycles = Offcycle::select('bulan')->distinct()->get();
 
             $total = DB::table('oncycles')
                 ->where([
@@ -220,7 +154,8 @@ class SalaryController extends Controller
 
         if($submit == 1) {
             return view('user.salaryoncycles', compact([
-                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu', 'bulangajis'
+                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121',
+                'totalpotonganoffcycle', 'title', 'headmenu', 'bulanoffcycles','bulanoncycles'
                 ]));
         }elseif($submit == 2) {
             $this->validate($request, [
@@ -244,12 +179,12 @@ class SalaryController extends Controller
 
             return view('user.cetakoncycle2',compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
-                'headmenu', 'bulangajis', 'salaryslip', 'nip', 'today'
+                'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today'
                 ]));
             // $pathToFile = storage_path('app/salary/'. $nip . '-oncycle-' .  $request->search . '.pdf');
             // $pdf = PDF::loadView('user.cetakoncycle',compact([
             //     'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
-            //     'headmenu', 'bulangajis', 'salaryslip', 'nip', 'today'
+            //     'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today'
             //     ]));
             // $pdf->save($pathToFile);
             // return $pdf->download($salaryslip->filename);
@@ -261,10 +196,17 @@ class SalaryController extends Controller
             ->format('svg')
             ->generate('kawisata.test' . '/salary/' . $uuid1 . '/download' , public_path('qrcode/'. $nip . '-oncycle-' .  $request->search . '.svg'));
 
-            return view('user.cetakoncycle2',compact([
+            // return view('user.cetakoncycle2',compact([
+            //     'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
+            //     'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today'
+            //     ]));
+            $pathToFile = storage_path('app/salary/'. $nip . '-oncycle-' .  $request->search . '.pdf');
+            $pdf = PDF::loadView('user.cetakoncycle',compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
-                'headmenu', 'bulangajis', 'salaryslip', 'nip', 'today'
+                'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today'
                 ]));
+            return $pdf->stream();
+
             }
         }
     }
@@ -281,9 +223,10 @@ class SalaryController extends Controller
                 ->first();
             // dd($employee);
             $keyword = $request->search;
-            $oncycles = Oncycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->get();
-            $offcycles = Offcycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->get();
-            $bulangajis = BulanGaji::all();
+            $oncycles = Oncycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->first();
+            $offcycles = Offcycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->first();
+            $bulanoncycles = Oncycle::select('bulan')->distinct()->get();
+            $bulanoffcycles = Offcycle::select('bulan')->distinct()->get();
 
             $total = DB::table('oncycles')
                 ->where([
@@ -359,7 +302,9 @@ class SalaryController extends Controller
 
         if($submit == 1) {
             return view('user.salaryoffcycles', compact([
-                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu', 'bulangajis'
+                'oncycles','offcycles', 'total', 'totalpotongan', 'employee',
+                'totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu',
+                'bulanoncycles', 'bulanoffcycles'
         ]));
         }elseif($submit == 2) {
             $this->validate($request, [
@@ -383,7 +328,7 @@ class SalaryController extends Controller
             $pathToFile = storage_path('app/salary/'. $nip . '-offcycle-' .  $request->search . '.pdf');
             $pdf = PDF::loadView('user.cetakoffcycle',compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
-                'headmenu', 'bulangajis', 'salaryslip', 'nip', 'today'
+                'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today'
                 ]));
             $pdf->save($pathToFile);
             return $pdf->download($salaryslip->filename);
@@ -398,7 +343,7 @@ class SalaryController extends Controller
             $pathToFile = storage_path('app/salary/'. $nip . '-offcycle-' .  $request->search . '.pdf');
             $pdf = PDF::loadView('user.cetakoffcycle',compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
-                'headmenu', 'bulangajis', 'salaryslip', 'nip', 'today'
+                'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today'
                 ]));
             $pdf->save($pathToFile);
             return $pdf->download($salaryslip->filename);

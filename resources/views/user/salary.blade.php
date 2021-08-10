@@ -26,94 +26,77 @@
 
     <section>
         <div class="container-fluid">
-            <div class="row">
-            <div class="col-sm">
-                    <div class="card">
-                        <div class="card-header p-2">
-                        <ul class="nav nav-pills">
-                            <li class="nav-item"><a class="nav-link {{ ($title === "Upah Pokok dan Tunjangan Tetap"  ? 'active' : '' ) }}" href="#activity" data-toggle="tab">Upah Pokok & Tunjangan Tetap</a></li>
-                            <li class="nav-item"><a class="nav-link {{ ($title === "Tunjangan Tidak Tetap"  ? 'active' : '' ) }}" href="#timeline" data-toggle="tab">Tunjangan Tidak tetap</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Non Upah</a></li>
-                        </ul>
-                        </div><!-- /.card-header -->
-                        <div class="card-body">
-                        <div class="tab-content">
-                            <div class="{{ ($title === "Upah Pokok dan Tunjangan Tetap"  ? 'active' : '' ) }} tab-pane" id="activity">
-                                <div class="container-fluid small">
-                                    <div class="row">
-                                        <div class="col-md-10">
-                                                <form class="form " method="get" action="{{ route('search') }}">
-                                                        <div class="form-group">
-                                                            <select type="text" name="search"  class="custom-select w-auto" id="search" placeholder="Masukkan keyword">
-                                                                <option selected value="">Pilih bulan</option>
-                                                                @foreach ($bulangajis as $bulangaji)
-                                                                    <option value="{{ $bulangaji->bulan }}" {{ request()->get("search") == $bulangaji->bulan  ? "selected" : "" }}>{{$bulangaji->bulan }}</option>
-                                                                @endforeach
-                                                            </select>
+                <div class="tabset">
+                    <!-- Tab 1 -->
+                        <input type="radio" name="tabset" id="tab1" aria-controls="marzen" {{ ($title === "Upah Pokok dan Tunjangan Tetap"  ? 'checked' : '' ) }}>
+                        <label for="tab1">Upah Pokok & Tunjangan Tetap</label>
+                        <!-- Tab 2 -->
+                        <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier" {{ ($title === "Tunjangan Tidak Tetap"  ? 'checked' : '' ) }}>
+                        <label for="tab2">Tunjangan Tidak Tetap</label>
+                        <!-- Tab 3 -->
+                        <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
+                        <label for="tab3">Non Upah</label>
 
-                                                            <button name="submit"  type="submit" value="1" class="btn btn-primary ">Lihat</button>
-                                                            <button name="submit"  type="submit" value="2" class="btn btn-primary ">Download Oncycle</button>
-                                                            </button>
-                                                    @error('search')
-                                                        <div class="mt-2 text-danger">{{ $message }}</div>
-                                                    @enderror
-                                                        </div>
-                                                </form>
+                        <div class="tab-panels">
+                            <section id="marzen" class="tab-panel">
+                                <div class="card-header">
+                                    <form class="row" method="get" action="{{ route('search') }}">
+                                        <div class="col-auto">
+                                            <select type="text" name="search"  class="form-select w-auto" id="search" placeholder="Masukkan keyword">
+                                                <option selected value="">Pilih bulan</option>
+                                                @foreach ($bulanoncycles as $bulangaji)
+                                                    <option value="{{ $bulangaji->bulan }}" {{ request()->get("search") == $bulangaji->bulan  ? "selected" : "" }}>{{$bulangaji->bulan }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('search')
+                                                <div class="mt-2 text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
-                                    </div>
+                                        <div class="col-auto">
+                                            <button name="submit"  type="submit" value="1" class="btn btn-primary ">Lihat</button>
+                                        </div>
+                                        <div class="col-auto">
+                                        <button name="submit"  type="submit" value="2" class="btn btn-primary ">Cetak</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-body small">
                                     @yield('oncycle')
-
                                 </div>
-                            </div>
-                            <!-- /.tab-pane -->
-                            <div class=" {{ ($title === "Tunjangan Tidak Tetap"  ? 'active' : '' ) }} tab-pane" id="timeline">
-                                <div class="container-fluid small">
-                                    <div class="row">
-                                        <div class="col-md-10">
-                                                <form class="form " method="get" action="{{ route('searchoffcycle') }}">
-                                                        <div class="form-group">
-                                                            <select type="text" name="search"  class="custom-select w-auto" id="search" placeholder="Masukkan keyword">
-                                                                <option selected value="">Pilih bulan</option>
-                                                                @foreach ($bulangajis as $bulangaji)
-                                                                    <option value="{{ $bulangaji->bulan }}" {{ request()->get("search") == $bulangaji->bulan  ? "selected" : "" }}>{{$bulangaji->bulan }}</option>
-                                                                @endforeach
-                                                            </select>
-
-                                                            <button name="submit"  type="submit" value="1" class="btn btn-primary ">Lihat</button>
-                                                            <button name="submit"  type="submit" value="2" class="btn btn-primary ">Download Offcycle</button>
-                                                            </button>
-                                                    @error('search')
-                                                        <div class="mt-2 text-danger">{{ $message }}</div>
-                                                    @enderror
-                                                        </div>
-                                                </form>
+                            </section>
+                            <section id="rauchbier" class="tab-panel">
+                                <div class="card-header">
+                                    <form class="row" method="get" action="{{ route('searchoffcycle') }}">
+                                        <div class="col-auto">
+                                            <select type="text" name="search"  class="form-select w-auto" id="search" placeholder="Masukkan keyword">
+                                                <option selected value="">Pilih bulan</option>
+                                                @foreach ($bulanoffcycles as $bulanoffcycle)
+                                                    <option value="{{ $bulanoffcycle->bulan }}" {{ request()->get("search") == $bulanoffcycle->bulan  ? "selected" : "" }}>{{$bulanoffcycle->bulan }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('search')
+                                                <div class="mt-2 text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
-
-                                    </div>
-
+                                        <div class="col-auto">
+                                            <button name="submit"  type="submit" value="1" class="btn btn-primary ">Lihat</button>
+                                        </div>
+                                        <div class="col-auto">
+                                        <button name="submit"  type="submit" value="2" class="btn btn-primary ">Cetak</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-body small">
                                     @yield('offcycle')
-
                                 </div>
 
-                            </div>
-                            <!-- /.tab-pane -->
-
-                            <div class="tab-pane" id="settings">
-                            <p>Non Upah</p>
-                            </div>
-                            <!-- /.tab-pane -->
+                            </section>
+                            <section id="dunkles" class="tab-panel">
+                            </section>
                         </div>
-                        <!-- /.tab-content -->
-                        </div><!-- /.card-body -->
-                    </div>
-            </div>
-            </div>
+                </div>
         </div>
-    </section>
-</div>
 
-
-<!-- Modal -->
 @endsection
 
 @push('after-scrpt')

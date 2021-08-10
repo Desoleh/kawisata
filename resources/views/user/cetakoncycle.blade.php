@@ -56,8 +56,8 @@
             }
 
             .container table {
-            } 
-            
+            }
+
             .container table th {
                 padding: 7px;
                 background-color: #d1d1d1;
@@ -114,7 +114,7 @@
                 padding: 2px;
                 border-bottom: 0px solid rgb(134, 134, 134);
                 border-collapse: collapse;
-                
+
             }
 
 
@@ -130,7 +130,7 @@
     </head>
     <body>
 
-        <?php 
+        <?php
         $nip = $salaryslip->nip;
         $monthyear = $salaryslip->monthyear;
         // dd($uuid);
@@ -152,11 +152,7 @@
                 <thead>
                     <tr>
                             <th colspan="3" class="table-active" style="width:70%; text-align:center;">
-                                @forelse ($oncycles as $oncycle)
-                                Upah Pokok Tunjangan Tetap : {{$oncycle->bulan}}
-                                @empty
-                                Upah Pokok Tunjangan Tetap :
-                                @endforelse
+                                Upah Pokok Tunjangan Tetap : {{$oncycles->bulan}}
                             </th>
                     </tr>
                 </thead>
@@ -165,11 +161,10 @@
                         <td valign="top">
                             <table class="table4">
                                 <tbody>
-                                    @forelse ($oncycles as $oncycle )
-                                        <tr><td id="1" style="width:35%;">Nama</td><td>{{$oncycle->nama}}</td> 
+                                        <tr><td id="1" style="width:35%;">Nama</td><td>{{$oncycles->nama}}</td>
                                         </tr>
-                                        <tr><td id="1" style="width:35%;">NIPP / NIP</td><td>{{$oncycle->nip}}</td></tr>
-                                        <tr><td id="1" style="width:35%;">Jabatan</td><td>{{$oncycle->nama_jabatan}}</td></tr>
+                                        <tr><td id="1" style="width:35%;">NIPP / NIP</td><td>{{$oncycles->nip}}</td></tr>
+                                        <tr><td id="1" style="width:35%;">Jabatan</td><td>{{$oncycles->nama_jabatan}}</td></tr>
                                 </tbody>
                             </table>
                         </td>
@@ -179,20 +174,17 @@
                         <td>
                             <table class="table4">
                                 <tbody>
-                                        <tr><td id="1">Bank</td><td>{{$oncycle->bank_gaji}}</td></tr>
-                                        <tr><td id="1">No. Rekening</td><td>{{$oncycle->no_rekening}}</td></tr>
+                                        <tr><td id="1">Bank</td><td>{{$oncycles->bank_gaji}}</td></tr>
+                                        <tr><td id="1">No. Rekening</td><td>{{$oncycles->no_rekening}}</td></tr>
                                         <tr><td id="1">No. NPWP</td><td>{{$employee->npwp}}</td></tr>
                                         <tr class=" fw-bolder fs-6">
                                             <th id="head1" colspan="2" class="text-center table-active ">Take Home Pay</th>
                                         </tr>
                                         <tr class=" fw-bolder fs-6">
                                                 <th id="head1" colspan="2" class="text-center table-active" > Rp.
-                                                {{number_format($oncycle->netpay, 0, ',', '.')}}
+                                                {{number_format($oncycles->netpay, 0, ',', '.')}}
                                                 </td>
                                         </tr>
-                                    @empty
-                                        <p>Data Kosong</p>
-                                    @endforelse
                                 </tbody>
                             </table>
                         </td>
@@ -205,159 +197,147 @@
                     <td valign="top">
                         <table>
                             <tbody>
-                                @forelse ($oncycles as $oncycle )
                                 <tr>
                                     <th colspan="2" class="table-active" style="width:70%">Upah dan Tunjangan</th>
                                 </tr>
-                                    @if($oncycle->upah_pokok == 0)
+                                    @if($oncycles->upah_pokok == 0)
                                     @else
-                                    <tr><td id="1">Upah Pokok</td><td style="text-align:right">{{number_format($oncycle->upah_pokok, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">Upah Pokok</td><td style="text-align:right">{{number_format($oncycles->upah_pokok, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->honorarium_pkwt == 0)
+                                    @if($oncycles->honorarium_pkwt == 0)
                                     @else
-                                    <tr><td id="1">Upah Pokok</td><td style="text-align:right">{{number_format($oncycle->honorarium_pkwt, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">Upah Pokok</td><td style="text-align:right">{{number_format($oncycles->honorarium_pkwt, 0, ',', '.')}}</td></tr>
                                     @endif
 
                                     <tr><td id="1" colspan="2" style="font-weight: 500">Tunjangan Tetap :</td></tr>
 
-                                    @if($oncycle->tunj_perumahan  == 0)
+                                    @if($oncycles->tunj_perumahan  == 0)
                                     @else
-                                    <tr><td id="1">-  Tunjangan Perumahan</td><td style="text-align:right">{{number_format($oncycle->tunj_perumahan, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Tunjangan Perumahan</td><td style="text-align:right">{{number_format($oncycles->tunj_perumahan, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->tunj_adm_bank  == 0)
+                                    @if($oncycles->tunj_adm_bank  == 0)
                                     @else
-                                    <tr><td id="1">-  Tunjangan Administrasi Bank</td><td style="text-align:right">{{number_format($oncycle->tunj_adm_bank, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Tunjangan Administrasi Bank</td><td style="text-align:right">{{number_format($oncycles->tunj_adm_bank, 0, ',', '.')}}</td></tr>
                                     @endif
 
                                     <tr><td id="1" colspan="2" style="font-weight: 500">Jaminan Sosial Ketenagakerjaan BPJS :</td></tr>
-                                    <tr><td id="1">-  Jaminan Hari Tua 3,7%</td><td style="text-align:right">{{number_format($oncycle->jht_bpjs_iur_persh_3_7, 0, ',', '.')}}</td></tr>
-                                    <tr><td id="1">-  Jaminan Pensiun 2%</td><td style="text-align:right">{{number_format($oncycle->jp_bpjs_iur_persh_2, 0, ',', '.')}}</td></tr>
-                                    <tr><td id="1">-  Jaminan Kecelakaan Kerja 1,27%</td><td style="text-align:right">{{number_format($oncycle->jkk_bpjs_iur_persh_1_27, 0, ',', '.')}}</td></tr>
-                                    <tr><td id="1">-  Jaminan Kematian 0,3%</td><td style="text-align:right">{{number_format($oncycle->jk_bpjs_iur_persh_0_3, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Jaminan Hari Tua 3,7%</td><td style="text-align:right">{{number_format($oncycles->jht_bpjs_iur_persh_3_7, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Jaminan Pensiun 2%</td><td style="text-align:right">{{number_format($oncycles->jp_bpjs_iur_persh_2, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Jaminan Kecelakaan Kerja 1,27%</td><td style="text-align:right">{{number_format($oncycles->jkk_bpjs_iur_persh_1_27, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Jaminan Kematian 0,3%</td><td style="text-align:right">{{number_format($oncycles->jk_bpjs_iur_persh_0_3, 0, ',', '.')}}</td></tr>
 
-                                    @if($oncycle->jht_jwasraya_iur_persh_12_5  == 0)
+                                    @if($oncycles->jht_jwasraya_iur_persh_12_5  == 0)
                                     @else
-                                    <tr><td id="1">Jaminan Hari Tua Jiwasraya 12,5%</td><td style="text-align:right">{{number_format($oncycle->jht_jwasraya_iur_persh_12_5, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">Jaminan Hari Tua Jiwasraya 12,5%</td><td style="text-align:right">{{number_format($oncycles->jht_jwasraya_iur_persh_12_5, 0, ',', '.')}}</td></tr>
                                     @endif
 
                                     <tr><td id="1" colspan="2" style="font-weight: 500">Jaminan Pemeliharaan Kesehatan (JPK)</td></tr>
 
-                                    @if($oncycle->jpk_bpjs_mand_iur_persh  == 0)
+                                    @if($oncycles->jpk_bpjs_mand_iur_persh  == 0)
                                     @else
-                                    <tr><td id="1">-  JPK BPJS 4%</td><td style="text-align:right">{{number_format($oncycle->jpk_bpjs_mand_iur_persh, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  JPK BPJS 4%</td><td style="text-align:right">{{number_format($oncycles->jpk_bpjs_mand_iur_persh, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->jpk_bpjs_iur_persh_4  == 0)
+                                    @if($oncycles->jpk_bpjs_iur_persh_4  == 0)
                                     @else
-                                    <tr><td id="1">-  JPK BPJS 4%</td><td style="text-align:right">{{number_format($oncycle->jpk_bpjs_iur_persh_4, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  JPK BPJS 4%</td><td style="text-align:right">{{number_format($oncycles->jpk_bpjs_iur_persh_4, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->jpk_pensiunan_iur_persh_2  == 0)
+                                    @if($oncycles->jpk_pensiunan_iur_persh_2  == 0)
                                     @else
-                                    <tr><td id="1">-  JPK Pensiunan 2%</td><td style="text-align:right">{{number_format($oncycle->jpk_pensiunan_iur_persh_2, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  JPK Pensiunan 2%</td><td style="text-align:right">{{number_format($oncycles->jpk_pensiunan_iur_persh_2, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->total_pajak  == 0)
+                                    @if($oncycles->total_pajak  == 0)
                                     @else
-                                    <tr><td id="1">Tunjangan Pajak</td><td style="text-align:right">{{number_format($oncycle->total_pajak, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">Tunjangan Pajak</td><td style="text-align:right">{{number_format($oncycles->total_pajak, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->tunj_kurang_bayar  == 0)
+                                    @if($oncycles->tunj_kurang_bayar  == 0)
                                     @else
-                                    <tr><td id="1">Tunjangan Kekurangan Bayar</td><td style="text-align:right">{{number_format($oncycle->tunj_kurang_bayar, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">Tunjangan Kekurangan Bayar</td><td style="text-align:right">{{number_format($oncycles->tunj_kurang_bayar, 0, ',', '.')}}</td></tr>
                                     @endif
-
-                                @empty
-                                <p>Data Kosong</p>
-                                @endforelse
-
                             </tbody>
                         </table>
                     </td>
                     <td>
-                          
+
                     </td>
                     <td>
                         <table >
                             <tbody>
-                                @forelse ($oncycles as $oncycle )
                                     <tr>
                                         <th colspan="2" class="table-active" style="width:70%">Potongan</th>
                                     </tr>
 
-                                    @if($oncycle->jht_jwasraya_iur_persh_12_5 == 0)
+                                    @if($oncycles->jht_jwasraya_iur_persh_12_5 == 0)
                                     @else
                                     <tr><td id="1" colspan="2" style="font-weight: 500">Jaminan Hari Tua Jiwasraya :</td></tr>
-                                    <tr><td id="1">-  Iuran Perusahaan 12,5%</td><td style="text-align:right">{{number_format($oncycle->jht_jwasraya_iur_persh_12_5, 0, ',', '.')}}</td></tr>
-                                    <tr><td id="1">-  Iuran Pekerja 4,75%</td><td style="text-align:right">{{number_format($oncycle->jht_jwasraya_iur_pekerja_4_75, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Iuran Perusahaan 12,5%</td><td style="text-align:right">{{number_format($oncycles->jht_jwasraya_iur_persh_12_5, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Iuran Pekerja 4,75%</td><td style="text-align:right">{{number_format($oncycles->jht_jwasraya_iur_pekerja_4_75, 0, ',', '.')}}</td></tr>
                                     @endif
 
                                     <tr><td id="1" colspan="2" style="font-weight: 500">Jaminan Hari Tua BPJS Ketenagakerjaan :</td></tr>
-                                    <tr><td id="1">-  Iuran Perusahaan 3,7%</td><td style="text-align:right">{{number_format($oncycle->jht_bpjs_iur_persh_3_7, 0, ',', '.')}}</td></tr>
-                                    <tr><td id="1">-  Iuran Pekerja 2%</td><td style="text-align:right">{{number_format($oncycle->jht_bpjs_iur_pekerja_2, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Iuran Perusahaan 3,7%</td><td style="text-align:right">{{number_format($oncycles->jht_bpjs_iur_persh_3_7, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Iuran Pekerja 2%</td><td style="text-align:right">{{number_format($oncycles->jht_bpjs_iur_pekerja_2, 0, ',', '.')}}</td></tr>
                                     <tr><td id="1" colspan="2" style="font-weight: 500">Jaminan Pensiun BPJS Ketenagakerjaan :</td></tr>
-                                    <tr><td id="1">-  Iuran Perusahaan 2%</td><td style="text-align:right">{{number_format($oncycle->jp_bpjs_iur_persh_2, 0, ',', '.')}}</td></tr>
-                                    <tr><td id="1">-  Iuran Pekerja 1%</td><td style="text-align:right">{{number_format($oncycle->jp_bpjs_iur_pekerja_1, 0, ',', '.')}}</td></tr>
-                                    <tr><td id="1">Jaminan Kecelakaan Kerja BPJS 1,27%</td><td style="text-align:right">{{number_format($oncycle->jkk_bpjs_iur_persh_1_27, 0, ',', '.')}}</td></tr>
-                                    <tr><td id="1">Jaminan Kematian BPJS 0,3%</td><td style="text-align:right">{{number_format($oncycle->jk_bpjs_iur_persh_0_3, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Iuran Perusahaan 2%</td><td style="text-align:right">{{number_format($oncycles->jp_bpjs_iur_persh_2, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Iuran Pekerja 1%</td><td style="text-align:right">{{number_format($oncycles->jp_bpjs_iur_pekerja_1, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">Jaminan Kecelakaan Kerja BPJS 1,27%</td><td style="text-align:right">{{number_format($oncycles->jkk_bpjs_iur_persh_1_27, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">Jaminan Kematian BPJS 0,3%</td><td style="text-align:right">{{number_format($oncycles->jk_bpjs_iur_persh_0_3, 0, ',', '.')}}</td></tr>
 
 
 
-                                    @if($oncycle->jpk_bpjs_mand_iur_persh == 0)
+                                    @if($oncycles->jpk_bpjs_mand_iur_persh == 0)
                                     @else
                                     <tr><td id="1" colspan="2" style="font-weight: 500">Jaminan Kesehatan BPJS Kesehatan (Mandiri-PKWT) :</td></tr>
-                                    <tr><td id="1">-  Iuran Perusahaan 4%</td><td style="text-align:right">{{number_format($oncycle->jpk_bpjs_mand_iur_persh, 0, ',', '.')}}</td></tr>
-                                    <tr><td id="1">-  Iuran Pekerja 1%</td><td style="text-align:right">{{number_format($oncycle->jpk_bpjs_mand_iur_pekerja, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Iuran Perusahaan 4%</td><td style="text-align:right">{{number_format($oncycles->jpk_bpjs_mand_iur_persh, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Iuran Pekerja 1%</td><td style="text-align:right">{{number_format($oncycles->jpk_bpjs_mand_iur_pekerja, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->jpk_bpjs_iur_persh_4 == 0)
+                                    @if($oncycles->jpk_bpjs_iur_persh_4 == 0)
                                     @else
                                     <tr><td id="1" colspan="2" style="font-weight: 500">Jaminan Kesehatan BPJS Kesehatan (Perbantuan) :</td></tr>
-                                    <tr><td id="1">-  Iuran Perusahaan 4%</td><td style="text-align:right">{{number_format($oncycle->jpk_bpjs_iur_persh_4, 0, ',', '.')}}</td></tr>
-                                    <tr><td id="1">-  Iuran Pekerja 1%</td><td style="text-align:right">{{number_format($oncycle->jpk_bpjs_iur_pekerja_1, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Iuran Perusahaan 4%</td><td style="text-align:right">{{number_format($oncycles->jpk_bpjs_iur_persh_4, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">-  Iuran Pekerja 1%</td><td style="text-align:right">{{number_format($oncycles->jpk_bpjs_iur_pekerja_1, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->iur_spka == 0)
+                                    @if($oncycles->iur_spka == 0)
                                     @else
-                                    <tr><td id="1">Potongan Iuran SPKA</td><td style="text-align:right">{{number_format($oncycle->iur_spka, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">Potongan Iuran SPKA</td><td style="text-align:right">{{number_format($oncycles->iur_spka, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->pot_sewa_rumah_dinas == 0)
+                                    @if($oncycles->pot_sewa_rumah_dinas == 0)
                                     @else
-                                    <tr><td id="1">Potongan Sewa Rumah Dinas</td><td style="text-align:right">{{number_format($oncycle->pot_sewa_rumah_dinas, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">Potongan Sewa Rumah Dinas</td><td style="text-align:right">{{number_format($oncycles->pot_sewa_rumah_dinas, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->simpanan_baitul_ridho == 0)
+                                    @if($oncycles->simpanan_baitul_ridho == 0)
                                     @else
-                                    <tr><td id="1">Potongan Simpanan Baitul Ridho</td><td style="text-align:right">{{number_format($oncycle->simpanan_baitul_ridho, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">Potongan Simpanan Baitul Ridho</td><td style="text-align:right">{{number_format($oncycles->simpanan_baitul_ridho, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->cicilan_baitul_ridho == 0)
+                                    @if($oncycles->cicilan_baitul_ridho == 0)
                                     @else
-                                    <tr><td>Potongan Cicilan Baitul Ridho</td><td style="text-align:right">{{number_format($oncycle->cicilan_baitul_ridho, 0, ',', '.')}}</td></tr>
+                                    <tr><td>Potongan Cicilan Baitul Ridho</td><td style="text-align:right">{{number_format($oncycles->cicilan_baitul_ridho, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->total_pajak == 0)
+                                    @if($oncycles->total_pajak == 0)
                                     @else
-                                    <tr><td id="1">Potongan Pajak</td><td style="text-align:right">{{number_format($oncycle->total_pajak, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">Potongan Pajak</td><td style="text-align:right">{{number_format($oncycles->total_pajak, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->admin_oncycle == 0)
+                                    @if($oncycles->admin_oncycle == 0)
                                     @else
-                                    <tr><td id="1">Admin Bank</td><td style="text-align:right">{{number_format($oncycle->admin_oncycle, 0, ',', '.')}}</td></tr>
+                                    <tr><td id="1">Admin Bank</td><td style="text-align:right">{{number_format($oncycles->admin_oncycle, 0, ',', '.')}}</td></tr>
                                     @endif
 
-                                    @if($oncycle->pot_lain == 0)
+                                    @if($oncycles->pot_lain == 0)
                                     @else
-                                    <tr><td id="1">Potongan Lain-lain</td><td style="text-align:right">{{number_format($oncycle->pot_lain, 0, ',', '.')}}</td></tr>                                            </tbody>
+                                    <tr><td id="1">Potongan Lain-lain</td><td style="text-align:right">{{number_format($oncycles->pot_lain, 0, ',', '.')}}</td></tr>                                            </tbody>
                                     @endif
-
-                                @empty
-                                    data kosong
-                                @endforelse
-
                         </table>
                     </td>
                 </tr>
@@ -373,7 +353,7 @@
                         </table>
                     </td>
                     <td width="10px">
-                          
+
                     </td>
                     <td>
                         <table>
@@ -406,7 +386,7 @@
                     </tr>
                     <tr>
                         <td>
-                                
+
                         </td>
                     </tr>
                 </table>
