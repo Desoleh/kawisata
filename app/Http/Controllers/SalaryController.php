@@ -141,10 +141,9 @@ class SalaryController extends Controller
                 ->select('employees.*','documents.photo', 'accounts.npwp')
                 ->where('employees.nip',$nip)
                 ->first();
-            // dd($employee);
             $keyword = $request->search;
-            $oncycles = Oncycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->get();
-            $offcycles = Offcycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->get();
+            $oncycles = Oncycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->first();
+            $offcycles = Offcycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->first();
             $bulangajis = Oncycle::select('bulan')->distinct()->get();
 
             $total = DB::table('oncycles')
@@ -242,24 +241,30 @@ class SalaryController extends Controller
                 QrCode::size(100)
             ->format('svg')
             ->generate('kawisata.test' . '/salary/' . $uuid . '/download' , public_path('qrcode/'. $nip . '-oncycle-' .  $request->search . '.svg'));
-            $pathToFile = storage_path('app/salary/'. $nip . '-oncycle-' .  $request->search . '.pdf');
-            $pdf = PDF::loadView('user.cetakoncycle',compact([
+
+            return view('user.cetakoncycle2',compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
                 'headmenu', 'bulangajis', 'salaryslip', 'nip', 'today'
                 ]));
-            $pdf->save($pathToFile);
-            return $pdf->download($salaryslip->filename);
+            // $pathToFile = storage_path('app/salary/'. $nip . '-oncycle-' .  $request->search . '.pdf');
+            // $pdf = PDF::loadView('user.cetakoncycle',compact([
+            //     'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
+            //     'headmenu', 'bulangajis', 'salaryslip', 'nip', 'today'
+            //     ]));
+            // $pdf->save($pathToFile);
+            // return $pdf->download($salaryslip->filename);
             }
             else{
-            $pathToFile = storage_path('app/salary/'. $nip . '-oncycle-' .  $request->search . '.pdf');
+            $salaryslip1 = DB::table('salary_slips')->select('uuid')->where(['type' => 'oncycle', 'nip' => $nip, 'monthyear'=> $request->search])->first();
+            $uuid1 = $salaryslip1->uuid;
+                QrCode::size(100)
+            ->format('svg')
+            ->generate('kawisata.test' . '/salary/' . $uuid1 . '/download' , public_path('qrcode/'. $nip . '-oncycle-' .  $request->search . '.svg'));
 
-            $pdf = PDF::loadView('user.cetakoncycle',compact([
+            return view('user.cetakoncycle2',compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
                 'headmenu', 'bulangajis', 'salaryslip', 'nip', 'today'
                 ]));
-            $pdf->save($pathToFile);
-            return $pdf->download($salaryslip->filename);
-                // return response()->Download(storage_path('app/salary/'. $salaryslip->filename));
             }
         }
     }
@@ -384,6 +389,12 @@ class SalaryController extends Controller
             return $pdf->download($salaryslip->filename);
             }
             else{
+            $salaryslip1 = DB::table('salary_slips')->select('uuid')->where(['type' => 'offcycle', 'nip' => $nip, 'monthyear'=> $request->search])->first();
+            $uuid1 = $salaryslip1->uuid;
+                QrCode::size(100)
+            ->format('svg')
+            ->generate('kawisata.test' . '/salary/' . $uuid1 . '/download' , public_path('qrcode/'. $nip . '-oncycle-' .  $request->search . '.svg'));
+
             $pathToFile = storage_path('app/salary/'. $nip . '-offcycle-' .  $request->search . '.pdf');
             $pdf = PDF::loadView('user.cetakoffcycle',compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',

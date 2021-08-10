@@ -15,7 +15,7 @@
             <h1>Penghasilan</h1>
             </div>
             <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
+            <ol class="breadcrumb  float-lg-end mt-lg-3">
                 <li class="breadcrumb-item"><a href="{{ route('user.home') }}">Home</a></li>
                 <li class="breadcrumb-item active">Penghasilan</li>
             </ol>
