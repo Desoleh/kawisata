@@ -10,12 +10,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="row">
             <div class="col-sm-6">
-            <h1>Penghasilan</h1>
+            <h2>Penghasilan</h2>
             </div>
             <div class="col-sm-6">
-            <ol class="breadcrumb  float-lg-end mt-lg-3">
+            <ol class="breadcrumb  float-sm-end mt-sm-2">
                 <li class="breadcrumb-item"><a href="{{ route('user.home') }}">Home</a></li>
                 <li class="breadcrumb-item active">Penghasilan</li>
             </ol>
@@ -41,25 +41,26 @@
                             <section id="marzen" class="tab-panel">
                                 <div class="card-header border"  id="tombol">
                                     <form class="row" method="get" action="{{ route('search') }}">
-                                        <div class="col-auto">
-                                            <select type="text" name="search"  class="form-select w-auto" id="search" placeholder="Masukkan keyword">
+                                        <div class="col-auto my-2">
+                                            <div class="input-group">
+                                            <select type="text" name="search" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
                                                 <option selected value="">Pilih bulan</option>
-                                                @foreach ($bulanoncycles as $bulangaji)
-                                                    <option value="{{ $bulangaji->bulan }}" {{ request()->get("search") == $bulangaji->bulan  ? "selected" : "" }}>{{$bulangaji->bulan }}</option>
+                                                @foreach ($bulanoncycles as $bulanoncycle)
+                                                    <option value="{{ $bulanoncycle->bulan }}" {{ request()->get("search") == $bulanoncycle->bulan  ? "selected" : "" }}>{{$bulanoncycle->bulan }}</option>
                                                 @endforeach
                                             </select>
                                             @error('search')
                                                 <div class="mt-2 text-danger">{{ $message }}</div>
                                             @enderror
+
+                                            <button name="submit"  type="submit" value="1"  class="btn btn-outline-primary">Lihat</button>
+                                            </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <button name="submit"  type="submit" value="1" class="btn btn-primary ">Lihat</button>
-                                        </div>
-                                        <div class="col-auto">
-                                        <button name="submit"  type="submit" value="2" class="btn btn-primary ">Slip Penghasilan</button>
-                                        </div>
-                                        <div class="col-auto">
-                                        <button name="submit"  type="submit" value="2" class="btn btn-primary " onClick="window.print()">Cetak</button>
+                                        <div class="col-auto my-2">
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary">Slip Penghasilan</button>
+                                            <button type="button" class="btn btn-outline-primary">Cetak</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -68,10 +69,11 @@
                                 </div>
                             </section>
                             <section id="rauchbier" class="tab-panel">
-                                <div class="card-header border" id="tombol">
+                                <div class="card-header border py-0" id="tombol">
                                     <form class="row" method="get" action="{{ route('searchoffcycle') }}">
-                                        <div class="col-auto">
-                                            <select type="text" name="search"  class="form-select w-auto" id="search" placeholder="Masukkan keyword">
+                                        <div class="col-auto my-2">
+                                            <div class="input-group">
+                                            <select type="text" name="search" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
                                                 <option selected value="">Pilih bulan</option>
                                                 @foreach ($bulanoffcycles as $bulanoffcycle)
                                                     <option value="{{ $bulanoffcycle->bulan }}" {{ request()->get("search") == $bulanoffcycle->bulan  ? "selected" : "" }}>{{$bulanoffcycle->bulan }}</option>
@@ -80,15 +82,15 @@
                                             @error('search')
                                                 <div class="mt-2 text-danger">{{ $message }}</div>
                                             @enderror
+
+                                            <button name="submit"  type="submit" value="1"  class="btn btn-outline-primary">Lihat</button>
+                                            </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <button name="submit"  type="submit" value="1" class="btn btn-primary ">Lihat</button>
-                                        </div>
-                                        <div class="col-auto">
-                                        <button name="submit"  type="submit" value="2" class="btn btn-primary ">Slip Penghasilan</button>
-                                        </div>
-                                        <div class="col-auto">
-                                        <button type="button" class="btn btn-primary " onClick="window.print()">Cetak</button>
+                                        <div class="col-auto my-2">
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary">Slip Penghasilan</button>
+                                            <button type="button" class="btn btn-outline-primary">Cetak</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>

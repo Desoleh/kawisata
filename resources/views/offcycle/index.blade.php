@@ -60,7 +60,7 @@
                     </div>
 
                     {{-- cetak daftar gaji --}}
-                    <form class="form " method="get" action="{{ route('searchoffcycle') }}">
+                    {{-- <form class="form " method="get" action="{{ route('searchoffcycle') }}">
                             <div class="form-group">
                                 <select type="text" name="search"  class="custom-select w-auto" id="search" placeholder="Masukkan keyword">
                                     <option selected value="">Pilih bulan</option>
@@ -76,7 +76,7 @@
                             <div class="mt-2 text-danger">{{ $message }}</div>
                         @enderror
                             </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div><!-- /.container-fluid -->

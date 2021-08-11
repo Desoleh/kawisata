@@ -7,8 +7,9 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use App\Models\Offcycle;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 
-class OffcyclesImport implements ToCollection, WithUpserts, WithStartRow
+class OffcyclesImport implements ToCollection, WithUpserts, WithStartRow, WithCalculatedFormulas
 {
     public function collection(Collection $rows)
     {
@@ -20,7 +21,7 @@ class OffcyclesImport implements ToCollection, WithUpserts, WithStartRow
 
             Offcycle::updateOrCreate(
                 [
-                    'idoffcycle'=> $row[25],
+                    'idoffcycle'=> $row[24].$row[1],
                 ],
                 [
 
@@ -49,6 +50,7 @@ class OffcyclesImport implements ToCollection, WithUpserts, WithStartRow
                     'penalty'=> $row[22],
                     'netpaycc121'=> $row[23],
                     'bulan'=> $row[24],
+                    
                 ]
             );
 
