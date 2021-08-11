@@ -39,7 +39,8 @@
 
                         <div class="tab-panels">
                             <section id="marzen" class="tab-panel">
-                                <div class="card-header border"  id="tombol">
+
+                                <div class="card-header border" id="tombol">
                                     <form class="row" method="get" action="{{ route('search') }}">
                                         <div class="col-auto my-2">
                                             <div class="input-group">
@@ -59,7 +60,7 @@
                                         <div class="col-auto my-2">
                                             <div class="btn-group" role="group" aria-label="Basic example">
                                             <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary">Slip Penghasilan</button>
-                                            <button type="button" class="btn btn-outline-primary">Cetak</button>
+                                            <button type="button" class="btn btn-outline-primary" onClick="window.print()">Cetak</button>
                                             </div>
                                         </div>
                                     </form>
@@ -89,12 +90,12 @@
                                         <div class="col-auto my-2">
                                             <div class="btn-group" role="group" aria-label="Basic example">
                                             <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary">Slip Penghasilan</button>
-                                            <button type="button" class="btn btn-outline-primary">Cetak</button>
+                                            <button type="button" class="btn btn-outline-primary" onClick="window.print()">Cetak</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="card-body small">
+                                <div class="card-body small" id="borderlis">
                                     @yield('offcycle')
                                 </div>
 

@@ -19,11 +19,13 @@
                 </td>
             </tr>
         </table>
-        <div class="card-header border fw-bolder text-center fs-6">
-            Upah Pokok Tunjangan Tetap
-        </div>
         <div class="card-body py-0 px-0">
             <table class=" card-body table table-bordered mx-0 my-0 p-0 table-sm">
+                <tr class="card-header border fw-bolder text-center fs-6">
+                    <td colspan="6" >
+                        Upah Pokok Tunjangan Tetap
+                    </td>
+                </tr>
                 <tr>
                     <td>Nama</td><td>{{$oncycles->nama}}</td>               <td rowspan="3"></td>   <td>Bank</td><td>{{$oncycles->bank_gaji}}</td>    <td rowspan="4"  style="text-align: center"> <img class="qrcode" src="{{ asset('qrcode/'. $nip . '-oncycle-' . $keyword . '.svg' ) }}" height="90px"></td>
                 <tr>
@@ -39,7 +41,7 @@
                 {{number_format($oncycles->netpay, 0, ',', '.')}}
                 </td>
                 </tr>
-            </table>            
+            </table>
         </div>
         <table class="table table-bordered mt-0 py-0 px-0 mt-3">
             <tbody>
@@ -111,7 +113,7 @@
                     </table>
                 </td>
                 <td>
-                    
+
                 </td>
                 <td class="p-0">
                     <div class="card-header fw-bolder">Potongan</div>
@@ -218,8 +220,9 @@
 
         </table>
         <div class="page-footer" style="width: 90%; text-align: center; font-style: italic; font-size: 90%;">
-            Slip Penghasilan ini di generate otomatis secara elektronik scan qrcode untuk memastikan keaslian dokumen</div>
+            Slip Penghasilan ini di generate otomatis secara elektronik scan qrcode untuk memastikan keaslian dokumen
         </div>
+    </div>
 </main>
 
 @endsection
