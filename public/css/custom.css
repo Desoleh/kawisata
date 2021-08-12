@@ -98,3 +98,7 @@
 .tabset {
     max-width: 65em;
 }
+
+.content {
+    margin-top: 100px;
+}

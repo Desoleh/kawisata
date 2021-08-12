@@ -1,71 +1,81 @@
-                    <div class="card">
-                        <div class="card-header disabled">
-                        <h3 class="card-title">Kotak Masuk</h3>
+    <div id="sidebar" class="active">
+        <div class="sidebar-wrapper active">
+            <div class="sidebar-menu">
+                <ul class="menu">
+                    <li class="sidebar-title">Menu</li>
 
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                        </div>
-                        <div class="card-body p-0">
-                        <ul class="nav nav-pills flex-column">
-                            <li class="nav-item active">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-inbox"></i> Memo Internal Masuk
-                                <span class="badge bg-primary float-right">12</span>
-                            </a>
+                    <li class="sidebar-item">
+                        <a href="index.html" class="sidebar-link">
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Beranda</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item has-sub {{ ($headmenu === ""  ? 'active' : '' ) }}">
+                        <a href="#" class="sidebar-link">
+                            <i class="bi bi-diagram-3-fill"></i>
+                            <span>Struktur Organisasi</span>
+                        </a>
+                        <ul class="submenu {{ ($headmenu === ""  ? 'active' : '' ) }}">
+                            <li class="submenu-item {{ ($title === "Struktur Organisasi"  ? 'active' : '' ) }}">
+                                <a href="#">Struktur Organisasi</a>
                             </li>
-                            <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-envelope"></i> Disposisi Masuk
-                            </a>
-                            </li>
-                            <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-file-alt"></i> Drafts
-                            </a>
+                            <li class="submenu-item {{ ($title === "Struktur Jabatan"  ? 'active' : '' ) }}">
+                                <a href="#">Struktur Jabatan</a>
                             </li>
                         </ul>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card kotak masuk -->
-                    <div class="card">
-                        <div class="card-header disabled ">
-                        <h3 class="card-title ">Kotak Keluar</h3>
+                    </li>
 
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                        </div>
-                        <div class="card-body p-0">
-                        <ul class="nav nav-pills flex-column">
-                            <li class="nav-item active">
-                            <a href="#" class="nav-link">
-                                <i class="fas fa-inbox"></i> Memo Internal Keluar
-                                <span class="badge bg-primary float-right">12</span>
-                            </a>
+                    <li class="sidebar-item has-sub {{ ($headmenu === "Data Pegawai"  ? 'active' : '' ) }}">
+                        <a href="#" class="sidebar-link">
+                            <i class="bi bi-people-fill"></i>
+                            <span>Data Pegawai</span>
+                        </a>
+                        <ul class="submenu {{ ($headmenu === "Data Pegawai"  ? 'active' : '' ) }}">
+                            <li class="submenu-item {{ ($title === "Profil Pegawai"  ? 'active' : '' ) }}">
+                                <a href="{{ route('user.profile') }}">Personal Data</a>
                             </li>
-                            <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-envelope"></i> Disposisi Terkirim
-                            </a>
+                            <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
+                                <a href="#">Pendidikan</a>
                             </li>
-                            <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-file-alt"></i> Status Memo Internal
-                            </a>
+                            <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
+                                <a href="#">Pelatihan</a>
                             </li>
-                            <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-file-alt"></i> Memo Internal Perlu Diproses
-                            </a>
+                            <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
+                                <a href="#">Keluarga</a>
                             </li>
-
+                            <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
+                                <a href="#">Riwayat Jabatan</a>
+                            </li>
+                            <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
+                                <a href="#">Bank Detail</a>
+                            </li>
+                            <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
+                                <a href="#">Riwayat Kenaikan Pangkat</a>
+                            </li>
+                            <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
+                                <a href="#">Dokumen Lain</a>
+                            </li>
                         </ul>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
+                    </li>
+                    <li class="sidebar-item has-sub">
+                        <a href="#" class="sidebar-link">
+                            <i class="bi bi-person-lines-fill"></i>
+                            <span>Info Rekan Kerja</span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
+                                <a href="#">Info Rekan Kerja</a>
+                            </li>
+                            <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
+                                <a href="#">Info Ulang tahun</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <button class="sidebar-toggler btn x">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+    </div>

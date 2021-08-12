@@ -6,8 +6,6 @@
 @section('content')
 
 
-<div class="container-fluid">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
         <div class="row">
@@ -34,8 +32,8 @@
                         <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier" {{ ($title === "Tunjangan Tidak Tetap"  ? 'checked' : '' ) }}>
                         <label id="label" for="tab2">Tunjangan Tidak Tetap</label>
                         <!-- Tab 3 -->
-                        <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
-                        <label id="label" for="tab3">Non Upah</label>
+                        {{-- <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
+                        <label id="label" for="tab3">Non Upah</label> --}}
 
                         <div class="tab-panels">
                             <section id="marzen" class="tab-panel">
@@ -105,6 +103,7 @@
                         </div>
                 </div>
         </div>
+    </section>
 
 @endsection
 
