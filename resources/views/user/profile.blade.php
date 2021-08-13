@@ -10,13 +10,11 @@
 @push('style')
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('css/bootstrap-icons/bootstrap-icons.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/custom-sidebar.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/custom-sidebar.min.css') }}">
 @endpush
 
 @push('script-after')
-        {{-- <script src="{{ asset('js/dashboard.js') }}"></script> --}}
-        <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ asset('js/main.min.js') }}"></script>
 
 @endpush
 
@@ -32,8 +30,8 @@
 
             <section class="content-header">
                 <div class="row mb-2">
-                    <div class="col-sm-6 ">
-                    <h1 >Profile</h1>
+                    <div class="col-sm-6 ps-4 pt-2">
+                    <h2>Profile</h2>
                     </div>
                     <div class="col-sm-6 ">
                     <ol class="breadcrumb float-lg-end mt-lg-3">
@@ -109,7 +107,7 @@
                                         <label for="tab2">Jabatan</label>
                                         <!-- Tab 3 -->
                                         <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
-                                        <label for="tab3">Lain-lain</label>
+                                        <label for="tab3">Dokumen</label>
 
                                         <div class="tab-panels">
                                             <section id="marzen" class="tab-panel">
@@ -154,6 +152,25 @@
                                                                 </tr>
                                                                 @else
                                                                 @endisset
+                                                                <tr>
+                                                                        <td>NIK</td>
+                                                                        <td>{{ $account->ktp }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>NPWP</td>
+                                                                        <td>{{ $account->npwp }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>No. BPJS</td>
+                                                                        <td>{{ $account->jamsostek }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td>Alamat</td>
+                                                                        <td>{{ $account->alamat1 }}
+                                                                                <br> {{ $account->alamat2 }}
+                                                                                <br> {{ $account->District }}, {{ $account->City }}, {{ $account->Postal }} </td>
+                                                                </tr>
+
                                                         </tbody>
                                                 </table>
                                             </section>
@@ -186,22 +203,26 @@
                                                 <table class="table border-bottom border-black table-sm">
                                                     <tbody>
                                                             <tr>
-                                                                    <td>NIK</td>
-                                                                    <td>{{ $account->ktp }}</td>
+                                                                    <td>Akte Kelahiran</td>
+                                                                    <td>
+                                                                        @isset($documents->photo)
+                                                                        <img src="{{ url('/userphoto/'.$documents->photo) }}" class="img-thumbnail" alt="...">
+                                                                        @else
+                                                                        <img src="{{ asset('images/nophotos.png') }}" class="img-thumbnail" alt="...">
+                                                                        @endisset
+
+                                                                    </td>
                                                             </tr>
                                                             <tr>
-                                                                    <td>NPWP</td>
-                                                                    <td>{{ $account->npwp }}</td>
+                                                                    <td>KTP</td>
+                                                                    $@isset($ktp->doc)
+                                                                        <a href=""></a>
+                                                                    @endisset
+                                                                    <td>{{ $ktp }}</td>
                                                             </tr>
                                                             <tr>
-                                                                    <td>No. BPJS</td>
-                                                                    <td>{{ $account->jamsostek }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                    <td>Alamat</td>
-                                                                    <td>{{ $account->alamat1 }}
-                                                                            <br> {{ $account->alamat2 }}
-                                                                            <br> {{ $account->District }}, {{ $account->City }}, {{ $account->Postal }} </td>
+                                                                    <td>Kartu Keluarga</td>
+                                                                    <td></td>
                                                             </tr>
                                                     </tbody>
                                                 </table>

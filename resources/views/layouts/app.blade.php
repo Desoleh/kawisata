@@ -11,9 +11,8 @@
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon/favicon-32x32.png') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon/favicon-16x16.png') }}">
         @stack('style-before')
-        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/cetak.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}">
         <script src="https://kit.fontawesome.com/8e44ec7106.js" crossorigin="anonymous"></script>
         @stack('style')
 </head>

@@ -1,4 +1,7 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/cetakslip.min.css": "/css/cetakslip.min.css",
+    "/css/custom-sidebar.min.css": "/css/custom-sidebar.min.css",
+    "/css/custom.min.css": "/css/custom.min.css",
+    "/css/styles.min.css": "/css/styles.min.css",
+    "/js/main.min.js": "/js/main.min.js"
 }

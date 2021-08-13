@@ -50,13 +50,15 @@ class UserController extends Controller
         $judulhalaman = "Profil Pegawai";
         $nip = Auth::user()->nip;
         $documents = Document::where('nip', $nip)->latest()->first();
+        $ktp = Document::where('keterangan','KTP')->first();
+        $kk = Document::where('keterangan','Kartu Keluarga')->first();
         $employee = Employee::where('nip', $nip)->first();
         $account = Account::where('nip', $nip)->first();
         $position = Position::where('holder_id', $nip)->first();
         $headmenu = 'Data Pegawai';
         $title = 'Profil Pegawai';
 
-        return view('user.profile', compact(['judulhalaman','nip','employee','documents', 'title', 'headmenu', 'account', 'position' ]));
+        return view('user.profile', compact(['judulhalaman','nip','employee','documents', 'title', 'headmenu', 'account', 'position','ktp','kk' ]));
     }
 
     public function simpanphoto(Request $request){
