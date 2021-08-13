@@ -27,3 +27,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         new simpleDatatables.DataTable(datatablesSimple2);
     }
 });
+
+$("#datatablesSimple").dataTable({
+    lengthChange: false,
+});
