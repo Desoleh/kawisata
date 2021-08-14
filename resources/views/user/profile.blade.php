@@ -58,39 +58,50 @@
                                     </div>
                                     <div>
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Ganti Foto
                                         </button>
+                                        @if ($message = Session::get('success'))
+                                            <div class="alert alert-success" role="alert">
+                                            {{ $message }}
+                                            </div>
+                                        @endif
 
+                                        @if (count($errors) > 0)
+                                            <div class="alert alert-danger" role="alert">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                         <!-- Modal -->
-                                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="staticBackdropLabel">Ganti Foto</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <form action="/file-upload" method="POST" enctype="multipart/form-data">
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                            <div class="modal-header bg-primary">
+                                                <h5 class="modal-title text-white" id="exampleModalLabel">Ganti Foto</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                                <form action="{{ route('upload.foto') }}" method="POST" enctype="multipart/form-data">
                                                         {{ csrf_field() }}
                                                     <div class="modal-body">
-
-                                                            <div class="form-group">
-                                                                <b>File Gambar</b><br/>
-                                                                <input type="file" name="photo">
-                                                            </div>
-
-                                                            {{-- <input type="submit" value="Upload" class="btn btn-primary"> --}}
-
+                                                        <div class="form-group">
+                                                            <b>File Foto</b><br/>
+                                                            <input type="file" name="photo">
+                                                            @error('search')
+                                                                <div class="mt-2 text-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                        <button type="submit" value="Upload" class="btn btn-primary">Upload Foto</button>
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" value="upload" class="btn btn-primary">Save changes</button>
                                                     </div>
                                                 </form>
-                                                </div>
                                             </div>
+                                        </div>
                                         </div>
                                     </div>
                             </div>
@@ -200,32 +211,51 @@
                                                 </table>
                                             </section>
                                             <section id="dunkles" class="tab-panel">
-                                                <table class="table border-bottom border-black table-sm">
+                                                <table class="table table-bordered border-black table-sm">
                                                     <tbody>
-                                                            <tr>
+                                                            <tr style="vertical-align: middle">
                                                                     <td>Akte Kelahiran</td>
+                                                                    @isset($akte)
                                                                     <td>
-                                                                        @isset($documents->photo)
-                                                                        <img src="{{ url('/userphoto/'.$documents->photo) }}" class="img-thumbnail" alt="...">
-                                                                        @else
-                                                                        <img src="{{ asset('images/nophotos.png') }}" class="img-thumbnail" alt="...">
-                                                                        @endisset
-
+                                                                        <a href="{{ route('download.akte', $akte->uuid) }}">download</a>
                                                                     </td>
-                                                            </tr>
-                                                            <tr>
-                                                                    <td>KTP</td>
-                                                                    $@isset($ktp->doc)
-                                                                        <a href=""></a>
-                                                                    @endisset
-                                                                    <td>{{ $ktp }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                    <td>Kartu Keluarga</td>
+                                                                    @else
                                                                     <td></td>
+                                                                    @endisset
+                                                                <td>
+                                                                    <a href="#akte" data-bs-toggle="modal" >upload</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr style="vertical-align: middle">
+                                                                <td>KTP</td>
+                                                                    @isset($ktp)
+                                                                    <td>
+                                                                        <a href="{{ route('download.ktp', $ktp->uuid) }}">download</a>
+                                                                    </td>
+                                                                    @else
+                                                                    <td></td>
+                                                                    @endisset
+                                                                <td>
+                                                                    <a href="#ktp" data-bs-toggle="modal" >upload</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr style="vertical-align: middle">
+                                                                    <td>Kartu Keluarga</td>
+                                                                    @isset($kk)
+                                                                    <td>
+                                                                        <a href="{{ route('download.kk', $kk->uuid) }}">download</a>
+                                                                    </td>
+                                                                    @else
+                                                                    <td></td>
+                                                                    @endisset
+                                                                <td>
+                                                                    <a href="#kk" data-bs-toggle="modal" >upload</a>
+                                                                </td>
                                                             </tr>
                                                     </tbody>
                                                 </table>
+
+
                                             </section>
                                         </div>
                                 </div>
@@ -237,6 +267,81 @@
         </div>
     </div>
 </div>
+
+<!-- Modal akte -->
+<div class="modal fade" id="akte" tabindex="-1" aria-labelledby="akteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header bg-primary">
+            <h5 class="modal-title text-white" id="akteLabel">Upload Akte Kelahiran</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+            <form action="{{ route('upload.akte') }}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <b>File Akte Kelahiran</b><br/>
+                        <input type="file" name="doc">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" value="upload" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal ktp -->
+<div class="modal fade" id="ktp" tabindex="-1" aria-labelledby="ktpLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header bg-primary">
+            <h5 class="modal-title text-white" id="ktpLabel">Upload KTP</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+            <form action="{{ route('upload.ktp') }}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <b>File KTP</b><br/>
+                        <input type="file" name="doc">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" value="upload" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal kk -->
+<div class="modal fade" id="kk" tabindex="-1" aria-labelledby="kkLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header bg-primary">
+            <h5 class="modal-title text-white" id="kkLabel">Upload Kartu Keluarga</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+            <form action="{{ route('upload.kk') }}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <b>File Kartu Keluarga</b><br/>
+                        <input type="file" name="doc">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" value="upload" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 
 @endsection

@@ -102,3 +102,13 @@
 .content {
     margin-top: 100px;
 }
+
+@media (max-width: 500px) {
+    #myModal {
+        font-size: 1rem;
+    }
+
+    #myModal h4 {
+        font-size: 1rem;
+    }
+}

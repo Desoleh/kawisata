@@ -90,14 +90,18 @@ Route::prefix('user')->middleware(['auth','verified'])->group(function () {
     Route::post('store', [ MailboxController::class, 'store'])->name('mailbox.store');
     Route::get('edit', [ MailboxController::class, 'edit'])->name('mailbox.edit');
 
-    // Route::get('/students',[PrintController::class, 'index']);
-    // Route::get('/prnpriview',[PrintController::class, 'prnpriview']);
+    Route::get('/file-upload',  [DocumentController::class,'upload']);
+    Route::post('/file-upload', [DocumentController::class,'proses_upload'])->name('upload.foto');
 
-    // Route::post('/print', function() { return view('user.cetak4'); });
+    Route::post('/upload-akte', [DocumentController::class,'akte'])->name('upload.akte');
+    Route::post('/upload-ktp', [DocumentController::class,'ktp'])->name('upload.ktp');
+    Route::post('/upload-kk', [DocumentController::class,'kk'])->name('upload.kk');
+
+    Route::get('/akte/{uuid}/download', [DocumentController::class,'downloadakte'])->name('download.akte');
+    Route::get('/ktp/{uuid}/download', [DocumentController::class,'downloadktp'])->name('download.ktp');
+    Route::get('/kk/{uuid}/download', [DocumentController::class,'downloadkk'])->name('download.kk');
 });
 
     Route::get('salary/{uuid}/download', [SalarySlipController::class, 'download'])->name('salary.download');
 
 
-Route::get('/file-upload',  [DocumentController::class,'upload']);
-Route::post('/file-upload', [DocumentController::class,'proses_upload'])->name('upload');

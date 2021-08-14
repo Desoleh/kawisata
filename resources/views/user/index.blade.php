@@ -14,9 +14,53 @@
             });
         });
     </script>
+    <script>
+    $(document).ready(function(){
+        $("#myModal").modal('show');
+    });
+    </script>
 @endpush
 @section('content')
-  <h2 class="visually-hidden text-center">E-Office KA Pariwisata</h2>
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-warning">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-0 bg-white border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Memo Internal Direksi</strong>
+            <h4 class="mb-0 fs-1">Perpanjangan WFH/WFO Hingga 17 Agustus 2021</h4>
+            <div class="mb-1 text-muted">12 Agustus 2021</div>
+            <p class="card-text mb-auto" style="text-align: justify">Pemberlakuan WFH 100% bagi Pekerja Administrasi (tata usaha, kegiatan surat-menyurat, pengarsipan, pengolahan data, dan/atau penyusunan laporan), Pekerja dengan jenis pekerjaan yang terkait dengan perumusan kebijakan, pekerjaan yg berkaitan dengan otorisasi keuangan dan atau jenis pekerjaan yang dapat dilakukan menggunakan fasilitas daring, <strong> diperpanjang sampai dengan tanggal 17 Agustus 2021</strong></p>
+            <a href="{{ asset('regulation/17aug.pdf') }}" class="stretched-link">download memo internal</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Memo Internal Direksi</strong>
+            <h4 class="mb-0">Perpanjangan WFH/WFO Hingga 17 Agustus 2021</h4>
+            <div class="mb-1 text-muted">12 Agustus 2021</div>
+            <p class="card-text mb-auto" style="text-align: justify">Pemberlakuan WFH 100% bagi Pekerja Administrasi (tata usaha, kegiatan surat-menyurat, pengarsipan, pengolahan data, dan/atau penyusunan laporan), Pekerja dengan jenis pekerjaan yang terkait dengan perumusan kebijakan, pekerjaan yg berkaitan dengan otorisasi keuangan dan atau jenis pekerjaan yang dapat dilakukan menggunakan fasilitas daring, diperpanjang sampai dengan tanggal 17 Agustus 2021</p>
+            <a href="{{ asset('regulation/17aug.pdf') }}" class="stretched-link">download memo internal</a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+            <img src="{{ asset('images/blogs/Jawa1.png') }}" class="img-fluid rounded-start" alt="..."  width="200" height="250">
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+  {{-- <h2 class="visually-hidden text-center">E-Office KA Pariwisata</h2> --}}
     <div class="container-fluid mt-3 mt-sm-2  ">
             <div class="row d-flex justify-content-between lg-flex">
                 <div class="col-lg-3 col-md-6 col-sm-6  mx-lg-2 ">

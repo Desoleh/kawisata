@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-
-
+use Ramsey\Uuid\Uuid;
 
 class DocumentController extends Controller
 {
@@ -96,27 +95,89 @@ class DocumentController extends Controller
 	public function proses_upload(Request $request){
 		$this->validate($request, [
 			'photo' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
-			// 'keterangan' => 'required',
 		]);
 
-		// menyimpan data file yang diupload ke variabel $file
+        if ($files = $request->file('photo')) {
 		$photo = $request->file('photo');
-
-		$nama_file = time()."_".$photo->getClientOriginalName();
-
-      	        // isi dengan nama folder tempat kemana file diupload
+        $nip = Auth::user()->nip;
+		$nama_file = $nip. '-foto'.$photo->getClientOriginalExtension();
 		$tujuan_upload = 'userphoto';
 		$photo->move($tujuan_upload,$nama_file);
-        $nip = Auth::user()->nip;
+            Document::create([
+                'photo' => $nama_file,
+                'uuid' => (string)Uuid::uuid4(),
+                'category' => 'foto',
+                'nip' => $nip,
+            ]);
+        }
+		return redirect()->back()->withSuccess('foto berhasil diganti');
+;
+	}
 
+	public function akte(Request $request){
+		$this->validate($request, ['doc' => 'required|file',]);
+		$photo = $request->file('doc');
+        $nip = Auth::user()->nip;
+		$nama_file = $nip. '-akte.'.$photo->getClientOriginalExtension();
+		$tujuan_upload = storage_path('app/public/documents');
+		$photo->move($tujuan_upload,$nama_file);
 		Document::create([
-			'photo' => $nama_file,
-			// 'keterangan' => $request->keterangan,
+			'doc' => $nama_file,
+			'uuid' => (string)Uuid::uuid4(),
+            'category' => 'akte',
             'nip' => $nip,
 		]);
-
 		return redirect()->back();
 	}
+	public function ktp(Request $request){
+		$this->validate($request, ['doc' => 'required|file',]);
+		$photo = $request->file('doc');
+        $nip = Auth::user()->nip;
+		$nama_file = $nip. '-ktp.'.$photo->getClientOriginalExtension();
+		$tujuan_upload = storage_path('app/public/documents');
+		$photo->move($tujuan_upload,$nama_file);
+		Document::create([
+			'doc' => $nama_file,
+			'uuid' => (string)Uuid::uuid4(),
+            'category' => 'ktp',
+            'nip' => $nip,
+		]);
+		return redirect()->back();
+	}
+	public function kk(Request $request){
+		$this->validate($request, ['doc' => 'required|file',]);
+		$photo = $request->file('doc');
+        $nip = Auth::user()->nip;
+		$nama_file = $nip. '-kk.'.$photo->getClientOriginalExtension();
+		$tujuan_upload = storage_path('app/public/documents');
+		$photo->move($tujuan_upload,$nama_file);
+		Document::create([
+			'doc' => $nama_file,
+			'uuid' => (string)Uuid::uuid4(),
+            'category' => 'kk',
+            'nip' => $nip,
+		]);
+		return redirect()->back();
+	}
+
+    public function downloadakte($uuid)
+    {
+        $ktp = Document::where('uuid', $uuid)->firstOrFail();
+        $pathToFile = storage_path('app/public/documents/' . $ktp->doc);
+        return response()->download($pathToFile);
+    }
+    public function downloadktp($uuid)
+    {
+        $ktp = Document::where('uuid', $uuid)->firstOrFail();
+        $pathToFile = storage_path('app/public/documents/' . $ktp->doc);
+        return response()->download($pathToFile);
+    }
+    public function downloadkk($uuid)
+    {
+        $ktp = Document::where('uuid', $uuid)->firstOrFail();
+        $pathToFile = storage_path('app/public/documents/' . $ktp->doc);
+        return response()->download($pathToFile);
+    }
 
 
 }
