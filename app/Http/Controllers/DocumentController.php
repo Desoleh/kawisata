@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use App\Models\Document;
+use App\Models\Employee;
+use App\Models\Position;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -110,7 +113,8 @@ class DocumentController extends Controller
                 'nip' => $nip,
             ]);
         }
-		return redirect()->back()->withSuccess('foto berhasil diganti');
+        $title ='Dokumen Pegawai';
+		return redirect()->back()->withSuccess('foto berhasil diganti')->with($title,'Dokumen Pegawai');
 ;
 	}
 
@@ -127,8 +131,20 @@ class DocumentController extends Controller
             'category' => 'akte',
             'nip' => $nip,
 		]);
-		return redirect()->back();
-	}
+
+        $documents = Document::where('nip', $nip)->where('category','foto')->latest()->first();
+        $akte = Document::where('nip', $nip)->where('category','akte')->latest()->first();
+        $ktp = Document::where('nip', $nip)->where('category','ktp')->latest()->first();
+        $kk = Document::where('nip', $nip)->where('category','kk')->latest()->first();
+        $employee = Employee::where('nip', $nip)->first();
+        $account = Account::where('nip', $nip)->first();
+        $position = Position::where('holder_id', $nip)->first();
+        $title = 'Dokumen Pegawai';
+        $headmenu = 'Data Pegawai';
+
+        return view('user.profile', compact(['nip','employee','documents', 'headmenu', 'title', 'account', 'position','ktp','kk','akte' ]));
+    }
+
 	public function ktp(Request $request){
 		$this->validate($request, ['doc' => 'required|file',]);
 		$photo = $request->file('doc');
@@ -142,7 +158,17 @@ class DocumentController extends Controller
             'category' => 'ktp',
             'nip' => $nip,
 		]);
-		return redirect()->back();
+        $documents = Document::where('nip', $nip)->where('category','foto')->latest()->first();
+        $akte = Document::where('nip', $nip)->where('category','akte')->latest()->first();
+        $ktp = Document::where('nip', $nip)->where('category','ktp')->latest()->first();
+        $kk = Document::where('nip', $nip)->where('category','kk')->latest()->first();
+        $employee = Employee::where('nip', $nip)->first();
+        $account = Account::where('nip', $nip)->first();
+        $position = Position::where('holder_id', $nip)->first();
+        $title = 'Dokumen Pegawai';
+        $headmenu = 'Data Pegawai';
+
+        return view('user.profile', compact(['nip','employee','documents', 'headmenu', 'title', 'account', 'position','ktp','kk','akte' ]));
 	}
 	public function kk(Request $request){
 		$this->validate($request, ['doc' => 'required|file',]);
@@ -157,7 +183,17 @@ class DocumentController extends Controller
             'category' => 'kk',
             'nip' => $nip,
 		]);
-		return redirect()->back();
+        $documents = Document::where('nip', $nip)->where('category','foto')->latest()->first();
+        $akte = Document::where('nip', $nip)->where('category','akte')->latest()->first();
+        $ktp = Document::where('nip', $nip)->where('category','ktp')->latest()->first();
+        $kk = Document::where('nip', $nip)->where('category','kk')->latest()->first();
+        $employee = Employee::where('nip', $nip)->first();
+        $account = Account::where('nip', $nip)->first();
+        $position = Position::where('holder_id', $nip)->first();
+        $title = 'Dokumen Pegawai';
+        $headmenu = 'Data Pegawai';
+
+        return view('user.profile', compact(['nip','employee','documents', 'headmenu', 'title', 'account', 'position','ktp','kk','akte' ]));
 	}
 
     public function downloadakte($uuid)

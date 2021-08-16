@@ -57,8 +57,8 @@
                                         </div>
                                         <div class="col-auto my-2">
                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary">Slip Penghasilan</button>
-                                            <button type="button" class="btn btn-outline-primary" onClick="window.print()">Cetak</button>
+                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary">Download Slip</button>
+                                            {{-- <button type="button" class="btn btn-outline-primary" onClick="window.print()">Cetak</button> --}}
                                             </div>
                                         </div>
                                     </form>
@@ -87,8 +87,8 @@
                                         </div>
                                         <div class="col-auto my-2">
                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary">Slip Penghasilan</button>
-                                            <button type="button" class="btn btn-outline-primary" onClick="window.print()">Cetak</button>
+                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary">Download Slip</button>
+                                            {{-- <button type="button" class="btn btn-outline-primary" onClick="window.print()">Cetak</button> --}}
                                             </div>
                                         </div>
                                     </form>

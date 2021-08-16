@@ -46,6 +46,23 @@
                 <section>
                     <div class="container-fluid">
                         <div class="row">
+                            @if ($message = Session::get('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ $message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            @endif
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger" role="alert">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>
+                                                {{ $error }}
+                                                </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         <div class="col-sm-3">
                             <div class="card">
                             <div class="card-body">
@@ -61,21 +78,7 @@
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Ganti Foto
                                         </button>
-                                        @if ($message = Session::get('success'))
-                                            <div class="alert alert-success" role="alert">
-                                            {{ $message }}
-                                            </div>
-                                        @endif
 
-                                        @if (count($errors) > 0)
-                                            <div class="alert alert-danger" role="alert">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
                                         <!-- Modal -->
                                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -111,13 +114,13 @@
                             <div class="card">
                                 <div class="tabset">
                                     <!-- Tab 1 -->
-                                        <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
+                                        <input type="radio" name="tabset" id="tab1" aria-controls="marzen" {{ ($title === "Profil Pegawai"  ? 'checked' : '' ) }}>
                                         <label for="tab1">Personal Data</label>
                                         <!-- Tab 2 -->
                                         <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
                                         <label for="tab2">Jabatan</label>
                                         <!-- Tab 3 -->
-                                        <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
+                                        <input type="radio" name="tabset" id="tab3" aria-controls="dunkles" {{ ($title === "Dokumen Pegawai"  ? 'checked' : '' ) }}>
                                         <label for="tab3">Dokumen</label>
 
                                         <div class="tab-panels">
