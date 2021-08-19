@@ -221,7 +221,6 @@
             </table>
             <div class="page-footer" style="width: 100%; text-align: center; font-style: italic; font-size: 85%;">
                 Slip Penghasilan ini di generate otomatis secara elektronik pada tanggal {{ $salaryslip->created_at->isoFormat('DD MMMM YYYY HH:mm:ss') }} dengan Aplikasi eoffice KA Pariwisata, scan qrcode untuk memastikan keaslian dokumen
-                <a href="{{ $salaryslip->filename }}">download</a>
             </div>
         </div>
 
