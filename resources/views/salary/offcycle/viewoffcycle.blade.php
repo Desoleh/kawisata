@@ -1,11 +1,6 @@
-@extends('user.salary')
-
-@push('style')
-    <link rel="stylesheet" href="{{ asset('css/cetakslip.css') }}">
-@endpush
-
-@section('offcycle')
-<main>
+@extends('layouts.apphtml')
+@section('content')
+<page size='A4'>
     <div class="col-md" id="slip-page">
         <table class="table table-borderless p-0 table-sm mb-0">
             <tr>
@@ -201,8 +196,7 @@
             </tfoot> --}}
         </table>
         <div class="page-footer" style="width: 100%; text-align: center; font-style: italic; font-size: 90%;">
-            Slip Penghasilan ini di generate otomatis secara elektronik scan qrcode untuk memastikan keaslian dokumen</div>
+            Slip Penghasilan ini di generate otomatis secara elektronik pada tanggal {{ $salaryslip->created_at->isoFormat('DD MMMM YYYY HH:mm:ss') }} dengan Aplikasi eoffice KA Pariwisata, scan qrcode untuk memastikan keaslian dokumen
         </div>
-</main>
-
-@endsection
+    </div>
+</page>

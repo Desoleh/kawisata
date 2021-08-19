@@ -8,23 +8,28 @@ body {
 } */
 @media (max-width: 576px) {
     #slip-page {
-        font-size: 1rem;
+        font-size: 0.6rem;
+    }
+
+    .logo {
+        height: 65px;
     }
 
     .fs-5 {
-        font-size: 1.5rem !important;
-    }
-    .fs-6 {
         font-size: 1rem !important;
     }
+    .fs-6 {
+        font-size: 0.75rem !important;
+    }
     .qrcode {
-        height: 100px !important;
+        height: 65px !important;
     }
 
     .tab-panel {
         padding: 15px 0px 15px !important;
         border-top: 1px solid #ccc;
     }
+
 }
 
 @media print {

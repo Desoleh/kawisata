@@ -104,4 +104,42 @@ class SalarySlipController extends Controller
 
     }
 
+    public function viewoffcycle($uuid)
+    {
+            $salaryslip = SalarySlip::where('uuid',$uuid)->first();
+            $nip = $salaryslip->nip;
+            $employee = DB::table('employees')
+                ->join('accounts','accounts.nip','=','employees.nip')
+                ->select('accounts.npwp')
+                ->where('employees.nip',$nip)
+                ->first();
+            $keyword = $salaryslip->monthyear;
+            $offcycles = Offcycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->first();
+            $oncycles = Oncycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->first();
+            $totaloffcyclecc121 = DB::table('offcycles')
+                ->where([
+                ['bulan', 'like', "%" . $keyword . "%"],
+                ['nip', '=' , $nip]])
+                ->sum(DB::raw('IFNULL(tunjangan_transport,0) +
+                    IFNULL(tunjangan_komunikasi,0) +
+                    IFNULL(tunjangan_jabatan,0) +
+                    IFNULL(tunjangan_keahlian,0) +
+                    IFNULL(prestasi,0) +
+                    IFNULL(shift_allowance,0) +
+                    IFNULL(best_performance,0) +
+                    IFNULL(lembur,0)'
+                    ));
+            $totalpotonganoffcycle = DB::table('offcycles')
+                ->where([
+                ['bulan', 'like', "%" . $keyword . "%"],
+                ['nip', '=' , $nip]])
+                ->sum(DB::raw('IFNULL(admin_bank,0) + IFNULL(potongan_lain,0) + IFNULL(penalty,0)'
+                    ));
+
+            return view('salary.offcycle.viewoffcycle', compact([
+                'oncycles','offcycles', 'employee','totaloffcyclecc121',
+                'totalpotonganoffcycle', 'nip', 'keyword', 'salaryslip'
+                ]));
+
+    }
 }

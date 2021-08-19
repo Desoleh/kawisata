@@ -292,21 +292,19 @@ class SalaryController extends Controller
 
                 QrCode::size(100)
             ->format('svg')
-            ->generate('kawisata.test' . '/salary/' . $uuid . '/download' , storage_path('app/public/qrcode/'. $nip . '-offcycle-' .  $request->search . '.svg'));
+            ->generate('sdm.kawisata.id:8000/offcycle/' . $uuid . '/view' , storage_path('app/public/qrcode/'. $nip . '-offcycle-' .  $request->search . '.svg'));
 
-            $pathToFile = storage_path('app/public/salary/'. $nip . '-offcycle-' .  $request->search . '.pdf');
-            $pdf = PDF::loadView('salary.offcycle.cetakoffcycle',compact([
+            return view('salary.offcycle.cetakoffcycle3',compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
                 'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today', 'keyword'
                 ]));
-            //Aktifkan Local File Access supaya bisa pakai file external ( cth File .CSS )
-            $pdf->setOption('enable-local-file-access', true);
-            $pdf->save($pathToFile);
-            return $pdf->download($salaryslip->filename);
             }
             else{
-            return response()->Download(storage_path('app/public/salary/'. $salaryslip->filename));
-            }
+                return view('salary.offcycle.cetakoffcycle3',compact([
+                    'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
+                    'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today', 'keyword'
+                    ]));
+                }
         }
     }
 

@@ -25,7 +25,7 @@
                         <td>Nama</td><td>{{$oncycles->nama}}</td>
                         <td rowspan="4"></td>   <td>Bank</td><td>{{$oncycles->bank_gaji}}</td>
                         <td rowspan="4"  style="text-align: center; vertical-align: middle;">
-                        <img class="qrcode" src="{{ asset('qrcode/'. $nip . '-oncycle-' . $keyword . '.svg' ) }}" height="90px"></td>
+                        <img class="qrcode" src="{{ asset('storage/qrcode/'. $nip . '-oncycle-' . $keyword . '.svg' ) }}" height="90px"></td>
                     <tr>
                         <td>NIPP / NIP</td><td>{{$oncycles->nip}}</td>                                  <td>No. Rekening</td><td>{{$oncycles->no_rekening}}</td>
                     </tr>

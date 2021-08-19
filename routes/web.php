@@ -104,5 +104,6 @@ Route::prefix('user')->middleware(['auth','verified'])->group(function () {
 
     // Route::get('salary/{uuid}/download', [SalarySlipController::class, 'download'])->name('salary.download');
     Route::get('oncycle/{uuid}/view', [SalarySlipController::class, 'viewoncycle'])->name('view.oncycle');
+    Route::get('offcycle/{uuid}/view', [SalarySlipController::class, 'viewoffcycle'])->name('view.offcycle');
 
 

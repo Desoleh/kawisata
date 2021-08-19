@@ -10,7 +10,7 @@
         <table class="table table-borderless p-0 table-sm mb-0">
             <tr>
                 <td style="text-align:right;" colspan="3">
-                    <img src="{{ asset('images/logo1.png') }}" width="auto" height="85px"/>
+                    <img class="logo" src="{{ asset('images/logo1.png') }}" width="auto" height="85px"/>
                 </td>
             </tr>
             <tr>
@@ -27,22 +27,27 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Nama</td><td>{{$oncycles->nama}}</td>               <td rowspan="3"></td>   <td>Bank</td><td>{{$oncycles->bank_gaji}}</td>    <td rowspan="4"  style="text-align: center"> <img class="qrcode" src="{{ asset('qrcode/'. $nip . '-oncycle-' . $keyword . '.svg' ) }}" height="90px"></td>
+                    <td>Nama</td><td>{{$oncycles->nama}}</td>
+                    <td rowspan="4"></td>   <td>Bank</td><td>{{$oncycles->bank_gaji}}</td>
+                    <td rowspan="4"  style="text-align: center; vertical-align: middle;">
+                    <img class="qrcode" src="{{ asset('storage/qrcode/'. $nip . '-oncycle-' . $keyword . '.svg' ) }}" height="90px"></td>
                 <tr>
-                    <td>NIPP / NIP</td><td>{{$oncycles->nip}}</td>                                  <td>No. Rekening</td><td>{{$oncycles->no_rekening}}</td>
+                    <td>NIPP / NIP</td><td>{{$oncycles->nip}}</td>
+                    <td>No. Rekening</td><td>{{$oncycles->no_rekening}}</td>
                 </tr>
                 <tr>
-                    <td>Jabatan</td><td>{{$oncycles->nama_jabatan}}</td>                            <td>No. NPWP</td><td>{{$employee->npwp}}</td>
+                    <td>Jabatan</td><td>{{$oncycles->nama_jabatan}}</td>
+                    <td>No. NPWP</td><td>{{$employee->npwp}}</td>
                 </tr>
                 <tr class="card-header fw-bolder">
-                    <td colspan="3"></td>
+                    <td>Bulan</td><td>{{$keyword}}</td>
                     <td>Take Home Pay</td>
                     <td> Rp.
                 {{number_format($oncycles->netpay, 0, ',', '.')}}
                 </td>
                 </tr>
             </table>
-        </div>
+    </div>
         <table class="table table-bordered mt-0 py-0 px-0 mt-3">
             <tbody>
             <tr>

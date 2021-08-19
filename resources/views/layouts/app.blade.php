@@ -18,7 +18,7 @@
 </head>
 <body>
     @include('layouts.includes.navbarm')
-    <div class="content">
+    <div class="content" style="margin-top: 95px">
                 @yield('content')
     </div>
 
