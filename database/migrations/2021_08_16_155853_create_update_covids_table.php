@@ -15,6 +15,15 @@ class CreateUpdateCovidsTable extends Migration
     {
         Schema::create('update_covids', function (Blueprint $table) {
             $table->id();
+            $table->date('tgl_kemarin');
+            $table->date('tgl_sekarang');
+            $table->integer('positif1');
+            $table->integer('positif2');
+            $table->integer('sembuh1');
+            $table->integer('sembuh2');
+            $table->integer('kasusbaru');
+            $table->integer('isoman');
+            $table->integer('rumkit');
             $table->timestamps();
         });
     }
