@@ -1,1 +1,71 @@
-:root{--bs-blue:#7952b3;--bs-indigo:#6610f2;--bs-purple:#6f42c1;--bs-pink:#d63384;--bs-red:#dc3545;--bs-orange:#fd7e14;--bs-yellow:#ffc107;--bs-green:#198754;--bs-teal:#20c997;--bs-cyan:#0dcaf0;--bs-white:#fff;--bs-gray:#6c757d;--bs-gray-dark:#343a40;--bs-primary:#7952b3}.tabset>input[type=radio]{position:absolute;left:-200vw}.tabset .tab-panel{display:none}.tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,.tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6),.tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),.tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),.tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),.tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5){display:block}.tabset>label{position:relative;display:inline-block;padding:5px 15px 25px;border:1px solid transparent;border-bottom:0;cursor:pointer;font-weight:600}.tabset>label::after{content:"";position:absolute;left:15px;bottom:10px;width:22px;height:4px;background:#8d8d8d}.tabset>input:focus+label,.tabset>label:hover{color:var(--bs-primary)}.tabset>input:checked+label::after,.tabset>input:focus+label::after,.tabset>label:hover::after{background:var(--bs-primary)}.tabset>input:checked+label{border-color:#ccc;border-bottom:1px solid #fff;margin-bottom:-1px}.tab-panel{padding:15px 0 15px;border-top:1px solid #ccc}*,:after,:before{box-sizing:border-box}.tabset{max-width:65em}.content{margin-top:100px}@media (max-width:500px){#myModal{font-size:1rem}#myModal h4{font-size:1rem}}
+/*
+ CSS for the main interaction
+*/
+:root {
+    --bs-blue: #7952b3;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-primary: #7952b3;
+}
+
+.tabset > input:focus + label {
+    color: var(--bs-primary);
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

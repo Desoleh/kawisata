@@ -1,7 +1,7 @@
 @extends('user.salary')
 
 @push('style')
-    <link rel="stylesheet" href="{{ asset('css/cetakslip.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cetakslip.min.css') }}">
 @endpush
 
 @section('oncycle')
@@ -209,18 +209,10 @@
                 </td>
             </tr>
             </tbody>
-            {{-- <tfoot>
-                <tr>
-                <td colspan="3">
-                        <!--place holder for the fixed-position footer-->
-                        <div class="page-footer-space"></div>
-                </td>
-                </tr>
-            </tfoot> --}}
 
         </table>
-        <div class="page-footer" style="width: 90%; text-align: center; font-style: italic; font-size: 90%;">
-            Slip Penghasilan ini di generate otomatis secara elektronik scan qrcode untuk memastikan keaslian dokumen
+        <div style="width: 100%; text-align: center; font-style: italic; font-size: 90%;">
+                Slip Penghasilan ini di generate otomatis secara elektronik pada tanggal {{ $salaryslip->created_at->isoFormat('DD MMMM YYYY HH:mm:ss') }} dengan Aplikasi eoffice KA Pariwisata, scan qrcode untuk memastikan keaslian dokumen
         </div>
     </div>
 </main>

@@ -15,4 +15,19 @@ class SalarySlip extends Model
         'nip',
         'monthyear'
     ];
+
+    public function oncycle()
+    {
+        return $this->hasMany(Oncycle::class,'nip');
+    }
+
+    public function offcycle()
+    {
+        return $this->hasMany(Offcycle::class,'nip');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+}
 }

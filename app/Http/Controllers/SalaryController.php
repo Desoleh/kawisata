@@ -38,7 +38,7 @@ class SalaryController extends Controller
             $bulanoffcycles = Offcycle::select('bulan')->distinct()->get();
 
         $headmenu = 'Data Pegawai';
-        $title = 'Penghasilan';
+        $title = 'Upah Pokok dan Tunjangan Tetap';
 
 
             return view('user.salary', compact(['employee','title','headmenu',  'bulanoffcycles','bulanoncycles']));
@@ -150,25 +150,32 @@ class SalaryController extends Controller
                 $salaryslip->nip = $nip;
                 $salaryslip->monthyear = $request->search;
                 $salaryslip->uuid = $uuid;
-                $salaryslip->filename = $nip . '-oncycle-' .  $request->search . '.pdf';
+                $salaryslip->filename = 'oncycle/' . $uuid . '/view';
                 $salaryslip->save();
 
                 QrCode::size(100)
             ->format('svg')
-            ->generate('kawisata.test' . '/salary/' . $uuid . '/download' , storage_path('app/public/qrcode/'. $nip . '-oncycle-' .  $request->search . '.svg'));
+            ->generate('sdm.kawisata.id:8000/oncycle/' . $uuid . '/view' , storage_path('app/public/qrcode/'. $nip . '-oncycle-' .  $request->search . '.svg'));
 
-            $pathToFile = storage_path('app/public/salary/'. $nip . '-oncycle-' .  $request->search . '.pdf');
-            $pdf = PDF::loadView('salary.oncycle.cetakoncycle',compact([
+            // $pathToFile = storage_path('app/public/salary/'. $nip . '-oncycle-' .  $request->search . '.pdf');
+            // $pdf = PDF::loadView('salary.oncycle.cetakoncyclepdf',compact([
+            //     'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
+            //     'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today', 'keyword'
+            //     ]));
+            //Aktifkan Local File Access supaya bisa pakai file external ( cth File .CSS )
+            // $pdf->setOption('enable-local-file-access', true);
+            // $pdf->save($pathToFile);
+            // return $pdf->download($salaryslip->filename);
+            return view('salary.oncycle.cetakoncycle3',compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
                 'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today', 'keyword'
                 ]));
-            //Aktifkan Local File Access supaya bisa pakai file external ( cth File .CSS )
-            $pdf->setOption('enable-local-file-access', true);
-            $pdf->save($pathToFile);
-            return $pdf->download($salaryslip->filename);
             }
             else{
-            return response()->Download(storage_path('app/public/salary/'. $salaryslip->filename));
+            return view('salary.oncycle.cetakoncycle3',compact([
+                'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121','totalpotonganoffcycle', 'title',
+                'headmenu', 'bulanoncycles', 'bulanoffcycles', 'salaryslip', 'nip', 'today', 'keyword'
+                ]));
             }
         }
     }

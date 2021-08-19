@@ -3,9 +3,9 @@ body {
         Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
         "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-#borderlis {
+/* #borderlis {
     padding: 15px 0 15px;
-}
+} */
 @media (max-width: 576px) {
     #slip-page {
         font-size: 1rem;
@@ -25,21 +25,16 @@ body {
         padding: 15px 0px 15px !important;
         border-top: 1px solid #ccc;
     }
-
-    .page-footer {
-        position: fixed;
-        bottom: 0;
-        width: 100px;
-        border-top: 0.5px solid rgb(116, 116, 116);
-        padding-right: 1px;
-        margin-right: 1px;
-    }
 }
 
 @media print {
     @page {
         size: 210mm 297mm;
-        margin: 20mm 20mm 15mm 20mm;
+        margin: 10mm;
+    }
+
+    #slip-page {
+        font-size: 0.8rem;
     }
 
     nav {
@@ -54,7 +49,27 @@ body {
         display: none;
     }
 
+    .navbar {
+        display: none;
+    }
+
     .navbar-brand {
+        display: none;
+    }
+
+    .navbar-toggler {
+        display: none;
+    }
+
+    .navbar-toggler-icon {
+        display: none;
+    }
+
+    .navbar-collapse {
+        display: none;
+    }
+
+    .navbar-nav {
         display: none;
     }
 
@@ -64,27 +79,9 @@ body {
 
     main {
         min-height: unset;
-        margin-top: -15px;
+        margin-top: -95px;
         padding-left: 0;
         padding-right: 0;
-    }
-
-    .page-footer,
-    .page-footer-space {
-        height: 40px;
-    }
-
-    .page-footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        border-style: solid;
-        border-width: 1px 0 0 0;
-        border-color: rgb(46, 46, 46);
-    }
-
-    tfoot {
-        display: table-footer-group;
     }
 
     .card-header {
@@ -103,5 +100,16 @@ body {
 
     .border #borderlis {
         border: none !important;
+    }
+
+    .tablinks {
+        display: none;
+    }
+
+    .tabcontent {
+        display: none;
+    }
+    #tabs {
+        display: none;
     }
 }
