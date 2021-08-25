@@ -9,6 +9,7 @@ use App\Models\Employee;
 use App\Models\Position;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -81,7 +82,15 @@ class UserController extends Controller
 
     }
 
-
+    public function inforekan()
+    {
+        $employees = DB::table('employees')
+            ->join('positions','positions.holder_id','=','employees.nip')
+            ->select('employees.nip','employees.nama','positions.name')
+            ->get();
+        // dd($employees);
+        return view('user.inforekan',compact(['employees']));
+    }
 
 
 

@@ -100,6 +100,8 @@ Route::prefix('user')->middleware(['auth','verified'])->group(function () {
     Route::get('/akte/{uuid}/download', [DocumentController::class,'downloadakte'])->name('download.akte');
     Route::get('/ktp/{uuid}/download', [DocumentController::class,'downloadktp'])->name('download.ktp');
     Route::get('/kk/{uuid}/download', [DocumentController::class,'downloadkk'])->name('download.kk');
+
+    Route::get('inforekan',[UserController::class,'inforekan'])->name('user.inforekan');
 });
 
     // Route::get('salary/{uuid}/download', [SalarySlipController::class, 'download'])->name('salary.download');
