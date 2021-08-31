@@ -11,6 +11,7 @@
         background-color: orange;
         height: 10px;
         top: 86px;
+        z-index: 1;
         }
     </style>
 @endpush
