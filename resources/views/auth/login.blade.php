@@ -6,14 +6,16 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.83.1">
-        <title>Signin  · eoffice Ka Pariwisata</title>
+        <title>Signin  | eoffice Ka Pariwisata</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
 
 
         <!-- Bootstrap core CSS -->
-        <link href="{{asset('bootstrap/5.0/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/signin.css') }}">
 
         <style>
         .bd-placeholder-img {

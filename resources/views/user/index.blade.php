@@ -3,6 +3,16 @@
 @push('style-before')
     <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    {{-- <link href="{{ asset('welcome/aos/aos.css') }}" rel="stylesheet" /> --}}
+    <link href="{{ asset('welcome/style1.css') }}" rel="stylesheet" />
+    <style>
+        .garis {
+        position: fixed;
+        background-color: orange;
+        height: 10px;
+        top: 86px;
+        }
+    </style>
 @endpush
 @push('script-after')
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -15,12 +25,78 @@
         });
     </script>
     <script>
-    $(document).ready(function(){
-        $("#myModal").modal('show');
-    });
+    // $(document).ready(function(){
+    //     $("#myModal").modal('show');
+    // });
     </script>
 @endpush
 @section('content')
+        <article>
+          <div class="container-fluid garis"></div>
+        </article>
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div
+            class="
+              col-lg-6
+              d-flex
+              flex-column
+              justify-content-center
+              pt-4 pt-lg-0
+              order-2 order-lg-1
+            "
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h1>Welcome to <span>HRIS</span></h1>
+            <h2>
+              Human Resource Information System <br />
+              <span> PT Kereta Api Pariwisata</span>
+            </h2>
+          </div>
+          <div
+            class="col-lg-6 order-1 order-lg-2 hero-img"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <img
+              src="{{ asset('images/hero-img.png') }}"
+              class="img-fluid animated"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Hero -->
+    <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-md-6 col-lg-6 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+            <strong class="subtitle"> <a href="">Memo Internal Direksi</a> </strong>
+            <h4 class="title"> <a href="">Perpanjangan WFH/WFO Hingga 23 Agustus 2021</a></h4>
+              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+            <strong class="subtitle"> <a href="">Memo Internal Direksi</a> </strong>
+            <h4 class="title"> <a href="">Perpanjangan WFH/WFO Hingga 23 Agustus 2021</a></h4>
+              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Featured Services Section -->
+
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content bg-warning">

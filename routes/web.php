@@ -3,9 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\Admin\LoginController;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Admin;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\KgbController;
@@ -13,12 +11,11 @@ use App\Http\Controllers\MemoInternal\MailboxController;
 use App\Http\Controllers\OncycleController;
 use App\Http\Controllers\OffcycleController;
 use App\Http\Controllers\PositionController;
-use App\Http\Controllers\PrintController;
+use App\Http\Controllers\RegulationController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\SalarySlipController;
 use App\Http\Controllers\StrukturController;
 use App\Http\Controllers\UserController;
-use App\Models\Oncycle;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +65,8 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
 
     Route::post('account/import', [AccountController::class, 'import'])->name('account.import');
 
+    Route::get('regulation/admin', [RegulationController::class, 'indexadmin'])->name('regulations.indexadmin');
+
 
 });
 
@@ -102,6 +101,19 @@ Route::prefix('user')->middleware(['auth','verified'])->group(function () {
     Route::get('/kk/{uuid}/download', [DocumentController::class,'downloadkk'])->name('download.kk');
 
     Route::get('inforekan',[UserController::class,'inforekan'])->name('user.inforekan');
+
+    Route::get('regulations/{regulation:uuid}', [RegulationController::class, 'show'])->name('regulations.show');
+    Route::get('regulationids/{regulation:id}', [RegulationController::class, 'showid'])->name('regulations.showid');
+    Route::post('regulation', [RegulationController::class, 'store'])->name('regulations.store');
+    Route::put('regulations/{regulation:uuid}', [RegulationController::class, 'update'])->name('regulations.update');
+    Route::get('regulations/{regulation:uuid}/edit', [RegulationController::class, 'edit'])->name('regulations.edit');
+    Route::delete('regulations/{regulation:uuid}', [RegulationController::class, 'destroy'])->name('regulations.destroy');
+    Route::get('regulations', [RegulationController::class, 'index'])->name('regulations.index');
+    Route::get('regulations/{uuid}/download', [RegulationController::class, 'download'])->name('regulations.download');
+    Route::delete('regulations/{regulation:uuid}', [RegulationController::class, 'destroy'])->name('regulations.destroy');
+    Route::delete('regulation/{uuid}', [RegulationController::class, 'deletefile'])->name('regulations.deletefile');
+    Route::get('regulation/create', [RegulationController::class, 'compose'])->name('regulations.compose');
+
 });
 
     // Route::get('salary/{uuid}/download', [SalarySlipController::class, 'download'])->name('salary.download');

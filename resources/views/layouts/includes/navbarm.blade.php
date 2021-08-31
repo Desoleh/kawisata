@@ -12,7 +12,7 @@
             <a class="nav-link {{ ($title === "Beranda"  ? 'active' : '' ) }}" aria-current="page" href="{{ route('user.home') }}">Beranda</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/user/peraturan">Peraturan Perusahaan</a>
+            <a class="nav-link" href="{{ route('regulations.index') }}">Peraturan Perusahaan</a>
             </li>
             <li class="nav-item">
             {{-- <a class="nav-link {{ ($title === "Memo Internal"  ? 'active' : '' ) }} " href="{{ route('mailbox.index') }}">Memo Internal</a> --}}
