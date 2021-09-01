@@ -101,15 +101,15 @@
                 </div>
             </div>
             <div class="form-group row mb-2">
-                <label class="col-sm-2 col-form-label" for="category">Kategori</label>
+                <label class="col-sm-2 col-form-label" for="category_id">Kategori</label>
                 <div class="col-sm-10">
-                    <select class="select2" data-placeholder="category" style="width: 100%;" name="category">
+                    <select class="select2" data-placeholder="category" style="width: 100%;" name="category_id">
                             <option selected disabled>Please select one option</option>
-                        @foreach ($categories as $category )
-                            <option {{ $category->category == $regulation->category ? 'selected' : '' }} value="{{ $category->category }}" >{{ $category->category }}</option>
+                        @foreach ($categories as $item )
+                            <option {{ $item->id == $regulation->category_id ? 'selected' : '' }} value="{{ $item->id }}" >{{ $item->category }}</option>
                         @endforeach
                     </select>
-                        @error('category')
+                        @error('category_id')
                             <div class="mt-2 text-danger">{{ $message }}</div>
                         @enderror
                 </div>

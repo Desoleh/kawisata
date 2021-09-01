@@ -19,7 +19,7 @@
 @section('content')
         <div class="col-md-6 col-sm-12">
             <div class="card">
-                <div class="card-header">Info Rekan</div>
+                <div class="card-header">Peraturan</div>
                 <div class="card-body">
                 <table  class="table table-striped" id="inforekan">
                   <thead>

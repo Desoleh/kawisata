@@ -71,15 +71,15 @@
                     </div>
                 </div>
                 <div class="form-group row mb-2">
-                    <label class="col-sm-2 col-form-label" for="category">Kategori</label>
+                    <label class="col-sm-2 col-form-label" for="category_id">Kategori</label>
                     <div class="col-sm-10">
-                        <select class="select2" data-placeholder="category" style="width: 100%;" name="category">
+                        <select class="select2" data-placeholder="category" style="width: 100%;" name="category_id">
                                 <option selected disabled>Please select one option</option>
-                            @foreach ($categories as $category )
-                                <option {{ $category->category == old('category') ? 'selected' : '' }} value="{{ $category->category }}" >{{ $category->category }}</option>
+                            @foreach ($categories as $category_id )
+                                <option {{ $category->category_id == old('category_id') ? 'selected' : '' }} value="{{ $category->category_id }}" >{{ $category->category_id }}</option>
                             @endforeach
                         </select>
-                            @error('category')
+                            @error('category_id')
                                 <div class="mt-2 text-danger">{{ $message }}</div>
                             @enderror
                     </div>

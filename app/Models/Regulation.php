@@ -21,8 +21,13 @@ class Regulation extends Model
         return $this->hasMany(RegulationChange::class);
     }
 
-    public function getRouteKeyName()
+    public function category()
     {
-        return 'uuid';
+        return $this->belongsTo(Category::class);
     }
+
+    // public function getRouteKeyName()
+    // {
+    //     return 'uuid';
+    // }
 }

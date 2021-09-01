@@ -27,8 +27,12 @@
                         <td> {{ $regulation->keterangan }}</td>
                     </tr>
                     <tr>
+                        <td> Judul Singkat</td>
+                        <td> {{ $regulation->judul_singkat }}</td>
+                    </tr>
+                    <tr>
                         <td> Kategori</td>
-                        <td> {{ $regulation->category }}</td>
+                        <td> {{ $regulation->category_id }}</td>
                     </tr>
                     <tr>
                         <td> Nomor:</td>
@@ -81,7 +85,7 @@
                                                 DB::table('regulations')
                                                 ->where('id', $link->uuid)
                                                 ->first()
-                                                ->judul;
+                                                ->judul
                                             }}
                                                 <a class="btn btn-info" href="{{ route('regulations.showid', $link->uuid) }}">detail</a>
                                         @empty

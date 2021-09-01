@@ -19,7 +19,7 @@ class CreateRegulationsTable extends Migration
             $table->string('kode')->nullable();
             $table->string('judul')->nullable();
             $table->string('judul_singkat')->nullable();
-            $table->string('category')->nullable();
+            $table->foreignId('category_id')->nullable();
             $table->integer('nomor')->nullable();
             $table->integer('tahun')->nullable();
             $table->string('grade')->nullable();

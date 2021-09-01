@@ -16,9 +16,6 @@ class OncyclesImport implements ToCollection, WithUpserts, WithStartRow, SkipsEm
     public function collection(Collection $rows)
     {
 
-        // $value = $worksheet->getCell('A1')->getValue();
-        // $date = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToTimestamp($value);
-// dd($rows);
         foreach ($rows as $row) {
 
             Oncycle::updateOrCreate(

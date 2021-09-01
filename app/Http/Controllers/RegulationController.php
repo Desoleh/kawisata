@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\RegulationImport;
 use App\Models\Category;
 use App\Models\Regulation;
 use App\Models\RegulationChange;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Exists;
+use Maatwebsite\Excel\Facades\Excel;
 use Ramsey\Uuid\Uuid;
 
 class RegulationController extends Controller
@@ -23,6 +25,7 @@ class RegulationController extends Controller
      */
     public function index()
     {
+        $categories = Category::withCount('regulations')->get();
         $regulations = Regulation::latest();
 
         if(request('search')) {
@@ -30,7 +33,7 @@ class RegulationController extends Controller
         }
 
         return view('regulations.index', [
-            "regulations" => $regulations->paginate(8)
+            "regulations" => $regulations->paginate(8),"categories" => $categories
         ]
         );
     }
@@ -39,7 +42,7 @@ class RegulationController extends Controller
     {
         $regulations = Regulation::latest();
 
-        return view('admin.index-admin', [
+        return view('regulations.index-admin', [
             "regulations" => $regulations->paginate(8)
         ]
         );
@@ -77,7 +80,7 @@ class RegulationController extends Controller
         $regulations->uuid = (string)Uuid::uuid4();
         $regulations->kode  = $data['kode'];
         $regulations->judul = $data['judul'];
-        $regulations->category  = $data['category'] ?? null;
+        $regulations->category  = $data['category_id'] ?? null;
         $regulations->nomor = $data['nomor'];
         $regulations->tahun = $data['tahun'];
         $regulations->grade    = $data['grade'];
@@ -182,7 +185,7 @@ class RegulationController extends Controller
         $regulations->update([
             'kode' => $request->kode,
             'judul' => $request->judul,
-            'category' => $request->category ?? null,
+            'category_id' => $request->category_id ?? null,
             'nomor' => $request->nomor,
             'tahun' => $request->tahun,
             'grade' => $request->grade,
@@ -264,6 +267,12 @@ class RegulationController extends Controller
         }
         RegulationFile::where('uuid', $uuid)->delete();
         return back();
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new RegulationImport(), $request->file('import_file'));
+        return redirect()->route('regulations.indexadmin');
     }
 
 }

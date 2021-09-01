@@ -64,6 +64,7 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
     Route::post('jabatan/import', [PositionController::class, 'import'])->name('jabatan.import');
 
     Route::post('account/import', [AccountController::class, 'import'])->name('account.import');
+    Route::post('regulation/import', [RegulationController::class, 'import'])->name('regulation.import');
 
     Route::get('regulation/admin', [RegulationController::class, 'indexadmin'])->name('regulations.indexadmin');
 

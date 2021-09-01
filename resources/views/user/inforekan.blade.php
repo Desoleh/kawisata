@@ -17,7 +17,23 @@
 
 @endpush
 @section('content')
-        <div class="col-md-6 col-sm-12">
+<div class="container justify-content-center">
+            <section class="content-header">
+                <div class="row mb-2">
+                    <div class="col-sm-6 ps-4 pt-2">
+                    <h2>Info Rekan</h2>
+                    </div>
+                    <div class="col-sm-6 ">
+                    <ol class="breadcrumb float-lg-end mt-lg-3">
+                        <li class="breadcrumb-item"><a href="{{ route('user.home') }}">Home</a></li>
+                        <li class="breadcrumb-item active">User Profile</li>
+                    </ol>
+                    </div>
+                </div>
+            </section>
+</div>
+<div class="container justify-content-center">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">Info Rekan</div>
                 <div class="card-body">
@@ -43,11 +59,8 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-
 </div>
+
 
 @endsection
 
