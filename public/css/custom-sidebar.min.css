@@ -85,7 +85,7 @@
     display: block;
 }
 .sidebar-wrapper .menu .sidebar-item.active .sidebar-link {
-    background-color: #7952b3;
+    background-color: #019da9;
 }
 .sidebar-wrapper .menu .sidebar-item.active .sidebar-link span {
     color: #fff;
@@ -112,7 +112,7 @@
     position: relative;
 }
 .sidebar-wrapper .menu .submenu .submenu-item.active > a {
-    color: #7952b3;
+    color: #019da9;
     font-weight: bold;
 }
 .sidebar-wrapper .menu .submenu .submenu-item a {
@@ -210,4 +210,3 @@
         transition: left 0.5s ease-out;
     }
 }
-

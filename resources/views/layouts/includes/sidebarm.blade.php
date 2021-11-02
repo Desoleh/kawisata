@@ -24,9 +24,9 @@
                             <i class="bi bi-diagram-3-fill"></i>
                             <span>Struktur Organisasi</span>
                         </a>
-                        <ul class="submenu {{ ($headmenu === ""  ? 'active' : '' ) }}">
+                        <ul class="submenu {{ ($headmenu === "Struktur Organisasi"  ? 'active' : '' ) }}">
                             <li class="submenu-item {{ ($title === "Struktur Organisasi"  ? 'active' : '' ) }}">
-                                <a href="#">Struktur Organisasi</a>
+                                <a href="{{ route('struktur') }}">Struktur Organisasi</a>
                             </li>
                             <li class="submenu-item {{ ($title === "Struktur Jabatan"  ? 'active' : '' ) }}">
                                 <a href="#">Struktur Jabatan</a>

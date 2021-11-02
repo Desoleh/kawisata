@@ -541,7 +541,7 @@ section {
     padding: 8px 20px;
     margin: 0;
     background: #e7f1fd;
-    color: #7952b3;
+    color: #019da9;
     display: inline-block;
     text-transform: uppercase;
     border-radius: 50px;
@@ -554,7 +554,7 @@ section {
 }
 
 .section-title h3 span {
-    color: #7952b3;
+    color: #019da9;
 }
 
 .section-title p {
@@ -572,7 +572,7 @@ section {
 # Featured Services
 --------------------------------------------------------------*/
 .featured-services {
-    margin-top: -150px;
+    margin-top: -5rem;
 }
 
 .featured-services .icon-box {
@@ -599,7 +599,7 @@ section {
 }
 
 .featured-services .icon-box:hover::before {
-    background: #7952b3;
+    background: #019da9;
     top: 0;
     border-radius: 0px;
 }
@@ -611,7 +611,7 @@ section {
 .featured-services .icon i {
     font-size: 48px;
     line-height: 1;
-    color: #7952b3;
+    color: #019da9;
     transition: all 0.3s ease-in-out;
 }
 
@@ -632,7 +632,7 @@ section {
 }
 
 .featured-services .subtitle a {
-    color: #7952b3;
+    color: #019da9;
     text-decoration: none;
 }
 
@@ -654,7 +654,7 @@ section {
 
 .garis {
     position: fixed;
-    background-color: orange;
+    background-color: #202f62;
     height: 10px;
     top: 56px;
     z-index: 1038;

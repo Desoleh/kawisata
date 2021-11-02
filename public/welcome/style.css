@@ -43,7 +43,7 @@ h6 {
     bottom: 0;
     z-index: 9999;
     overflow: hidden;
-    background: #7952b3;
+    background: #019da9;
 }
 
 #preloader:before {
@@ -51,7 +51,7 @@ h6 {
     position: fixed;
     top: calc(50% - 30px);
     left: calc(50% - 30px);
-    border: 6px solid #7952b3;
+    border: 6px solid #019da9;
     border-top-color: #fff;
     border-bottom-color: #fff;
     border-radius: 50%;
@@ -150,7 +150,7 @@ h6 {
 #hero {
     width: 100%;
     height: 100vh;
-    background: #7952b3;
+    background: #019da9;
 }
 
 #hero .container {
@@ -308,7 +308,7 @@ section {
     margin-bottom: 20px;
     padding-bottom: 20px;
     position: relative;
-    color: #7952b3;
+    color: #019da9;
 }
 
 .section-title h2::before {
@@ -356,7 +356,7 @@ section {
 .breadcrumbs h2 {
     font-size: 28px;
     font-weight: 600;
-    color: #7952b3;
+    color: #019da9;
 }
 
 .breadcrumbs ol {
@@ -384,7 +384,7 @@ section {
 --------------------------------------------------------------*/
 #footer {
     font-size: 14px;
-    background: #7952b3;
+    background: #019da9;
 }
 
 #footer .footer-newsletter {
@@ -401,7 +401,7 @@ section {
     padding: 0;
     line-height: 1;
     font-weight: 600;
-    color: #7952b3;
+    color: #019da9;
 }
 
 #footer .footer-newsletter form {
@@ -456,7 +456,7 @@ section {
     line-height: 1;
     text-transform: uppercase;
     font-weight: 600;
-    color: #7952b3;
+    color: #019da9;
 }
 
 #footer .footer-top .footer-contact p {
@@ -470,7 +470,7 @@ section {
 #footer .footer-top h4 {
     font-size: 16px;
     font-weight: bold;
-    color: #7952b3;
+    color: #019da9;
     position: relative;
     padding-bottom: 12px;
 }
@@ -571,7 +571,7 @@ section {
 
 .garis {
     position: fixed;
-    background-color: orange;
+    background-color: #202f62;
     height: 10px;
     top: 56px;
     z-index: 1038;

@@ -9,16 +9,16 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-            <a class="nav-link {{ ($title === "Beranda"  ? 'active' : '' ) }}" aria-current="page" href="{{ route('user.home') }}">Beranda</a>
+            <a class="nav-link text-white {{ ($title === "Beranda"  ? 'active' : '' ) }}" aria-current="page" href="{{ route('user.home') }}">Beranda</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{{ route('regulations.index') }}">Peraturan Perusahaan</a>
+            <a class="nav-link text-white" href="{{ route('regulations.index') }}">Peraturan Perusahaan</a>
             </li>
             <li class="nav-item">
             {{-- <a class="nav-link {{ ($title === "Memo Internal"  ? 'active' : '' ) }} " href="{{ route('mailbox.index') }}">Memo Internal</a> --}}
             </li>
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle {{ ($title === "Profil Pegawai"  ? 'active' : '' ) }}" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white {{ ($title === "Profil Pegawai"  ? 'active' : '' ) }}" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Profil Pegawai
             </a>
             <ul class="dropdown-menu  navbar-dark bg-primary" aria-labelledby="navbarDropdownMenuLink">

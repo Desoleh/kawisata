@@ -102,4 +102,53 @@ class PositionController extends Controller
 
         return redirect()->route('positions.index');
     }
+
+    public function manageCategory()
+
+    {
+
+        $positions = Position::where('parent_id', '=', 0)->get();
+
+        $allpositions = Position::pluck('name','id')->all();
+        // dd($allpositions);
+
+        $headmenu = 'Struktur Organisasi';
+        $title = 'Struktur Organisasi';
+
+        return view('user.struktur',compact('positions','allpositions','headmenu','title'));
+
+    }
+
+
+    /**
+
+     * Show the application dashboard.
+
+     *
+
+     * @return \Illuminate\Http\Response
+
+     */
+
+    public function addCategory(Request $request)
+
+    {
+
+        $this->validate($request, [
+
+        		'title' => 'required',
+
+        	]);
+
+        $input = $request->all();
+
+        $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
+
+
+
+        Position::create($input);
+
+        return back()->with('success', 'New Position added successfully.');
+
+    }
 }

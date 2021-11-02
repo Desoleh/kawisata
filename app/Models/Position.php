@@ -33,4 +33,9 @@ class Position extends Model
         return $this->belongsTo(Employee::class, 'nip');
     }
 
+    public function childs() {
+
+        return $this->hasMany(Position::class,'parent_id','id') ;
+
+    }
 }

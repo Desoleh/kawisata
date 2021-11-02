@@ -6,7 +6,7 @@
     <style>
         .garis {
         position: fixed;
-        background-color: orange;
+        background-color: #202F62;
         height: 10px;
         top: 86px;
         z-index: 1;
