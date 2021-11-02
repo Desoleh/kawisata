@@ -10,6 +10,8 @@ use Illuminate\Support\Collection;
 
 use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Concerns\WithStartRow;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
+
 use PhpOffice\PhpSpreadsheet\Cell\Cell;
 use PhpOffice\PhpSpreadsheet\Cell\DataType;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
@@ -20,7 +22,7 @@ use Carbon\Carbon;
 
 
 
-class EmployeesImport implements ToCollection, WithUpserts, WithStartRow
+class EmployeesImport implements ToCollection, WithUpserts, WithStartRow, SkipsEmptyRows
 {
     public function collection(Collection $rows)
     {
