@@ -25,12 +25,12 @@ class Position extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'nip');
+        return $this->hasOne(User::class, 'nip','holder_id');
     }
 
     public function employee()
     {
-        return $this->hasOne(Employee::class, 'nip');
+        return $this->belongsTo(Employee::class, 'nip');
     }
 
 }

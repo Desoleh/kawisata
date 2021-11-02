@@ -27,6 +27,11 @@ class Mailbox extends Model
         'updated_at',
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
      public function approver()
     {
         return $this->belongsTo(Position::class, "approver_id");

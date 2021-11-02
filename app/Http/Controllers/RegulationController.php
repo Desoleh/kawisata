@@ -38,6 +38,21 @@ class RegulationController extends Controller
         );
     }
 
+    public function index1()
+    {
+        $categories = Category::withCount('regulations')->get();
+        $regulations = Regulation::latest();
+
+        if(request('search')) {
+            $regulations->where('judul', 'like', '%' . request('search') . '%');
+        }
+
+        return view('regulations.index1', [
+            "regulations" => $regulations->paginate(8),"categories" => $categories
+        ]
+        );
+    }
+
     public function indexadmin()
     {
         $regulations = Regulation::latest();

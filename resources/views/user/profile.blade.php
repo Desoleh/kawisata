@@ -144,7 +144,7 @@
                                                                 @endif
                                                                 <tr>
                                                                         <td>Tempat, Tgl Lahir</td>
-                                                                        <td>{{$employee->tempat_lahir}}, {{ \Carbon\Carbon::parse($employee->tanggal_lahir)->isoFormat('DD MMMM YYYY')}}</td>
+                                                                        <td>{{$employee->tempat_lahir}}, {{$employee->tanggal_lahir}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                         <td>Tgl Masuk Kerja</td>
