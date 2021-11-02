@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Employee extends Model
 {
@@ -14,7 +15,17 @@ class Employee extends Model
         public function position()
     {
 
-        return $this->belongsTo(Position::class, 'holder_id');
+        return $this->hasOne(Position::class, 'holder_id');
+    }
+
+    public function getTanggalLahirAttribute($value)
+    {
+        return Carbon::parse($value)->isoFormat('DD MMMM YYYY');;
+    }
+
+    public function setTanggalLahirAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y/m/d');;
     }
 
 }

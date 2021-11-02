@@ -24,7 +24,7 @@
             <ul class="dropdown-menu  navbar-dark bg-primary" aria-labelledby="navbarDropdownMenuLink">
                 <li><a class="dropdown-item text-white bg-primary" href="{{ route('user.profile') }}">Info Data Pribadi</a></li>
                 <li><a class="dropdown-item text-white bg-primary" href="{{ route('user.inforekan') }}">Info rekan Kerja</a></li>
-                <li><a class="dropdown-item text-white bg-primary" href="#">Info Ulang Tahun</a></li>
+                <li><a class="dropdown-item text-white bg-primary" href="{{ route('user.infoultah') }}">Info Ulang Tahun</a></li>
                 <li><a class="dropdown-item  text-white " href="{{ route('user.salary') }}">Slip Gaji</a></li>
             </ul>
             </li>

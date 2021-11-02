@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Account;
-use App\Models\DashboardEmployee;
 use App\Models\Document;
 use App\Models\Employee;
 use App\Models\Position;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\DashboardEmployee;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -92,6 +93,12 @@ class UserController extends Controller
         return view('user.inforekan',compact(['employees']));
     }
 
+    public function infoultah()
+    {
+        $employees = Employee::with('position')->whereMonth('tanggal_lahir', Carbon::now()->month)->orderBy('tanggal_lahir','ASC')->get();
+        // dd($employees);
+        return view('user.infoultah',compact(['employees']));
+    }
 
 
 }

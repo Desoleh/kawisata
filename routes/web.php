@@ -102,6 +102,9 @@ Route::prefix('user')->middleware(['auth','verified'])->group(function () {
     Route::get('/kk/{uuid}/download', [DocumentController::class,'downloadkk'])->name('download.kk');
 
     Route::get('inforekan',[UserController::class,'inforekan'])->name('user.inforekan');
+    Route::get('infoultah',[UserController::class,'infoultah'])->name('user.infoultah');
+
+    Route::get('regulations', [RegulationController::class, 'index'])->name('regulations.index');
 
     Route::get('regulations/{regulation:uuid}', [RegulationController::class, 'show'])->name('regulations.show');
     Route::get('regulationids/{regulation:id}', [RegulationController::class, 'showid'])->name('regulations.showid');
@@ -109,7 +112,7 @@ Route::prefix('user')->middleware(['auth','verified'])->group(function () {
     Route::put('regulations/{regulation:uuid}', [RegulationController::class, 'update'])->name('regulations.update');
     Route::get('regulations/{regulation:uuid}/edit', [RegulationController::class, 'edit'])->name('regulations.edit');
     Route::delete('regulations/{regulation:uuid}', [RegulationController::class, 'destroy'])->name('regulations.destroy');
-    Route::get('regulations', [RegulationController::class, 'index'])->name('regulations.index');
+    Route::get('regulations/all', [RegulationController::class, 'index1'])->name('regulations.index1');
     Route::get('regulations/{uuid}/download', [RegulationController::class, 'download'])->name('regulations.download');
     Route::delete('regulations/{regulation:uuid}', [RegulationController::class, 'destroy'])->name('regulations.destroy');
     Route::delete('regulation/{uuid}', [RegulationController::class, 'deletefile'])->name('regulations.deletefile');
@@ -122,3 +125,7 @@ Route::prefix('user')->middleware(['auth','verified'])->group(function () {
     Route::get('offcycle/{uuid}/view', [SalarySlipController::class, 'viewoffcycle'])->name('view.offcycle');
 
 
+Route::prefix('user')->middleware(['regulation'])->group(function () {
+
+
+});
