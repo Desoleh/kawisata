@@ -21,7 +21,7 @@
             <section class="content-header">
                 <div class="row mb-2">
                     <div class="col-sm-6 ps-4 pt-2">
-                    <h2>Info Rekan</h2>
+                    <h2>Ulang Tahun Pekerja Bulan ini</h2>
                     </div>
                     <div class="col-sm-6 ">
                     <ol class="breadcrumb float-lg-end mt-lg-3">
@@ -35,7 +35,7 @@
 <div class="container justify-content-center">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">Info Rekan</div>
+                {{-- <div class="card-header">Info Ulang tahun</div> --}}
                 <div class="card-body">
                 <table  class="table table-striped" id="inforekan">
                   <thead>

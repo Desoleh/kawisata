@@ -118,6 +118,9 @@ Route::prefix('user')->middleware(['auth','verified'])->group(function () {
     Route::delete('regulation/{uuid}', [RegulationController::class, 'deletefile'])->name('regulations.deletefile');
     Route::get('regulation/create', [RegulationController::class, 'compose'])->name('regulations.compose');
 
+    Route::get('struktur',[PositionController::class, 'manageCategory'])->name('struktur');
+    Route::post('add-struktur',['as'=>'add.category','uses'=>'CategoryController@addCategory']);
+
 });
 
     // Route::get('salary/{uuid}/download', [SalarySlipController::class, 'download'])->name('salary.download');

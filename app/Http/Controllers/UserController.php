@@ -9,6 +9,7 @@ use App\Models\Employee;
 use App\Models\Position;
 use Illuminate\Http\Request;
 use App\Models\DashboardEmployee;
+use App\Models\Regulation;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,8 +43,12 @@ class UserController extends Controller
             $pkwt     = DashboardEmployee::where('kedudukan','PKWT')->first();
             $frontliner     = DashboardEmployee::where('kedudukan','Frontliner')->first();
             $title = 'Beranda';
+            $regulations = Regulation::with('category')->latest()->paginate(2);
+            $employees = Employee::with('position')->whereMonth('tanggal_lahir', Carbon::now()->month)->orderBy('tanggal_lahir','ASC')->get();
+
             return view('user.index', compact(['data1', 'data2', 'kedudukan', 'jumlah', 'kantorpusat',
-            'perbantuan', 'mandiri', 'pkwt', 'frontliner',  'title']));
+            'perbantuan', 'mandiri', 'pkwt', 'frontliner',  'title','regulations', 'employees']));
+
 
     }
 
