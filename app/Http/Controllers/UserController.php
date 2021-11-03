@@ -45,7 +45,7 @@ class UserController extends Controller
             $title = 'Beranda';
             $regulations = Regulation::with('category')->latest()->paginate(2);
             $employees = Employee::with('position')->whereMonth('tanggal_lahir', Carbon::now()->month)->orderBy('tanggal_lahir','ASC')->get();
-
+            
             return view('user.index', compact(['data1', 'data2', 'kedudukan', 'jumlah', 'kantorpusat',
             'perbantuan', 'mandiri', 'pkwt', 'frontliner',  'title','regulations', 'employees']));
 

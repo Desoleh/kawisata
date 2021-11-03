@@ -53,112 +53,114 @@
         </article>
 
     <!-- ======= Hero Section ======= -->
-        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{ asset('storage/carousel/akhlak.jpg') }}" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
-
-                    <div class="container">
-                    <div class="carousel-caption text-dark">
-                        {{-- <h1>Amanah Kompeten Harmonis Loyal Adaptif Kolaboratif</h1> --}}
-                        {{-- <p>Some representative placeholder content for the first slide of the carousel.</p> --}}
-                        <p><a class="btn btn-lg btn-primary" href="{{ asset('regulation/BukuSaku Revisi 7,25 X 10 NEW REVISI 8.1.pdf') }}" target="_blank" >Buku Saku Akhlak</a></p>
-                    </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <img src="{{ asset('storage/carousel/amanah.jpg') }}" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
-
-                    <div class="container">
-                    <div class="carousel-caption text-end">
-                        <h1>Amanah</h1>
-                        <p>Memegang Teguh Kepercayaan Yang Diberikan</p>
-                    </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('storage/carousel/kompeten.jpg') }}" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
-
-                    <div class="container">
-                    <div class="carousel-caption text-end">
-                        <h1>Kompeten</h1>
-                        <p>Terus Belajar dan mengembangkan Kapabilitas</p>
-                    </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('storage/carousel/loyal.jpg') }}" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
-
-                    <div class="container">
-                    <div class="carousel-caption text-end">
-                        <h1>Loyal</h1>
-                        <p>Berdedikasi dan Mengutamakan Kepentingan Bangsa dan Negara</p>
-                    </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('storage/carousel/adaptif.jpg') }}" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
-
-                    <div class="container">
-                    <div class="carousel-caption text-end">
-                        <h1>Adaptif</h1>
-                        <p>Terus Berinovasi dan Antusias dalam Menggerakkan atau Menghadapi Perubahan</p>
-                    </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('storage/carousel/kolaboratif.jpg') }}" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
-
-                    <div class="container">
-                    <div class="carousel-caption text-end">
-                        <h1>Kolaboratif</h1>
-                        <p>Membangun Kerjasama yang Sinergis</p>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-            </button>
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
         </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ asset('storage/carousel/akhlak.jpg') }}" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
+
+                <div class="container">
+                <div class="carousel-caption text-dark">
+                    {{-- <h1>Amanah Kompeten Harmonis Loyal Adaptif Kolaboratif</h1> --}}
+                    {{-- <p>Some representative placeholder content for the first slide of the carousel.</p> --}}
+                    <p><a class="btn btn-lg btn-primary" href="{{ asset('storage/regulation/BukuSaku Revisi 7,25 X 10 NEW REVISI 8.1.pdf') }}" target="_blank" >Buku Saku Akhlak</a></p>
+                </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="{{ asset('storage/carousel/amanah.jpg') }}" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
+
+                <div class="container">
+                <div class="carousel-caption text-end">
+                    {{-- <h1>Amanah</h1>
+                    <p>Memegang Teguh Kepercayaan Yang Diberikan</p> --}}
+                </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('storage/carousel/kompeten.jpg') }}" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
+
+                <div class="container">
+                <div class="carousel-caption text-end">
+                    {{-- <h1>Kompeten</h1>
+                    <p>Terus Belajar dan mengembangkan Kapabilitas</p>
+                </div> --}}
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('storage/carousel/loyal.jpg') }}" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
+
+                <div class="container">
+                <div class="carousel-caption text-end">
+                    {{-- <h1>Loyal</h1>
+                    <p>Berdedikasi dan Mengutamakan Kepentingan Bangsa dan Negara</p>
+                </div> --}}
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('storage/carousel/adaptif.jpg') }}" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
+
+                <div class="container">
+                <div class="carousel-caption text-end">
+                    {{-- <h1>Adaptif</h1>
+                    <p>Terus Berinovasi dan Antusias dalam Menggerakkan atau Menghadapi Perubahan</p> --}}
+                </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('storage/carousel/kolaboratif.jpg') }}" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
+
+                <div class="container">
+                <div class="carousel-caption text-end">
+                    {{-- <h1>Kolaboratif</h1>
+                    <p>Membangun Kerjasama yang Sinergis</p> --}}
+                </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
     <!-- End Hero -->
 
     <!-- ======= Featured Services Section ======= -->
-    <section id="featured-services" class="featured-services">
-      <div class="container" data-aos="fade-up">
+    <div class="container">
+        <section id="featured-services" class="featured-services">
+            <div class="container" data-aos="fade-up">
 
-        <div class="d-flex d-inline">
-            @forelse ($regulations as $regulation)
-            <div class="flex-fill align-items-stretch me-3 mb-5 mb-lg-0">
-                <div class="icon-box shadow" data-aos="fade-up" data-aos-delay="100">
-                <strong class="subtitle"> <a href="">{{$regulation->category->category_name}}</a> </strong>
-                <h4 class="title"> <a href="{{ route('regulations.show',$regulation->uuid) }}">{{$regulation->judul}}</a></h4>
-                <p class="description">{{$regulation->kode}}</p>
-                <p class="description">{{$regulation->keterangan}}</p>
+                <div class="d-flex d-inline">
+                    @forelse ($regulations as $regulation)
+                    <div class="flex-fill align-items-stretch me-3 mb-5 mb-lg-0">
+                        <div class="icon-box shadow" data-aos="fade-up" data-aos-delay="100">
+                        <strong class="subtitle"> <a href="">{{$regulation->category->category_name}}</a> </strong>
+                        <h4 class="title"> <a href="{{ route('regulations.show',$regulation->uuid) }}">{{$regulation->judul}}</a></h4>
+                        <p class="description">{{$regulation->kode}}</p>
+                        <p class="description">{{$regulation->keterangan}}</p>
+                        </div>
+                    </div>
+                    @empty
+                    @endforelse
                 </div>
-            </div>
-            @empty
-            @endforelse
-        </div>
 
-      </div>
-    </section><!-- End Featured Services Section -->
+            </div>
+        </section><!-- End Featured Services Section -->
+    </div>
 
     <div class="container">
         <div class="card text-left">
