@@ -58,7 +58,7 @@ class RegulationController extends Controller
         $regulations = Regulation::latest();
 
         return view('regulations.index-admin', [
-            "regulations" => $regulations->paginate(8)
+            "regulations" => $regulations->get()
         ]
         );
     }
@@ -171,12 +171,13 @@ class RegulationController extends Controller
     {
         $regulations = Regulation::all();
         $categories = Category::all();
+
             $regulation = Regulation::where('uuid', $uuid)->firstOrFail();
             // $id = $regulation->id;
             // $regulationfiles = RegulationFile::where('regulation_id', $id)->get();
             $zones = RegulationChange::where('regulation_id',$regulation->id)->pluck('uuid');
             $regulationchanges=$zones->toArray();
-            // dd($zones, $regulationchanges, $regulationfiles);
+            // dd($categories, $zones, $regulationchanges );
             return view('regulations.edit', compact('regulation','regulations','categories','regulationchanges'));
     }
 

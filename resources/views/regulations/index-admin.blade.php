@@ -1,18 +1,82 @@
 @extends('layouts.admin.appindex')
 {{-- @section('title', $title) --}}
 @push('style-before')
-    <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="{{asset('adminlte/vendor/fontawesome-free/css/all.min.css')}}"
+    />
+    <!-- DataTables -->
+    <link
+      rel="stylesheet"
+      href="{{asset('adminlte/vendor/datatables-bs4/css/dataTables.bootstrap4.min.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{asset('adminlte/vendor/datatables-responsive/css/responsive.bootstrap4.min.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{asset('adminlte/vendor/datatables-buttons/css/buttons.bootstrap4.min.css')}}"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{asset('adminlte/css/adminlte.min.css')}}" />
 @endpush
 @push('script-after')
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <!-- jQuery -->
+    <script src="{{asset('adminlte/vendor/jquery/jquery.min.js')}}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{asset('adminlte/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="{{asset('adminlte/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('adminlte/vendor/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('adminlte/vendor/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('adminlte/vendor/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('adminlte/vendor/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('adminlte/vendor/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('adminlte/vendor/jszip/jszip.min.js')}}"></script>
+    <script src="{{asset('adminlte/vendor/pdfmake/pdfmake.min.js')}}"></script>
+    <script src="{{asset('adminlte/vendor/pdfmake/vfs_fonts.js')}}"></script>
+    <script src="{{asset('adminlte/vendor/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('adminlte/vendor/datatables-buttons/js/buttons.print.min.js')}}"></script>
+    <script src="{{asset('adminlte/vendor/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{asset('adminlte/js/adminlte.min.js')}}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{asset('adminlte/js/demo.js')}}"></script>
+    <!-- Page specific script -->
     <script>
-        $(document).ready(function () {
-            $("#peraturan").DataTable({
-                lengthChange: false,
-            });
+      $(function () {
+        $("#example1")
+          .DataTable({
+            responsive: true,
+            lengthChange: false,
+            autoWidth: false,
+            buttons: ["copy", "csv", "excel", "pdf", "print", "colvis"],
+          })
+          .buttons()
+          .container()
+          .appendTo("#example1_wrapper .col-md-6:eq(0)");
+        $("#example2").DataTable({
+          paging: true,
+          lengthChange: false,
+          searching: false,
+          ordering: true,
+          info: true,
+          autoWidth: false,
+          responsive: true,
         });
+      });
+    </script>
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+        })
     </script>
 @endpush
 @section('index')
@@ -66,7 +130,7 @@
                         </div>
                     </div>        </div>
                 <div class="card-body">
-                    <table  class="table table-bordered table-striped" id="peraturan">
+                    <table  class="table table-bordered table-striped" id="example1">
                         <thead>
                             <tr style="font-weight: bold;">
                             <td>nomor</td>

@@ -29,7 +29,6 @@ body {
         padding: 15px 0px 15px !important;
         border-top: 1px solid #ccc;
     }
-
 }
 
 @media print {
@@ -38,12 +37,22 @@ body {
         margin: 10mm;
     }
 
-    #slip-page {
-        font-size: 0.8rem;
+
+    /* #content {
+        visibility: hidden;
+    } */
+
+    #navbar {
+        display: none;
     }
 
-    nav {
+    #content-header {
         display: none;
+    }
+
+    #slip-page {
+        font-size: 0.8rem;
+        display: block;
     }
 
     .content-header {
@@ -54,38 +63,14 @@ body {
         display: none;
     }
 
-    .navbar {
-        display: none;
-    }
-
-    .navbar-brand {
-        display: none;
-    }
-
-    .navbar-toggler {
-        display: none;
-    }
-
-    .navbar-toggler-icon {
-        display: none;
-    }
-
-    .navbar-collapse {
-        display: none;
-    }
-
-    .navbar-nav {
-        display: none;
-    }
-
     #tombol {
         display: none;
     }
 
     main {
-        min-height: unset;
-        margin-top: -95px;
-        padding-left: 0;
+        /* min-height: unset; */
+        /* margin-top: -95px;
+        padding-left: 0; */
         padding-right: 0;
     }
 

@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md table-responsive-md py">
         <div class="card-header bg-primary text-white">
-            Upah Pokok Tunjangan Tetap : {{$oncycles->bulan}}
+            Upah Pokok & Tunjangan Tetap : {{$oncycles->bulan}}
         </div>
         <table class=" card-body table border border-black table-sm mb-0">
             <tbody>

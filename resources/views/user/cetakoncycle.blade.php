@@ -146,13 +146,13 @@
 
         <!-- Wrap the content of your PDF inside a main tag -->
         <div class="container">
-            <h5 style="text-align: center; font-weight: bold; "> <strong>Slip Penghasilan</strong></h5>
+            <h5 style="text-align: center; font-weight: bold; "> <strong>Slip Gaji</strong></h5>
 
             <table class="table0" >
                 <thead>
                     <tr>
                             <th colspan="3" class="table-active" style="width:70%; text-align:center;">
-                                Upah Pokok Tunjangan Tetap : {{$oncycles->bulan}}
+                                Upah Pokok & Tunjangan Tetap : {{$oncycles->bulan}}
                             </th>
                     </tr>
                 </thead>

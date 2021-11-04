@@ -164,7 +164,7 @@
 
         <!-- Wrap the content of your PDF inside a main tag -->
         <div class="container">
-            <h5 style="text-align: center; font-weight: bold; "> <strong>Slip Penghasilan</strong></h5>
+            <h5 style="text-align: center; font-weight: bold; "> <strong>Slip Gaji</strong></h5>
 
             <table class="table0" >
                 <thead>

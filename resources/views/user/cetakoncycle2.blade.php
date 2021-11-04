@@ -22,7 +22,7 @@
 
         <div class="container"></div>
         <div id="title">
-            <h5 style="text-align: center; font-weight: bold; "> <strong>Slip Penghasilan</strong></h5>
+            <h5 style="text-align: center; font-weight: bold; "> <strong>Slip Gaji</strong></h5>
         </div>
                 <main>
                     <div class="container" id="memo-page">
@@ -34,14 +34,14 @@
                             </tr>
                             <tr>
                                 <td colspan="2" style="text-align: center" class=" fw-bolder fs-4">
-                                    SLIP PENGHASILAN
+                                    SLIP GAJI
                                 </td>
                             </tr>
 
                             <tr>
                                 <td colspan="2">
                                         <div class="card-header fw-bolder text-center">
-                                            Upah Pokok Tunjangan Tetap
+                                            Upah Pokok & Tunjangan Tetap
                                         </div>
                                 </td>
                             </tr>
@@ -77,7 +77,7 @@
                             <tr>
                                 <td>
                                     <div class="card">
-                                        <div class="card-header">Upah Pokok Tunjangan Tetap</div>
+                                        <div class="card-header">Upah Pokok & Tunjangan Tetap</div>
                                         <div class="card-body">
                                             <table class="table">
                                                 <tbody>
@@ -92,7 +92,7 @@
                                 </td>
                                 <td>
                                     <div class="card">
-                                        <div class="card-header">Upah Pokok Tunjangan Tetap</div>
+                                        <div class="card-header">Upah Pokok & Tunjangan Tetap</div>
                                         <div class="card-body">
                                             <table class="table">
                                                 <tbody>
@@ -125,7 +125,7 @@
                             <tr>
                                 <td>
                                     <div class="card">
-                                        <div class="card-header">Upah Pokok Tunjangan Tetap</div>
+                                        <div class="card-header">Upah Pokok & Tunjangan Tetap</div>
                                         <div class="card-body">
                                             <table>
                                                 <tr>
@@ -181,9 +181,9 @@
                     <tr>
                             <th colspan="3" class="table-active" style="text-align:center;">
                                 @forelse ($oncycles as $oncycle)
-                                Upah Pokok Tunjangan Tetap : {{$oncycles->bulan}}
+                                Upah Pokok & Tunjangan Tetap : {{$oncycles->bulan}}
                                 @empty
-                                Upah Pokok Tunjangan Tetap :
+                                Upah Pokok & Tunjangan Tetap :
                                 @endforelse
                             </th>
                     </tr>

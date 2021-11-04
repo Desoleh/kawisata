@@ -146,16 +146,16 @@
 
         <!-- Wrap the content of your PDF inside a main tag -->
         <div class="container">
-            <h5 style="text-align: center; font-weight: bold; "> <strong>Slip Penghasilan</strong></h5>
+            <h5 style="text-align: center; font-weight: bold; "> <strong>Slip Gaji</strong></h5>
 
             <table class="table0" >
                 <thead>
                     <tr>
                             <th colspan="3" class="table-active" style="width:70%; text-align:center;">
                                 @forelse ($oncycles as $oncycle)
-                                Upah Pokok Tunjangan Tetap : {{$oncycle->bulan}}
+                                Upah Pokok & Tunjangan Tetap : {{$oncycle->bulan}}
                                 @empty
-                                Upah Pokok Tunjangan Tetap :
+                                Upah Pokok & Tunjangan Tetap :
                                 @endforelse
                             </th>
                     </tr>

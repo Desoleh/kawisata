@@ -72,12 +72,21 @@
         }
         document.getElementById("defaultOpen").click();
     </script>
+    <script>
+    function printContent(el){
+    var restorepage = $('body').html();
+    var printcontent = $('#' + el).clone();
+    $('body').empty().html(printcontent);
+    window.print();
+    $('body').html(restorepage);
+    }
+    </script>
 @endpush
 
 @section('content')
 
 
-    <section class="content-header">
+    <section id="content-header" class="content-header">
         <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
@@ -112,18 +121,19 @@
                                                     <option value="{{ $bulanoncycle->bulan }}" {{ request()->get("search") == $bulanoncycle->bulan  ? "selected" : "" }}>{{$bulanoncycle->bulan }}</option>
                                                 @endforeach
                                             </select>
+                                            <br>
                                             @error('search')
                                                 <div class="mt-2 text-danger">{{ $message }}</div>
                                             @enderror
 
-                                            <button name="submit"  type="submit" value="1"  class="btn btn-outline-primary">Lihat</button>
+                                            <button name="submit"  type="submit" value="1"  class="btn btn-outline-primary">Rincian Penghasilan</button>
                                             </div>
                                         </div>
                                         <div class="col-auto my-2">
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary">Slip Penghasilan</button>
-                                            <button type="button" class="btn btn-outline-primary" onClick="window.print()">Cetak</button>
-                                            </div>
+                                            {{-- <div class="btn-group" role="group" aria-label="Basic example"> --}}
+                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary" target="_blank">Slip Gaji</button>
+                                            {{-- <button type="button" class="btn btn-outline-primary" onClick="window.print()">Cetak</button> --}}
+                                            {{-- </div> --}}
                                         </div>
                                     </form>
                                 </div>
@@ -134,7 +144,7 @@
 
             <div id="Paris" class="tabcontent">
                                 <div class="card-header border py-0" id="tombol">
-                                    <form class="row" method="get" action="{{ route('searchoffcycle') }}">
+                                    <form class="row" method="get" action="{{ route('searchoffcycle') }}" >
                                         <div class="col-auto my-2">
                                             <div class="input-group">
                                             <select type="text" name="search" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
@@ -143,18 +153,20 @@
                                                     <option value="{{ $bulanoffcycle->bulan }}" {{ request()->get("search") == $bulanoffcycle->bulan  ? "selected" : "" }}>{{$bulanoffcycle->bulan }}</option>
                                                 @endforeach
                                             </select>
+                                            <br>
                                             @error('search')
                                                 <div class="mt-2 text-danger">{{ $message }}</div>
                                             @enderror
 
-                                            <button name="submit"  type="submit" value="1"  class="btn btn-outline-primary">Lihat</button>
+                                            <button name="submit"  type="submit" value="1"  class="btn btn-outline-primary">Rincian Penghasilan</button>
+                                            {{-- <button name="submit"  type="submit" value="1"  class="btn btn-outline-primary">Slip Gaji</button> --}}
                                             </div>
                                         </div>
                                         <div class="col-auto my-2">
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary">Slip Penghasilan</button>
-                                            <button type="button" class="btn btn-outline-primary" onClick="window.print()">Cetak</button>
-                                            </div>
+                                            {{-- <div class="btn-group" role="group" aria-label="Basic example"> --}}
+                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary" onclick="searchoffcycle()">Slip Gaji</button>
+                                            {{-- <button type="button" class="btn btn-outline-primary" onClick="window.print()">Cetak</button> --}}
+                                            {{-- </div> --}}
                                         </div>
                                     </form>
                                 </div>
@@ -162,12 +174,7 @@
                                     @yield('offcycle')
                                 </div>
             </div>
-        </div>
-            {{-- <div id="Tokyo" class="tabcontent">
-            <h3>Tokyo</h3>
-            <p>Tokyo is the capital of Japan.</p>
-            </div> --}}
-        </div>
+
     </section>
 
 @endsection

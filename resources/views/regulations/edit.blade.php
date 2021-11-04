@@ -106,7 +106,7 @@
                     <select class="select2" data-placeholder="category" style="width: 100%;" name="category_id">
                             <option selected disabled>Please select one option</option>
                         @foreach ($categories as $item )
-                            <option {{ $item->id == $regulation->category_id ? 'selected' : '' }} value="{{ $item->id }}" >{{ $item->category }}</option>
+                            <option {{ $item->id == $regulation->category_id ? 'selected' : '' }} value="{{ $item->id }}" >{{ $item->category_name }}</option>
                         @endforeach
                     </select>
                         @error('category_id')

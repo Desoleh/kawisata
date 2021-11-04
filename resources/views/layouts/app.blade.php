@@ -15,15 +15,20 @@
         <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}">
         <script src="https://kit.fontawesome.com/8e44ec7106.js" crossorigin="anonymous"></script>
         @stack('style')
+        {!! htmlScriptTagJsApi([
+            'action' => 'homepage',
+            'custom_validation' => 'myCustomValidation'
+        ]) !!}
 </head>
 <body>
     @include('layouts.includes.navbarm')
-    <div class="content" style="margin-top: 95px">
+    <div id="content" class="content" style="margin-top: 95px">
                 @yield('content')
     </div>
 
     @stack('script-before')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     @stack('script-after')
 </body>
 </html>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <img src="{{asset('images/logo2.png')}}" alt="" height=60">

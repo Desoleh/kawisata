@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                     <td colspan="3" style="text-align: center" class=" fw-bolder fs-5">
-                        SLIP PENGHASILAN
+                        SLIP GAJI
                     </td>
                 </tr>
             </table>
@@ -35,7 +35,7 @@
                 <table class=" card-body table table-bordered mx-0 my-0 p-0 table-sm">
                     <tr class="card-header border fw-bolder text-center fs-6">
                         <td colspan="6" >
-                            Upah Pokok Tunjangan Tetap
+                            Upah Pokok & Tunjangan Tetap
                         </td>
                     </tr>
                     <tr>
@@ -62,7 +62,7 @@
                 <tbody>
                 <tr>
                     <td class="p-0">
-                        <div class="card-header border m-0 fw-bolder">Upah Pokok Tunjangan Tetap</div>
+                        <div class="card-header border m-0 fw-bolder">Upah Pokok & Tunjangan Tetap</div>
                         <table class=" card-body table border border-black table-sm mb-0">
                             <tbody>
                                 @if($oncycles->upah_pokok == 0)
@@ -237,7 +237,7 @@
 
             </table>
             <div class="page-footer" style="width: 100%; text-align: center; font-style: italic; font-size: 85%;">
-                Slip Penghasilan ini di generate otomatis secara elektronik pada tanggal {{ $salaryslip->created_at->isoFormat('DD MMMM YYYY HH:mm:ss') }} dengan Aplikasi eoffice KA Pariwisata, scan qrcode untuk memastikan keaslian dokumen
+                Slip Gaji ini di generate otomatis secara elektronik pada tanggal {{ $salaryslip->created_at->isoFormat('DD MMMM YYYY HH:mm:ss') }} dengan Aplikasi eoffice KA Pariwisata, scan qrcode untuk memastikan keaslian dokumen
             </div>
         </div>
     </main>
