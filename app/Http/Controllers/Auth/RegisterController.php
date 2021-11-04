@@ -55,6 +55,7 @@ class RegisterController extends Controller
             'nip' => ['required', 'string', 'max:20', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'g-recaptcha-response' => 'recaptcha',
         ]);
     }
 

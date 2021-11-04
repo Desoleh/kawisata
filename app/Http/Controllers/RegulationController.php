@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Imports\RegulationImport;
 use App\Models\Category;
+use App\Models\Employee;
 use App\Models\Regulation;
 use App\Models\RegulationChange;
 use App\Models\RegulationFile;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
@@ -25,8 +27,12 @@ class RegulationController extends Controller
      */
     public function index()
     {
+        $grade = Employee::where('nip', Auth::user()->nip)->pluck('jenis_pangkat');
         $categories = Category::withCount('regulations')->get();
-        $regulations = Regulation::latest();
+        $regulations = Regulation::where('grade', $grade)
+        ->orwhere('grade','all')
+        ->latest();
+        // dd($grade);
 
         if(request('search')) {
             $regulations->where('judul', 'like', '%' . request('search') . '%');

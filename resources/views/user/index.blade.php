@@ -81,8 +81,8 @@
 
                     <div class="container">
                     <div class="carousel-caption text-end">
-                        <h1>Amanah</h1>
-                        <p>Memegang Teguh Kepercayaan Yang Diberikan</p>
+                        {{-- <h1>Amanah</h1>
+                        <p>Memegang Teguh Kepercayaan Yang Diberikan</p> --}}
                     </div>
                     </div>
                 </div>
@@ -91,8 +91,8 @@
 
                     <div class="container">
                     <div class="carousel-caption text-end">
-                        <h1>Kompeten</h1>
-                        <p>Terus Belajar dan mengembangkan Kapabilitas</p>
+                        {{-- <h1>Kompeten</h1>
+                        <p>Terus Belajar dan mengembangkan Kapabilitas</p> --}}
                     </div>
                     </div>
                 </div>
@@ -101,8 +101,8 @@
 
                     <div class="container">
                     <div class="carousel-caption text-end">
-                        <h1>Loyal</h1>
-                        <p>Berdedikasi dan Mengutamakan Kepentingan Bangsa dan Negara</p>
+                        {{-- <h1>Loyal</h1>
+                        <p>Berdedikasi dan Mengutamakan Kepentingan Bangsa dan Negara</p> --}}
                     </div>
                     </div>
                 </div>
@@ -111,8 +111,8 @@
 
                     <div class="container">
                     <div class="carousel-caption text-end">
-                        <h1>Adaptif</h1>
-                        <p>Terus Berinovasi dan Antusias dalam Menggerakkan atau Menghadapi Perubahan</p>
+                        {{-- <h1>Adaptif</h1>
+                        <p>Terus Berinovasi dan Antusias dalam Menggerakkan atau Menghadapi Perubahan</p> --}}
                     </div>
                     </div>
                 </div>
@@ -121,8 +121,8 @@
 
                     <div class="container">
                     <div class="carousel-caption text-end">
-                        <h1>Kolaboratif</h1>
-                        <p>Membangun Kerjasama yang Sinergis</p>
+                        {{-- <h1>Kolaboratif</h1>
+                        <p>Membangun Kerjasama yang Sinergis</p> --}}
                     </div>
                     </div>
                 </div>
@@ -140,29 +140,36 @@
     <!-- End Hero -->
 
     <!-- ======= Featured Services Section ======= -->
-    <section id="featured-services" class="featured-services">
-      <div class="container" data-aos="fade-up">
-
-        <div class="d-flex d-inline">
-            @forelse ($regulations as $regulation)
-            <div class="flex-fill align-items-stretch me-3 mb-5 mb-lg-0">
-                <div class="icon-box shadow" data-aos="fade-up" data-aos-delay="100">
-                <strong class="subtitle"> <a href="">{{$regulation->category->category_name}}</a> </strong>
-                <h4 class="title"> <a href="{{ route('regulations.show',$regulation->uuid) }}">{{$regulation->judul}}</a></h4>
-                <p class="description">{{$regulation->kode}}</p>
-                <p class="description">{{$regulation->keterangan}}</p>
+    <div class="container mb-5">
+        <div class="card mt-2 mb-2">
+            <div class="card-header"><h4>Peraturan Perusahaan</h4></div>
+            <div class="card-body bg-light">
+                <section id="featured-services" class="featured-services">
+                <div class="container" data-aos="fade-up">
+                        @forelse ($regulations as $regulation)
+                        <div class="row mt-5">
+                            <div class="col-12 col-md-12 icon-box shadow" data-aos="fade-up" data-aos-delay="100">
+                            <strong class="subtitle"> <a href="">{{$regulation->category->category_name}}</a> </strong>
+                            <h4 class="title"> <a href="{{ route('regulations.show',$regulation->uuid) }}">{{$regulation->judul}}</a></h4>
+                            <p class="description">{{$regulation->kode}}</p>
+                            <p class="description">{{$regulation->keterangan}}</p>
+                            </div>
+                        </div>
+                        @empty
+                        @endforelse
                 </div>
+                </section><!-- End Featured Services Section -->    
             </div>
-            @empty
-            @endforelse
+            <div class="d-flex justify-content-center">
+                {!! $regulations->links() !!}
+            </div>
         </div>
+    </div>
 
-      </div>
-    </section><!-- End Featured Services Section -->
 
     <div class="container">
         <div class="card text-left">
-            <div class="card-header">Dashboar Pekerja</div>
+            <div class="card-header"><h4>Dashboard Pekerja</h2></div>
             <div class="card-body">
                 <div class="container-fluid mt-3 mt-sm-2  ">
                     <div class="row d-flex justify-content-between lg-flex">
@@ -216,13 +223,13 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-12">
                             <div class="card">
-                                <div class="card-header">Frontliner</div>
+                                <div class="card-header"><h4>Pekerja Alih Daya (Frontliner)</h4></div>
                                 <div class="card-body">
                                 <table  class="table table-sm table-striped" id="frontliner">
                                 <thead>
                                     <tr>
                                     <th>Kedudukan</th>
-                                    <th>Jumlah Pegawai</th>
+                                    <th>Jumlah <br> Pegawai</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -241,7 +248,7 @@
                         <div class="col-md-8 col-sm-12 justify-content-center">
                                 <div class="col-12">
                                     <div class="card">
-                                        <div class="card-header">Info Ulang tahun</div>
+                                        <div class="card-header"><h4>Info Ulang tahun</h4></div>
                                         <div class="card-body">
                                         <table  class="table table-sm table-striped" id="inforekan">
                                         <thead>
