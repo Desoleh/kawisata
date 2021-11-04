@@ -115,23 +115,22 @@
                                     <form class="row" method="get" action="{{ route('search') }}">
                                         <div class="col-auto my-2">
                                             <div class="input-group">
-                                            <select type="text" name="search" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                            <select type="text" name="search" class="form-select @error('search') is-invalid @enderror" id="inputGroupSelect04" aria-label="Example select with button addon">
                                                 <option selected value="">Pilih bulan</option>
                                                 @foreach ($bulanoncycles as $bulanoncycle)
                                                     <option value="{{ $bulanoncycle->bulan }}" {{ request()->get("search") == $bulanoncycle->bulan  ? "selected" : "" }}>{{$bulanoncycle->bulan }}</option>
                                                 @endforeach
                                             </select>
-                                            <br>
-                                            @error('search')
-                                                <div class="mt-2 text-danger">{{ $message }}</div>
-                                            @enderror
-
                                             <button name="submit"  type="submit" value="1"  class="btn btn-outline-primary">Rincian Penghasilan</button>
                                             </div>
+                                            @error('search')
+                                                <div class="ms-3 mt-2 text-danger">pilih bulan</div>
+                                            @enderror
+
                                         </div>
                                         <div class="col-auto my-2">
                                             {{-- <div class="btn-group" role="group" aria-label="Basic example"> --}}
-                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary" target="_blank">Slip Gaji</button>
+                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary">Slip Gaji</button>
                                             {{-- <button type="button" class="btn btn-outline-primary" onClick="window.print()">Cetak</button> --}}
                                             {{-- </div> --}}
                                         </div>
@@ -147,24 +146,22 @@
                                     <form class="row" method="get" action="{{ route('searchoffcycle') }}" >
                                         <div class="col-auto my-2">
                                             <div class="input-group">
-                                            <select type="text" name="search" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                            <select type="text" name="search" class="form-select @error('search') is-invalid @enderror" id="inputGroupSelect04" aria-label="Example select with button addon">
                                                 <option selected value="">Pilih bulan</option>
                                                 @foreach ($bulanoffcycles as $bulanoffcycle)
                                                     <option value="{{ $bulanoffcycle->bulan }}" {{ request()->get("search") == $bulanoffcycle->bulan  ? "selected" : "" }}>{{$bulanoffcycle->bulan }}</option>
                                                 @endforeach
                                             </select>
-                                            <br>
-                                            @error('search')
-                                                <div class="mt-2 text-danger">{{ $message }}</div>
-                                            @enderror
-
                                             <button name="submit"  type="submit" value="1"  class="btn btn-outline-primary">Rincian Penghasilan</button>
                                             {{-- <button name="submit"  type="submit" value="1"  class="btn btn-outline-primary">Slip Gaji</button> --}}
                                             </div>
+                                            @error('search')
+                                                <div class="ms-3 mt-2 text-danger">pilih bulan</div>
+                                            @enderror
                                         </div>
                                         <div class="col-auto my-2">
                                             {{-- <div class="btn-group" role="group" aria-label="Basic example"> --}}
-                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary" onclick="searchoffcycle()">Slip Gaji</button>
+                                            <button name="submit"  type="submit" value="2"  class="btn btn-outline-primary">Slip Gaji</button>
                                             {{-- <button type="button" class="btn btn-outline-primary" onClick="window.print()">Cetak</button> --}}
                                             {{-- </div> --}}
                                         </div>

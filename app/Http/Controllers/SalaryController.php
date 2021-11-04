@@ -133,7 +133,9 @@ class SalaryController extends Controller
             $today = Carbon::now()->locale('id_ID');
 
         if($submit == 1) {
-            return view('user.salaryoncycles', compact([
+            $this->validate($request, [
+            'search' => 'required',
+            ]);            return view('user.salaryoncycles', compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee','totaloffcyclecc121',
                 'totalpotonganoffcycle', 'title', 'headmenu', 'bulanoffcycles','bulanoncycles'
                 ]));
@@ -269,7 +271,9 @@ class SalaryController extends Controller
             $today = Carbon::now()->locale('id_ID');
 
         if($submit == 1) {
-            return view('user.salaryoffcycles', compact([
+            $this->validate($request, [
+            'search' => 'required',
+            ]);            return view('user.salaryoffcycles', compact([
                 'oncycles','offcycles', 'total', 'totalpotongan', 'employee',
                 'totaloffcyclecc121','totalpotonganoffcycle', 'title', 'headmenu',
                 'bulanoncycles', 'bulanoffcycles'

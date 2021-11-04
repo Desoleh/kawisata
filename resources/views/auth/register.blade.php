@@ -33,7 +33,7 @@
 
                                 @error('nip')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>NIP belum terdaftar</strong>
                                     </span>
                                 @enderror
                             </div>
