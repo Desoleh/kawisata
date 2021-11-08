@@ -7,7 +7,7 @@ main-header navbar navbar-expand navbar-white navbar-light">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-        <a href="/admin" class="nav-link">Home</a>
+        <a href="/admin" class="nav-link">Beranda</a>
     </li>
     </ul>
 
@@ -29,7 +29,7 @@ main-header navbar navbar-expand navbar-white navbar-light">
         @else
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
+                    {{ Auth::user()->employee->nama }}
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

@@ -73,6 +73,9 @@
           -webkit-box-shadow: 0 0 5mm rgba(0, 0, 0, 0.5);
           box-shadow: 0 0 5mm rgba(0, 0, 0, 0.5);
         }
+        #slip-page  {
+            font-size: 0.8rem !important;
+        }
       }
 
       /* Print mode */
@@ -86,6 +89,8 @@
         .btn-round {
           display: none !important;
         }
+
+
       }
 
       @page {
@@ -165,7 +170,7 @@
         line-height: 2rem;
       }
     </style>
-        <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles-slip.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/cetakslip-only.min.css') }}">
 

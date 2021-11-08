@@ -166,7 +166,7 @@
         line-height: 2rem;
       }
     </style>
-        <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles-slip.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/cetakslip-only.min.css') }}">
 

@@ -19,7 +19,7 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item has-sub {{ ($headmenu === ""  ? 'active' : '' ) }}">
+                    {{-- <li class="sidebar-item has-sub {{ ($headmenu === ""  ? 'active' : '' ) }}">
                         <a href="#" class="sidebar-link">
                             <i class="bi bi-diagram-3-fill"></i>
                             <span>Struktur Organisasi</span>
@@ -32,7 +32,7 @@
                                 <a href="#">Struktur Jabatan</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     <li class="sidebar-item has-sub {{ ($headmenu === "Data Pegawai"  ? 'active' : '' ) }}">
                         <a href="#" class="sidebar-link">
@@ -43,7 +43,7 @@
                             <li class="submenu-item {{ ($title === "Profil Pegawai"  ? 'active' : '' ) }}">
                                 <a href="{{ route('user.profile') }}">Personal Data</a>
                             </li>
-                            <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
+                            {{-- <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
                                 <a href="#">Pendidikan</a>
                             </li>
                             <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
@@ -63,7 +63,7 @@
                             </li>
                             <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
                                 <a href="#">Dokumen Lain</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                     <li class="sidebar-item has-sub">
@@ -73,10 +73,10 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
-                                <a href="#">Info Rekan Kerja</a>
+                                <a href="{{ route('user.inforekan') }}">Info Rekan Kerja</a>
                             </li>
                             <li class="submenu-item {{ ($title === ""  ? 'active' : '' ) }}">
-                                <a href="#">Info Ulang tahun</a>
+                                <a href="{{ route('user.infoultah') }}">Info Ulang tahun</a>
                             </li>
                         </ul>
                     </li>

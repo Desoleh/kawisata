@@ -109,5 +109,18 @@ class UserController extends Controller
         return view('user.infoultah',compact(['employees']));
     }
 
+    public function infoRekanDetail(Employee $employee)
+    {
 
+        // dd($employee);
+
+            $documents = Document::where('nip', $employee->nip)->where('category','foto')->latest()->first();
+            $employee = Employee::with('account')->where('nip', $employee->nip)
+            ->select('nama','nip','tempat_lahir','tanggal_lahir','tmt_kerja','gol_ruang')
+            ->first();
+            $position = Position::where('holder_id',$employee->nip)->first();
+
+            return view('user.profil-pekerja',compact(['employee','position','documents']));
+
+    }
 }

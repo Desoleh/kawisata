@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Employee;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Account extends Model
 {
@@ -12,7 +13,7 @@ class Account extends Model
         public function employee()
     {
 
-        return $this->belongsTo(Employee::class);
+        return $this->belongsTo(Employee::class, 'nip');
     }
 
 

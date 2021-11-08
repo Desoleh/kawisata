@@ -6,17 +6,14 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.83.1">
-        <title>Signin  | eoffice Ka Pariwisata</title>
-
-        <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
-
+        <title>Signin  | HRIS Ka Pariwisata</title>
 
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/signin.css') }}">
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">  
         <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -34,8 +31,6 @@
         </style>
 
 
-        <!-- Custom styles for this template -->
-        <link href="{{asset('bootstrap/5.0/css/signin.css')}}" rel="stylesheet">
 
     </head>
     <body class="text-center">
@@ -49,8 +44,7 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
                     <div>
-                        <input id="floatingInput" type="email" class="form-control placeholder="name@example.com" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
+                        <input id="floatingInput" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="name@example.com" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -62,13 +56,16 @@
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
                     <div>
-                        <input id="floatingPassword" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                        <div class="input-group mb-3" id="show_hide_password">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="password" aria-label="password" aria-describedby="button-addon2"  name="password" required autocomplete="current-password">
+                            <a href="" class="btn btn-outline-secondary"><i class="bi bi-eye-slash" aria-hidden="true"></i></a>
+                        </div>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+
                     </div>
                 {{-- <label for="floatingPassword">Password</label> --}}
                 </div>
@@ -101,26 +98,23 @@
             </form>
         </main>
 
-{{-- <div class="row">
-<form>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
-            </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-</div> --}}
-
-
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>        <script>
+            $(document).ready(function() {
+            $("#show_hide_password a").on('click', function(event) {
+                event.preventDefault();
+                if($('#show_hide_password input').attr("type") == "text"){
+                    $('#show_hide_password input').attr('type', 'password');
+                    $('#show_hide_password i').addClass( "bi bi-eye-slash" );
+                    $('#show_hide_password i').removeClass( "bi bi-eye" );
+                }else if($('#show_hide_password input').attr("type") == "password"){
+                    $('#show_hide_password input').attr('type', 'text');
+                    $('#show_hide_password i').removeClass( "bi bi-eye-slash" );
+                    $('#show_hide_password i').addClass( "bi bi-eye" );
+                }
+            });
+            });
+        </script>
     </body>
 </html>
 

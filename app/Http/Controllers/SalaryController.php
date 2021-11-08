@@ -34,8 +34,12 @@ class SalaryController extends Controller
             $employee = Employee::where('nip', $nip)->first();
             $document = Document::where('nip', $nip)->latest()->first();
 
-            $bulanoncycles = Oncycle::select('bulan')->distinct()->get();
-            $bulanoffcycles = Offcycle::select('bulan')->distinct()->get();
+            $bulanoncycles = Oncycle::select('bulan')->distinct()
+            ->where('nip', $nip)
+            ->get();
+            $bulanoffcycles = Offcycle::select('bulan')->distinct()
+            ->where('nip', $nip)
+            ->get();
 
         $headmenu = 'Data Pegawai';
         $title = 'Upah Pokok dan Tunjangan Tetap';

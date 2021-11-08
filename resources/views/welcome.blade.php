@@ -142,7 +142,7 @@
               <h4>Useful Links</h4>
               <ul>
                 <li>
-                  <i class="bx bx-chevron-right"></i> <a href="#">Home</a>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Beranda</a>
                 </li>
                 <li>
                   <i class="bx bx-chevron-right"></i> <a href="#">About us</a>

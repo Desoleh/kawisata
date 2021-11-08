@@ -94,7 +94,7 @@
             </div>
             <div class="col-sm-6">
             <ol class="breadcrumb  float-sm-end mt-sm-2">
-                <li class="breadcrumb-item"><a href="{{ route('user.home') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('user.home') }}">Beranda</a></li>
                 <li class="breadcrumb-item active">Penghasilan</li>
             </ol>
             </div>

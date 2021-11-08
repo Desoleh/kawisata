@@ -102,6 +102,7 @@ Route::prefix('user')->middleware(['auth','verified'])->group(function () {
     Route::get('/kk/{uuid}/download', [DocumentController::class,'downloadkk'])->name('download.kk');
 
     Route::get('inforekan',[UserController::class,'inforekan'])->name('user.inforekan');
+    Route::get('inforekan/{employee}',[UserController::class,'infoRekanDetail'])->name('user.infoRekanDetail');
     Route::get('infoultah',[UserController::class,'infoultah'])->name('user.infoultah');
 
     Route::get('regulations', [RegulationController::class, 'index'])->name('regulations.index');
