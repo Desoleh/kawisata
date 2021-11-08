@@ -263,7 +263,7 @@
                                                 @foreach ($employees as $employee)
                                             <tr>
                                                     <td>{{ $employee->nip }}</td>
-                                                    <td>{{ $employee->nama}}</td>
+                                                    <td><a class="text-dark text-decoration-none" href="{{ route('user.infoRekanDetail', $employee->nip) }}">{{ $employee->nama}}</a></td>
                                                     @if(isset( $employee->position->name))
                                                     <td>{{ $employee->position->name}}</td>
                                                     @else                                                         
