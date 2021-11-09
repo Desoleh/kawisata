@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Regulation;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class RegulationFile extends Model
 {
@@ -11,7 +12,7 @@ class RegulationFile extends Model
 
         protected $guarded = ['id'];
 
-        public function regulation()
+    public function regulation()
     {
         return $this->belongsTo(Regulation::class);
     }

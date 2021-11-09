@@ -11,7 +11,7 @@ return [
         'date'                  => 'Tanggal',
         'day'                   => 'Hari',
         'description'           => 'Deskripsi',
-        'email'                 => 'Surel',
+        'email'                 => 'email',
         'excerpt'               => 'Kutipan',
         'first_name'            => 'Nama Depan',
         'gender'                => 'Jenis Kelamin',

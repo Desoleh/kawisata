@@ -58,11 +58,13 @@
                 <div class="col-md-12 col-lg-9 mb-5">
                     @forelse ($regulations as $regulation)
                     <div class="col mb-3">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                        <strong class="subtitle"> <a href="">{{$regulation->category_id}}</a> </strong>
+                        <div class="icon-box pb-0" data-aos="fade-up" data-aos-delay="100">
+                        <strong class="subtitle"> <a href="">{{$regulation->category->category_name}}</a> </strong>
                         <h4 class="title"> <a href="{{ route('regulations.show',$regulation->uuid) }}">{{$regulation->judul}}</a></h4>
                         <p class="description">{{$regulation->kode}}</p>
                         <p class="description">{{$regulation->keterangan}}</p>
+                        <hr>
+                        <p> <a href="{{ route('regulations.show',$regulation->uuid) }}"><i class="far fa-file-alt"></i> selengkapnya</a></p>
                         </div>
                     </div>
                     @empty

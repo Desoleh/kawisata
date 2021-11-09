@@ -1,16 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <div class="container" style="font-size: 0.9rem">
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Show Regulation</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('regulations.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
     <div class="card bg-light shadow rounded-3 mb-2">
         <div class="card-header">
             <h3 class="card-title mb-0">
@@ -107,7 +97,7 @@
                             @forelse ($documents as $document)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('regulations.download', $document->uuid) }}">download</a><br>
+                                        <a href="{{ route('regulations.download', $document->uuid) }}"><i class="fas fa-file-pdf"></i> download</a><br>
                                     </td>
                                 </tr>
                             @empty
@@ -122,7 +112,16 @@
             </table>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2> Show Regulation</h2>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-primary mb-3" href="{{ route('regulations.index') }}">kembali</a>
+            </div>
+        </div>
+    </div>
 
 </div>
 @endsection

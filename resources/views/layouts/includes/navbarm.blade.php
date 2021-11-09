@@ -31,7 +31,7 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link active" href="{{ route('login') }}">Login</a>
                                 </li>
                             @endif
 
@@ -50,7 +50,7 @@
                             <a class=" text-black btn btn-warning" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                Logout
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

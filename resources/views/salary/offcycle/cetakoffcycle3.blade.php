@@ -147,7 +147,7 @@
 
       /* Buttons - Specific */
       .btn-print {
-        display: none;
+        /* display: none; */
         position: fixed;
         right: 16px;
         bottom: 16px;
