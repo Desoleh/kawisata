@@ -230,12 +230,22 @@
                                             <tr><td>Upah Pokok</td><td style="text-align:right">{{number_format($oncycles->upah_pokok, 0, ',', '.')}}</td></tr>
                                             @endif
 
+                                            @if($oncycles->t_direksi == 0)
+                                            @else
+                                            <tr><td>Tunjangan PLT Direksi</td><td style="text-align:right">{{number_format($oncycles->t_direksi, 0, ',', '.')}}</td></tr>
+                                            @endif
+
                                             @if($oncycles->honorarium_pkwt == 0)
                                             @else
                                             <tr><td>Upah Pokok</td><td style="text-align:right">{{number_format($oncycles->honorarium_pkwt, 0, ',', '.')}}</td></tr>
                                             @endif
 
                                             <tr><td colspan="2" style="font-weight: 500">Tunjangan Tetap :</td></tr>
+
+                                            @if($oncycles->t_perumahan_direksi == 0)
+                                            @else
+                                            <tr><td>-  Tunjangan Perumahan Direksi</td><td style="text-align:right">{{number_format($oncycles->t_perumahan_direksi, 0, ',', '.')}}</td></tr>
+                                            @endif
 
                                             @if($oncycles->tunj_perumahan  == 0)
                                             @else

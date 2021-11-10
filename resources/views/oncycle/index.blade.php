@@ -96,6 +96,8 @@
                                             <th>Admin Bank</th>
                                             <th>Netpay</th>
                                             <th>id</th>
+                                            <th>Tunjangan PLT Direksi</th>
+                                            <th>Tunjangan Perumahan Direksi</th>
                                             <th>action</th>
                                         </tr>
                                     </thead>
@@ -120,6 +122,8 @@
                                                     <td>{{number_format($oncycle->admin_oncycle, 0, ',', '.')}}</td>
                                                     <td>{{number_format($oncycle->netpay, 0, ',', '.')}}</td>
                                                     <td>{{$oncycle->idoncycle}}</td>
+                                                    <td>{{number_format($oncycle->t_direksi, 0, ',', '.')}}</td>
+                                                    <td>{{number_format($oncycle->t_perumahan_direksi, 0, ',', '.')}}</td>
                                                     <td>
                                                         <form action="{{ route('oncycle.destroy',$oncycle->id) }}" method="POST">
                                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('oncycle.show',$post->id) }}">Show</a> --}}

@@ -81,7 +81,9 @@ class SalaryController extends Controller
                     jpk_bpjs_iur_persh_4 +
                     jpk_pensiunan_iur_persh_2 +
                     total_pajak +
-                    tunj_kurang_bayar'));
+                    tunj_kurang_bayar +
+                    t_direksi +
+                    t_perumahan_direksi'));
             // dd($total);
             $totaloffcyclecc121 = DB::table('offcycles')
                 ->where([
