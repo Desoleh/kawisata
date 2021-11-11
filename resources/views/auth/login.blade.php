@@ -13,7 +13,8 @@
         <link rel="stylesheet" href="{{ asset('css/styles.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/signin.css') }}">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">  
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+        {!! ReCaptcha::htmlScriptTagJsApi() !!}
         <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -70,6 +71,17 @@
                 {{-- <label for="floatingPassword">Password</label> --}}
                 </div>
 
+                <div class="mb-3">
+                    <div class="input-group mb-3 " id="captcha">
+                        {!! htmlFormSnippet() !!}
+                    </div>
+                        @error('captcha')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                </div>
+
                 <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me
@@ -114,6 +126,12 @@
                 }
             });
             });
+        </script>
+        <script>
+            {!! htmlScriptTagJsApi([
+                'action' => 'homepage',
+                'custom_validation' => 'myCustomValidation'
+            ]) !!}
         </script>
     </body>
 </html>
