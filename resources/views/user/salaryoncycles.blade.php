@@ -158,6 +158,11 @@
             <tr><td>Potongan Sewa Rumah Dinas</td><td style="text-align:right">{{number_format($oncycles->pot_sewa_rumah_dinas, 0, ',', '.')}}</td></tr>
             @endif
 
+            @if($oncycles->pot_sewa_mess == 0)
+            @else
+            <tr><td>Potongan Sewa Mess</td><td style="text-align:right">{{number_format($oncycles->pot_sewa_mess, 0, ',', '.')}}</td></tr>
+            @endif
+
             @if($oncycles->simpanan_baitul_ridho == 0)
             @else
             <tr><td>Potongan Simpanan Baitul Ridho</td><td style="text-align:right">{{number_format($oncycles->simpanan_baitul_ridho, 0, ',', '.')}}</td></tr>

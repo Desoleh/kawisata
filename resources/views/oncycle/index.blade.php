@@ -92,6 +92,7 @@
                                             <th>Tunj Adm Bank</th>
                                             <th>Tunj Kurang Bayar</th>
                                             <th>Pot Kelebihan Bayar</th>
+                                            <th>Pot Sewa Mess</th>
                                             <th>Bruto</th>
                                             <th>Admin Bank</th>
                                             <th>Netpay</th>
@@ -118,6 +119,7 @@
                                                     <td>{{number_format($oncycle->tunj_adm_bank, 0, ',', '.')}}</td>
                                                     <td>{{number_format($oncycle->tunj_kurang_bayar, 0, ',', '.')}}</td>
                                                     <td>{{number_format($oncycle->pot_kelebihan_bayar, 0, ',', '.')}}</td>
+                                                    <td>{{number_format($oncycle->pot_sewa_mess, 0, ',', '.')}}</td>
                                                     <td>{{number_format($oncycle->bruto, 0, ',', '.')}}</td>
                                                     <td>{{number_format($oncycle->admin_oncycle, 0, ',', '.')}}</td>
                                                     <td>{{number_format($oncycle->netpay, 0, ',', '.')}}</td>
