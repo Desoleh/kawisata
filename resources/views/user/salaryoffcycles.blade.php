@@ -40,67 +40,67 @@
             </div>
             <table class="card-body mb-0 table border border-black table-sm">
                 <tbody>
-                    @if(!isset($offcycles->tunjangan_transport))
+                    @if($offcycles->tunjangan_transport == 0)
                     @else
                         <tr><td>Tunjangan Transport</td><td style="text-align:right">{{number_format($offcycles->tunjangan_transport, 0, ',', '.')}}</td></tr>
                     @endif
 
-                    @if(!isset($offcycles->tunjangan_komunikasi))
+                    @if($offcycles->tunjangan_komunikasi == 0)
                     @else
                         <tr><td>Tunjangan Komunikasi</td><td style="text-align:right">{{number_format($offcycles->tunjangan_komunikasi, 0, ',', '.')}}</td></tr>
                     @endif
 
-                    @if(!isset($offcycles->tunjangan_jabatan))
+                    @if($offcycles->tunjangan_jabatan == 0)
                     @else
                         <tr><td>Tunjangan Jabatan</td><td style="text-align:right">{{number_format($offcycles->tunjangan_jabatan, 0, ',', '.')}}</td></tr>
                     @endif
 
-                    @if(!isset($offcycles->tunjangan_kinerja_pegawai))
+                    @if($offcycles->tunjangan_kinerja_pegawai == 0)
                     @else
                         <tr><td>Tunjangan Kinerja Pegawai</td><td style="text-align:right">{{number_format($offcycles->tunjangan_kinerja_pegawai, 0, ',', '.')}}</td></tr>
                     @endif
 
-                    @if(!isset($offcycles->tunjangan_kemahalan))
+                    @if($offcycles->tunjangan_kemahalan == 0)
                     @else
                         <tr><td>Tunjangan Kemahalan</td><td style="text-align:right">{{number_format($offcycles->tunjangan_kemahalan, 0, ',', '.')}}</td></tr>
                     @endif
 
-                    @if(!isset($offcycles->tunjangan_cuti))
+                    @if($offcycles->tunjangan_cuti == 0)
                     @else
                         <tr><td>Tunjangan Cuti</td><td style="text-align:right">{{number_format($offcycles->tunjangan_cuti, 0, ',', '.')}}</td></tr>
                     @endif
 
-                    @if(!isset($offcycles->tunjangan_profesi))
+                    @if($offcycles->tunjangan_profesi == 0)
                     @else
                         <tr><td>Tunjangan Profesi</td><td style="text-align:right">{{number_format($offcycles->tunjangan_profesi, 0, ',', '.')}}</td></tr>
                     @endif
 
-                    @if(!isset($offcycles->tunjangn_tidak_tetap_pkwt))
+                    @if($offcycles->tunjangn_tidak_tetap_pkwt == 0)
                     @else
                         <tr><td>Tunjangn Tidak Tetap Pkwt</td><td style="text-align:right">{{number_format($offcycles->tunjangn_tidak_tetap_pkwt, 0, ',', '.')}}</td></tr>
                     @endif
 
-                    @if(!isset($offcycles->tunjangan_keahlian))
+                    @if($offcycles->tunjangan_keahlian == 0)
                     @else
                         <tr><td>Tunjangan Keahlian</td><td style="text-align:right">{{number_format($offcycles->tunjangan_keahlian, 0, ',', '.')}}</td></tr>
                     @endif
 
-                    @if(!isset($offcycles->prestasi))
+                    @if($offcycles->prestasi == 0)
                     @else
                         <tr><td>Prestasi</td><td style="text-align:right">{{number_format($offcycles->prestasi, 0, ',', '.')}}</td></tr>
                     @endif
 
-                    @if(!isset($offcycles->shift_allowance))
+                    @if($offcycles->shift_allowance == 0)
                     @else
                         <tr><td>Shift Allowance</td><td style="text-align:right">{{number_format($offcycles->shift_allowance, 0, ',', '.')}}</td></tr>
                     @endif
 
-                    @if(!isset($offcycles->best_performance))
+                    @if($offcycles->best_performance == 0)
                     @else
                         <tr><td>Best Performance</td><td style="text-align:right">{{number_format($offcycles->best_performance, 0, ',', '.')}}</td></tr>
                     @endif
 
-                    @if(!isset($offcycles->lembur))
+                    @if($offcycles->lembur == 0)
                     @else
                         <tr><td>Lembur</td><td style="text-align:right">{{number_format($offcycles->lembur, 0, ',', '.')}}</td></tr>
                     @endif
@@ -121,15 +121,15 @@
             </div>
             <table class="card-body mb-0 table border border-black table-sm">
                 <tbody>
-                    @if(!isset($offcycles->potongan_lain))
+                    @if($offcycles->potongan_lain == 0)
                     @else
                         <tr><td>Potongan Lain</td><td style="text-align:right">{{number_format($offcycles->potongan_lain, 0, ',', '.')}}</td></tr>
                     @endif
-                    @if(!isset($offcycles->admin_bank))
+                    @if($offcycles->admin_bank == 0)
                     @else
                         <tr><td>Admin Bank</td><td style="text-align:right">{{number_format($offcycles->admin_bank, 0, ',', '.')}}</td></tr>
                     @endif
-                    @if(!isset($offcycles->penalty))
+                    @if($offcycles->penalty == 0)
                     @else
                         <tr><td>Penalty</td><td style="text-align:right">{{number_format($offcycles->penalty, 0, ',', '.')}}</td></tr>
                     @endif
