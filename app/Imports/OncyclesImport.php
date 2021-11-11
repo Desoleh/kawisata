@@ -62,8 +62,8 @@ class OncyclesImport implements ToCollection, WithUpserts, WithStartRow, SkipsEm
                     'admin_oncycle'=> $row[39],
                     'netpay'=> $row[40],
                     'bulan'=> $row[41],
-                    't_direksi'=> $row[44],
-                    't_perumahan_direksi'=> $row[45],
+                    // 't_direksi'=> $row[44],
+                    // 't_perumahan_direksi'=> $row[45],
 
 
                 ]
