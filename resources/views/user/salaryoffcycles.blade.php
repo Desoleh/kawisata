@@ -26,25 +26,12 @@
             </table>
 
             <table class="card-footer border table table-borderless">
-                    @if(!isset($offcycles->netpay))
-                    @else
                         <tr class=" fw-bolder fs-6">
                                 <td >Take Home Pay</td>
                                 <td  style="text-align-last: right"> Rp.
                                 {{number_format($offcycles->netpay, 0, ',', '.')}}
                                 </td>
                         </tr>
-                    @endif
-
-                    @if(!isset($offcycles->netpaycc121))
-                    @else
-                        <tr class=" fw-bolder fs-6">
-                        <td >Take Home Pay</td>
-                                <td style="text-align-last: right" > Rp.
-                                {{number_format($offcycles->netpaycc121, 0, ',', '.')}}
-                                </td>
-                        </tr>
-                    @endif
             </table>
         </div>
         <div class="col-md table-responsive-md ">
@@ -120,25 +107,12 @@
                 </tbody>
             </table>
             <table class="card-footer border table table-borderless">
-                @if(!isset($offcycles->bruto))
-                @else
                     <tr class=" fw-bolder">
                         <td >Total</td>
                         <td style="text-align:right"  >
                         {{number_format($offcycles->bruto, 0, ',', '.')}}
                         </td>
                     </tr>
-                @endif
-
-                @if(!isset($offcycles->netpaycc121))
-                @else
-                    <tr class=" fw-bolder">
-                    <td >Total</td>
-                        <td style="text-align:right"  >
-                        {{number_format($totaloffcyclecc121, 0, ',', '.')}}
-                        </td>
-                    </tr>
-                @endif
             </table>
         </div>
         <div class="col-md table-responsive-md">
@@ -163,13 +137,10 @@
             </table>
             <table class="card-footer border table table-borderless">
                 <tr class=" fw-bolder">
-                    @if($totalpotonganoffcycle))
-                    @else
                     <td >Total</td>
                     <td style="text-align:right"  >
                     {{number_format($totalpotonganoffcycle, 0, ',', '.')}}
                     </td>
-                    @endif
                 </tr>
             </table>
         </div>
