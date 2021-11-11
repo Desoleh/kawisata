@@ -36,9 +36,11 @@ class SalaryController extends Controller
 
             $bulanoncycles = Oncycle::select('bulan')->distinct()
             ->where('nip', $nip)
+            ->orderBy('updated_at','DESC')
             ->get();
             $bulanoffcycles = Offcycle::select('bulan')->distinct()
             ->where('nip', $nip)
+            ->orderBy('updated_at','DESC')
             ->get();
 
         $headmenu = 'Data Pegawai';
@@ -63,11 +65,13 @@ class SalaryController extends Controller
             $offcycles = Offcycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->first();
             $bulanoncycles = Oncycle::select('bulan')->distinct()
             ->where('nip', $nip)
+            ->orderBy('updated_at','DESC')
             ->get();
             $bulanoffcycles = Offcycle::select('bulan')->distinct()
+            ->orderBy('updated_at','DESC')
             ->where('nip', $nip)
             ->get();
-            // dd($bulanoncycles);
+
             $total = DB::table('oncycles')
                 ->where([
                 ['bulan', 'like', "%" . $keyword . "%"],
@@ -207,9 +211,11 @@ class SalaryController extends Controller
             $offcycles = Offcycle::where([['bulan', 'like', "%" . $keyword . "%"],['nip', '=' , $nip]])->first();
             $bulanoncycles = Oncycle::select('bulan')->distinct()
             ->where('nip', $nip)
+            ->orderBy('updated_at','DESC')
             ->get();
             $bulanoffcycles = Offcycle::select('bulan')->distinct()
             ->where('nip', $nip)
+            ->orderBy('updated_at','DESC')
             ->get();
 
             $total = DB::table('oncycles')

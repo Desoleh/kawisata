@@ -20,10 +20,10 @@ class Employee extends Model
         return $this->hasOne(Position::class, 'holder_id');
     }
 
-    // public function getTanggalLahirAttribute($value)
-    // {
-    //     return Carbon::parse($value)->isoFormat('DD MMMM YYYY');;
-    // }
+    public function getTanggalLahirAttribute($value)
+    {
+        return Carbon::parse($value)->isoFormat('DD MMMM YYYY');;
+    }
 
     // public function setTanggalLahirAttribute($value)
     // {

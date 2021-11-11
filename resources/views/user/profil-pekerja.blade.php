@@ -20,7 +20,7 @@
 
 @section('content')
     <section id="content-header" class="content-header">
-        <div class="container-fluid">
+        <div class="container">
         <div class="row">
             <div class="col-sm-6">
             <h2>Profil Pekerja</h2>
@@ -42,7 +42,7 @@
         <div class="page-content">
             {{-- content --}}
                 <section>
-                    <div class="container-fluid">
+                    <div class="container">
                         <div class="row">
                             @if ($message = Session::get('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -88,11 +88,7 @@
                                                 </tr>
                                                 <tr>
                                                         <td>Tempat, Tgl Lahir</td>
-                                                        <td>{{$employee->tempat_lahir}}, {{$employee->tanggal_lahir}}</td>
-                                                </tr>
-                                                <tr>
-                                                        <td>Tgl Masuk Kerja</td>
-                                                        <td>{{ \Carbon\Carbon::parse($employee->tmt_kerja)->isoFormat('DD MMMM YYYY')}}</td>
+                                                        <td>{{$employee->tempat_lahir}},  {{$employee->tanggal_lahir}}</td>
                                                 </tr>
 
                                                 @isset($employee->gol_ruang)
@@ -102,11 +98,11 @@
                                                 </tr>
                                                 @else
                                                 @endisset
-                                                        <td>Alamat</td>
+                                                        {{-- <td>Alamat</td>
                                                         <td>{{ $employee->account->alamat1 }}
                                                                 <br> {{ $employee->account->alamat2 }}
                                                                 <br> {{ $employee->account->District }}, {{ $employee->account->City }}, {{ $employee->account->Postal }} </td>
-                                                </tr>
+                                                </tr> --}}
                                             <tr>
                                                     <td>Nama Jabatan</td>
                                                     <td>{{$position->name}}</td>

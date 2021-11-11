@@ -51,7 +51,7 @@
                     <tr>
                             <td>{{ $employee->nip }}</td>
                             <td><a class="text-dark text-decoration-none" href="{{ route('user.infoRekanDetail', $employee->nip) }}">{{ $employee->nama}}</a></td>
-                            <td>{{ $employee->position->name}}</td>
+                            <td>{{ $employee->position->name ?? 'N/A'}}</td>
                             <td>{{ $employee->tanggal_lahir}}</td>
                     </tr>
                         @endforeach
