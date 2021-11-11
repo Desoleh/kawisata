@@ -20,7 +20,7 @@ class OncyclesImport implements ToCollection, WithUpserts, WithStartRow, SkipsEm
 
             Oncycle::updateOrCreate(
                 [
-                    'idoncycle'=> $row[41].$row[1],
+                    'idoncycle'=> $row[46].$row[1],
                 ],
                 [
 
