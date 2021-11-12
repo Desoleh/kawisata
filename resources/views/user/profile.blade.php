@@ -159,13 +159,6 @@
                                                                 @else
                                                                 @endisset
 
-                                                                @isset($employee->tmt_pangkat)
-                                                                <tr>
-                                                                        <td>Tmt Pangkat</td>
-                                                                        <td>{{ \Carbon\Carbon::parse($employee->tmt_pangkat)->isoFormat('DD MMMM YYYY')}}</td>
-                                                                </tr>
-                                                                @else
-                                                                @endisset
                                                                 <tr>
                                                                         <td>NIK</td>
                                                                         <td>{{ $account->ktp }}</td>

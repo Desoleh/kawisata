@@ -272,6 +272,7 @@ class SalaryController extends Controller
                     IFNULL(tht_taspen_iur_pekerja_3_25,0) +
                     IFNULL(iur_spka,0) +
                     IFNULL(pot_sewa_rumah_dinas,0) +
+                    IFNULL(pot_sewa_mess,0) +
                     IFNULL(simpanan_baitul_ridho,0) +
                     IFNULL(cicilan_baitul_ridho,0) +
                     IFNULL(total_pajak,0) +

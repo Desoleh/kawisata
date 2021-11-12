@@ -73,7 +73,7 @@
                             <div class="row">
                                 <div class="col-md-12 col-lg-9 d-flex align-items-stretch mb-5 mb-lg-0">
                                     <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                                    <p class="description">tidak ditemukaN</p>
+                                    <p class="description">belum ada</p>
                                     </div>
                                 </div>
                             </div>

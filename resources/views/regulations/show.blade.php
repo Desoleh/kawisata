@@ -3,9 +3,9 @@
 <div class="container" style="font-size: 0.9rem">
     <div class="card bg-light shadow rounded-3 mb-2">
         <div class="card-header">
-            <h3 class="card-title mb-0">
+            <h4 class="card-title mb-0">
                 {{ $regulation->judul }}
-            </h3>
+            </h4>
             <h7>
                 Nomor : {{ $regulation->kode }}
             </h7>
@@ -14,7 +14,7 @@
             <table class="table table-striped ">
                     <tr>
                         <td> Judul Lengkap</td>
-                        <td> {{ $regulation->keterangan }}</td>
+                        <td> {{ $regulation->judul }}</td>
                     </tr>
                     <tr>
                         <td> Judul Singkat</td>
@@ -22,7 +22,7 @@
                     </tr>
                     <tr>
                         <td> Kategori</td>
-                        <td> {{ $regulation->category_id }}</td>
+                        <td> {{$regulation->category->category_name}}</td>
                     </tr>
                     <tr>
                         <td> Nomor:</td>
@@ -31,10 +31,6 @@
                     <tr>
                         <td> Tahun:</td>
                         <td> {{ $regulation->tahun }}</td>
-                    </tr>
-                    <tr>
-                        <td> Grade</td>
-                        <td> {{ $regulation->grade }}</td>
                     </tr>
                     <tr>
                         <td> Tgl Penetapan:</td>
@@ -49,14 +45,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Konseptor</td>
-                        <td> {{ $regulation->konseptor }}</td>
-                    </tr>
-                    <tr>
-                        <td> Diubah dengan</td>
-                        <td>
+                        <td style="vertical-align: baseline"> Diubah dengan</td>
+                        <td style="text-align: left">
                         @isset($regulation->diubah)
-                        <a class="btn text-primary" href="{{ route('regulations.show', $regulation->diubah) }}">
+                        <a class="text-primary" style="text-align: left" href="{{ route('regulations.show', $regulation->diubah) }}">
                             @isset($judul->judul)
                             {{ $judul->judul }}
                             @endisset
@@ -67,23 +59,22 @@
                     <tr>
                         <td> Mengubah</td>
                         <td>
-                            <table class="table table-bordered mb-0">
-                                <tr>
-                                    <td>
-                                        @forelse ($links as $link)
-                                            {{
-                                                DB::table('regulations')
-                                                ->where('id', $link->uuid)
-                                                ->first()
-                                                ->judul
-                                            }}
-                                                <a class="btn btn-info" href="{{ route('regulations.showid', $link->uuid) }}">detail</a>
-                                        @empty
-                                        -
-                                        @endforelse
-                                    </td>
-                                </tr>
-                            </table>
+                            <ul>
+                                @forelse ($links as $link)
+                                    <li>
+                                        <a class="text-primary" href="{{ route('regulations.showid', $link->uuid) }}">
+                                        {{
+                                            DB::table('regulations')
+                                            ->where('id', $link->uuid)
+                                            ->first()
+                                            ->judul
+                                        }}
+                                        </a>
+                                    </li>
+                                @empty
+                                -
+                                @endforelse
+                            </ul>
                         </td>
                     </tr>
                     <tr>
@@ -114,9 +105,9 @@
     </div>
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
+            {{-- <div class="pull-left">
                 <h2> Show Regulation</h2>
-            </div>
+            </div> --}}
             <div class="pull-right">
                 <a class="btn btn-primary mb-3" href="{{ route('regulations.index') }}">kembali</a>
             </div>

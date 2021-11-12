@@ -27,11 +27,16 @@ class RegulationController extends Controller
      */
     public function index()
     {
-        
-        $grade = Employee::where('nip', Auth::user()->nip)->pluck('jenis_pangkat');
+        $grade = Employee::where('nip', Auth::user()->nip)->value('gol_ruang');
+        if($grade != null){
+            $grade = 'organik';
+        }else{
+            $grade = 'pkwt';
+        }
+        // dd($grade);
         $categories = Category::withCount('regulations')->get();
-        $regulations = Regulation::with('regulationfiles')->where('grade', $grade)
-        ->orwhere('grade','all')
+        $regulations = Regulation::with('regulationfiles')->where('grade',$grade)
+        ->orwhere('grade', 'all')
         ->latest();
 
         if(request('search')) {

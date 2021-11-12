@@ -44,8 +44,7 @@ class UserController extends Controller
             $frontliner     = DashboardEmployee::where('kedudukan','Frontliner')->first();
             $title = 'Beranda';
             $regulations = Regulation::with('category')->latest()
-            ->where('grade', Auth::user()->jenis_pangkat)
-            ->orwhere('grade', 'all')
+            ->where('grade', 'all')
             ->paginate(2);
     
             $employees = Employee::with('position')->whereMonth('tanggal_lahir', Carbon::now()->month)->orderBy('tanggal_lahir','ASC')->get();
