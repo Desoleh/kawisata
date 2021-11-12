@@ -96,6 +96,7 @@ class UserController extends Controller
         $employees = DB::table('employees')
             ->join('positions','positions.holder_id','=','employees.nip')
             ->select('employees.nip','employees.nama','positions.name')
+            ->where('is_aktif',1)
             ->get();
         // dd($employees);
         return view('user.inforekan',compact(['employees']));
@@ -103,7 +104,9 @@ class UserController extends Controller
 
     public function infoultah()
     {
-        $employees = Employee::with('position')->whereMonth('tanggal_lahir', Carbon::now()->month)->orderBy('tanggal_lahir','ASC')->get();
+        $employees = Employee::with('position')
+        ->where('is_aktif',1)
+        ->whereMonth('tanggal_lahir', Carbon::now()->month)->orderBy('tanggal_lahir','ASC')->get();
         // dd($employees);
         return view('user.infoultah',compact(['employees']));
     }
